@@ -1,8 +1,5 @@
 # Phụ lục khai báo sử dụng công cụ AI
 
-## Bổ sung buổi 8–10 (23/10/2026)
-
-Codex hỗ trợ đọc 4 PDF, tạo Node/React/SQLite, validator, API client, unit test và đồng bộ tài liệu. Đã chạy 13 test tự động (nghiệp vụ, biên, đầu vào sai, contract HTTP), migration và seed demo. Chưa xác nhận dữ liệu mẫu chính thức, screenshot, peer review hoặc khả năng giải thích của sinh viên. Dòng Claude bên dưới là khai báo lịch sử chưa được sinh viên tự xác nhận, không tự điền thay việc chưa thực hiện.
 
 | Công cụ | Dùng vào việc gì | Áp dụng ở phần nào | Đã kiểm chứng thế nào |
 |---|---|---|---|
