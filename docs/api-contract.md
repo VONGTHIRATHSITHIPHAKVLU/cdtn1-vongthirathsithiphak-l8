@@ -1,159 +1,50 @@
-# API contract – Khảo sát hài lòng CSAT / NPS (Track SE)
+# API contract — L8 Sprint 1–2
 
-**Phạm vi:** các story MUST (US1, US2, US3). Định dạng JSON, mã hóa UTF-8. Dữ liệu mẫu là dữ liệu của case study và có thể thay bằng dữ liệu thật của đơn vị.
+API dùng JSON UTF-8; body thành công là đối tượng hoặc mảng trực tiếp. Lỗi thống nhất: `{ "error": "CODE", "message": "Thông báo cho người dùng", "fields": {} }`. `fields` chứa lỗi theo trường khi validation. Tất cả thời gian ISO 8601 UTC; ID số nguyên, token chữ-số 32 ký tự. Dữ liệu không tồn tại trả 404, danh sách rỗng trả `[]`, tỷ lệ chưa có mẫu số trả `null`.
 
-## 1. Danh sách endpoint
-
-| Phương thức | Đường dẫn | Mục đích | Truy vết |
+| Method | Endpoint | Auth | Kết quả |
 |---|---|---|---|
-| POST | `/api/survey-templates` | Tạo mẫu khảo sát | US1 / FR1 |
-| POST | `/api/survey-invitations` | Tạo và gửi lời mời khảo sát | US2 / FR2 |
-| GET | `/api/public/surveys/{token}` | Lấy nội dung khảo sát theo đường dẫn riêng | US3 / FR3 |
-| POST | `/api/public/surveys/{token}/responses` | Gửi phản hồi khảo sát | US3 / FR4 |
+| POST | `/api/auth/login` | Không | 200 `{token,role,expiresAt}` |
+| POST | `/api/auth/logout` | Bearer | 200 xóa phiên |
+| GET | `/api/survey-templates` | Bearer | 200 mảng template |
+| POST | `/api/survey-templates` | Bearer | 201 template |
+| GET | `/api/survey-templates/:id` | Bearer | 200 template |
+| PUT | `/api/survey-templates/:id` | Bearer | 200 template |
+| DELETE | `/api/survey-templates/:id` | Bearer | 200 `{id}` |
+| GET | `/api/support-requests` | Bearer | 200 `{id,customerId,customerName,status,centerId}[]` |
+| GET | `/api/survey-invitations` | Bearer | 200 mảng invitation |
+| POST | `/api/survey-invitations` | Bearer | 201 invitation + `deliveryMode` |
+| GET | `/api/public/surveys/:token` | Không | 200 form |
+| POST | `/api/public/surveys/:token/responses` | Không | 201 response |
+| GET | `/api/reports/summary` | Bearer | 200 summary |
 
-Hai endpoint đầu cần đăng nhập (Quản lý, Nhân viên CSKH); hai endpoint `/api/public/...` không cần đăng nhập và được bảo vệ bằng token.
+## Đầu vào
 
-## 2. Chi tiết endpoint
+- Login: `{username:"demo", password:string}`. Đúng mật khẩu cấu hình trong `DEMO_PASSWORD`. Sai 401, sau 5 lần khóa 15 phút trả 429; thiếu cấu hình trả 503. Phiên 1 giờ, mất khi backend khởi động lại.
+- Template: `{name:string(3..100),type:"CSAT"|"NPS",question:string(10..300),allowComment?:boolean}`; boolean mặc định true. Mẫu đã được dùng không được sửa/xóa.
+- Invitation: `{supportRequestId:string,customerId:positiveInteger,templateId:positiveInteger,channel:"EMAIL"|"SMS"}`. Request code tham chiếu đúng khách hàng, trạng thái COMPLETED. Kiểm tra liên hệ và opt-out.
+- Response: `{score:integer,comment?:string(0..500)}`. CSAT 1..5, NPS 0..10. Mẫu không cho nhận xét sẽ từ chối nhận xét khác rỗng.
 
-### 2.1 `POST /api/survey-templates` (US1)
+## Đầu ra ở ranh giới
 
-**Request:**
+Cập nhật giao diện theo Wireframe1–3: public form bổ sung `supportRequestId` (mã yêu cầu) và `centerId` (mã trung tâm); danh sách support-requests bổ sung `completedAt` (ISO hoặc null) và `maskedEmail` (email che một phần hoặc null). Không đưa email/tên khách vào form public. Dữ liệu thiết bị và tên người tạo chưa có trong API, giao diện không tự điền dữ liệu giả từ ảnh.
 
-```json
-{
-  "name": "CSAT sau hỗ trợ",
-  "type": "CSAT",
-  "question": "Bạn hài lòng thế nào về lần hỗ trợ vừa rồi?",
-  "allowComment": true
-}
-```
+- Template: `{id,name,type,scaleMin,scaleMax,question,allowComment,createdAt}`. Hàm `toTemplate` là nơi duy nhất chuyển snake_case sang camelCase.
+- Invitation: `{id,supportRequestId,templateId,templateName,customerName,channel,status,sentAt,expiresAt,link}`. Link tương đối `/survey/:token`, giữ cùng origin frontend. POST thêm `deliveryMode:"LOCAL_LINK"`. `SENT` trong prototype nghĩa là liên kết đã tạo; chưa tích hợp nhà cung cấp gửi thư.
+- Public form: `{templateName,type,scaleMin,scaleMax,question,allowComment,expiresAt}`. Không lộ tên/email khách.
+- Response: `{id,invitationId,score,comment,flaggedNegative,submittedAt}`. Comment không nhập trả null.
+- Summary: `{responseCount,invitationCount,csat,csatCount,nps,npsCount,negativeCount,generatedAt,source,csatTarget}`. CSAT đơn vị %, NPS điểm −100..100; phạm vi toàn thời gian. `csatTarget=80` chỉ là mốc tham chiếu minh họa.
 
-**Response `201 Created`:**
+## Lỗi và hành vi phía gọi
 
-```json
-{
-  "id": 7,
-  "name": "CSAT sau hỗ trợ",
-  "type": "CSAT",
-  "scaleMin": 1,
-  "scaleMax": 5,
-  "question": "Bạn hài lòng thế nào về lần hỗ trợ vừa rồi?",
-  "allowComment": true,
-  "createdAt": "2026-10-02T09:15:00+07:00"
-}
-```
-
-| Mã | Khi nào | Body mẫu |
+| HTTP | Mã điển hình | Xử lý |
 |---|---|---|
-| 201 | Tạo thành công | như trên |
-| 400 | Thiếu hoặc sai trường | `{"code":"VALIDATION_ERROR","errors":[{"field":"type","message":"Chỉ nhận CSAT hoặc NPS"}]}` |
-| 409 | Trùng tên mẫu | `{"code":"TEMPLATE_NAME_EXISTS","message":"Tên mẫu đã tồn tại"}` |
+| 400 | VALIDATION_ERROR, INVALID_JSON, REQUEST_NOT_COMPLETED, CUSTOMER_MISMATCH, CONTACT_MISSING | Sửa dữ liệu; fields nếu có |
+| 401 | UNAUTHORIZED, INVALID_CREDENTIALS | Xóa phiên với API bảo vệ, về đăng nhập |
+| 404 | NOT_FOUND | Báo không tìm thấy |
+| 409 | TEMPLATE_NAME_EXISTS, TEMPLATE_IN_USE, INVITATION_EXISTS, CUSTOMER_OPTED_OUT, EXPIRED, ALREADY_ANSWERED | Hiển thị thông báo nghiệp vụ |
+| 413 | BODY_TOO_LARGE | Giảm kích thước request (tối đa 16 KiB) |
+| 429 | ACCOUNT_LOCKED | Chờ 15 phút |
+| 500/503 | INTERNAL_ERROR, AUTH_NOT_CONFIGURED | Thông báo an toàn, không lộ SQL/stack |
 
-### 2.2 `POST /api/survey-invitations` (US2)
-
-**Request:**
-
-```json
-{
-  "supportRequestId": "YC-20261002-014",
-  "customerId": 1052,
-  "templateId": 7,
-  "channel": "EMAIL"
-}
-```
-
-**Response `201 Created`:**
-
-```json
-{
-  "id": 3301,
-  "supportRequestId": "YC-20261002-014",
-  "customer": { "id": 1052, "name": "Nguyễn Thị Lan", "email": "lan.nguyen@example.com" },
-  "templateId": 7,
-  "channel": "EMAIL",
-  "status": "SENT",
-  "link": "https://smartcrm.example.com/survey/q3Z8xK1mP0aVb7YtR2dWnC5uHs9LfJ4e",
-  "sentAt": "2026-10-02T09:20:00+07:00",
-  "expiresAt": "2026-10-16T09:20:00+07:00"
-}
-```
-
-| Mã | Khi nào | Body mẫu |
-|---|---|---|
-| 201 | Tạo và chuyển cho Dịch vụ Email/SMS thành công | như trên |
-| 400 | Thiếu trường, channel không phải EMAIL/SMS, yêu cầu hỗ trợ chưa "Hoàn tất", khách thiếu email (EMAIL) hoặc thiếu số điện thoại (SMS) | `{"code":"VALIDATION_ERROR","errors":[{"field":"customerId","message":"Khách hàng chưa có email"}]}` |
-| 404 | Không tìm thấy khách hàng, mẫu khảo sát hoặc yêu cầu hỗ trợ | `{"code":"NOT_FOUND","message":"Không tìm thấy mẫu khảo sát"}` |
-| 409 | Yêu cầu hỗ trợ đã có lời mời; hoặc khách đã từ chối nhận khảo sát | `{"code":"INVITATION_EXISTS","message":"Yêu cầu hỗ trợ này đã được gửi khảo sát"}` |
-
-### 2.3 `GET /api/public/surveys/{token}` (US3)
-
-**Response `200 OK`:**
-
-```json
-{
-  "templateName": "CSAT sau hỗ trợ",
-  "type": "CSAT",
-  "scaleMin": 1,
-  "scaleMax": 5,
-  "question": "Bạn hài lòng thế nào về lần hỗ trợ vừa rồi?",
-  "allowComment": true,
-  "expiresAt": "2026-10-16T09:20:00+07:00"
-}
-```
-
-| Mã | Khi nào | Body mẫu |
-|---|---|---|
-| 200 | Token hợp lệ, còn hạn, chưa trả lời | như trên |
-| 404 | Token không tồn tại | `{"code":"NOT_FOUND","message":"Đường dẫn không hợp lệ"}` |
-| 409 | Lời mời hết hạn hoặc đã trả lời | `{"code":"EXPIRED","message":"Khảo sát đã hết hạn"}` hoặc `{"code":"ALREADY_ANSWERED","message":"Bạn đã gửi phản hồi"}` |
-
-### 2.4 `POST /api/public/surveys/{token}/responses` (US3)
-
-**Request:**
-
-```json
-{
-  "score": 2,
-  "comment": "Nhân viên đến trễ hai ngày so với hẹn."
-}
-```
-
-**Response `201 Created`:**
-
-```json
-{
-  "id": 8120,
-  "invitationId": 3301,
-  "score": 2,
-  "comment": "Nhân viên đến trễ hai ngày so với hẹn.",
-  "flaggedNegative": true,
-  "submittedAt": "2026-10-03T20:41:00+07:00"
-}
-```
-
-| Mã | Khi nào | Body mẫu |
-|---|---|---|
-| 201 | Lưu phản hồi thành công | như trên |
-| 400 | Thiếu score hoặc điểm ngoài thang của mẫu | `{"code":"VALIDATION_ERROR","errors":[{"field":"score","message":"Điểm phải từ 1 đến 5"}]}` |
-| 404 | Token không tồn tại | `{"code":"NOT_FOUND","message":"Đường dẫn không hợp lệ"}` |
-| 409 | Lời mời hết hạn hoặc đã trả lời | `{"code":"ALREADY_ANSWERED","message":"Bạn đã gửi phản hồi"}` |
-
-## 3. Quy tắc validation
-
-| Endpoint | Trường | Bắt buộc | Kiểu | Độ dài / Dải giá trị |
-|---|---|---|---|---|
-| `POST survey-templates` | `name` | Có | string | 3–100 ký tự, không trùng |
-| `POST survey-templates` | `type` | Có | string | `CSAT` hoặc `NPS` |
-| `POST survey-templates` | `question` | Có | string | 10–300 ký tự |
-| `POST survey-templates` | `allowComment` | Không | boolean | mặc định `true` |
-| `POST survey-invitations` | `supportRequestId` | Có | string | khớp yêu cầu hỗ trợ ở trạng thái "Hoàn tất" |
-| `POST survey-invitations` | `customerId` | Có | integer | > 0, khách tồn tại |
-| `POST survey-invitations` | `templateId` | Có | integer | > 0, mẫu tồn tại |
-| `POST survey-invitations` | `channel` | Có | string | `EMAIL` hoặc `SMS` |
-| `GET public/surveys/{token}` | `token` | Có | string | đúng 32 ký tự chữ-số |
-| `POST public/.../responses` | `score` | Có | integer | CSAT: 1–5; NPS: 0–10 |
-| `POST public/.../responses` | `comment` | Không | string | 0–500 ký tự |
-
-## 4. Tự kiểm truy vết
-
-Mỗi endpoint trong mục 1 đều có một User Story ở cột "Truy vết" và khớp bảng truy vết mục 6 của `docs/srs.md`.
+Thay đổi so với BT1: lỗi `code/errors` thống nhất thành `error/message/fields` theo buổi 9; thêm CRUD, đọc danh sách, auth, báo cáo. Hạn 14 ngày và thang CSAT/NPS giữ theo contract BT1. Hai phía frontend/backend đã chuyển cùng đợt vì repo chưa có client triển khai trước đó. Test HTTP kiểm chứng 401, trường lỗi, lời mời, form, phản hồi và báo cáo.

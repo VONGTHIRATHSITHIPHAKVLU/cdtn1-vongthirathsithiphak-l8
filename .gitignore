@@ -21,3 +21,5 @@ models/*.pt
 .idea/
 .DS_Store
 Thumbs.db
+.tmp/
+data/*.sqlite*

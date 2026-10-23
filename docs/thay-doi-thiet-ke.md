@@ -1,5 +1,31 @@
 # Nhật ký thay đổi thiết kế
 
+## Sprint 1–2 — buổi 8–9–10, ngày 23/10/2026
+
+### TD-08 Dùng SQLite làm CSDL dự phòng
+- Đầu vào : README ghi MySQL, SRS ghi MongoDB, DDL BT1 ghi PostgreSQL; repo chưa có implementation.
+- Quyết định : SỬA, chọn SQLite có sẵn trong Node 24 để chạy cục bộ; giữ 6 bảng và quan hệ BT1.
+- Lý do : Buổi 8 cho phép SQLite dự phòng; tránh yêu cầu cài dịch vụ PostgreSQL để kiểm chứng module đầu tiên.
+- Ảnh hưởng : migration SQL thực thi trong database/migrations/001.sql; README, .env và SRS thống nhất. PostgreSQL là thiết kế đích, chưa có adapter production.
+
+### TD-09 Thực thi hợp đồng mẫu khảo sát và thời hạn
+- Đầu vào : DDL BT1 thiếu question/allowComment đã có trong API; SRS cũ ghi 7 ngày nhưng API ghi 14 ngày.
+- Quyết định : SỬA, thêm question/allow_comment, chọn 14 ngày theo API BT1; không cho sửa/xóa mẫu đã dùng.
+- Lý do : Không thể dựng form từ CSDL nếu thiếu câu hỏi; giữ lịch sử thang điểm nhất quán.
+- Ảnh hưởng : migration, validator, service, SRS/API và unit test. docs/ddl-l8.sql là bản thiết kế PostgreSQL cũ, không chạy như migration SQLite.
+
+### TD-10 Chuẩn hóa hợp đồng lỗi theo buổi 9
+- Đầu vào : Contract cũ dùng code/errors, tài liệu buổi 9 yêu cầu error/message/fields.
+- Quyết định : SỬA đồng thời backend, frontend và tài liệu; thêm CRUD đọc/sửa/xóa và API danh sách.
+- Lý do : Một ranh giới chuyển đổi và một client HTTP để xử lý 401, lỗi mạng và validation nhất quán.
+- Ảnh hưởng : api-contract.md, toTemplate/toInvitation, DataState, test HTTP; không có client cũ đang triển khai trong repo.
+
+### TD-11 Giới hạn Sprint 2 và minh chứng
+- Đầu vào : Buổi 10 cho phép hoãn chức năng phụ nhưng giữ luồng chính, test và README.
+- Quyết định : GIỮ luồng tạo mẫu–mời–phản hồi–báo cáo; tạm hoãn gửi EMAIL/SMS thật, scheduler, export, nhắc lại, workflow tiêu cực và phân quyền trung tâm.
+- Lý do : Chưa có thông tin tích hợp, dữ liệu CSV chính thức hoặc tài khoản SmartCRM; không tuyên bố tích hợp ngoài đã chạy.
+- Ảnh hưởng : lời mời trả deliveryMode LOCAL_LINK, UI và README ghi rõ demo; bộ test HTTP chứng minh luồng cục bộ. Chưa đánh dấu hoàn tất tiêu chí dữ liệu thật, ảnh màn hình hay peer review.
+
 ## Sau phản hồi Bài tập 1 (buổi 8, ngày 19/10/2026)
 
 Chuyên đề tốt nghiệp 1 · Track SE · Luồng L8 (khảo sát CSAT/NPS) · Mekong Mobile

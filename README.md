@@ -1,199 +1,103 @@
-# Hệ thống Khảo sát Hài lòng CSAT / NPS cho Dịch vụ Bảo hành
+# SmartCRM L8 — Khảo sát hài lòng CSAT / NPS
 
-> Đồ án môn học – Track **SE (Software Engineering)**
-> Sinh viên thực hiện: **VONGTHIRATH SITHIPHAK** – MSSV: `<điền MSSV>`
+Track SE · VONGTHIRATH SITHIPHAK · MSSV 237480201IS04.
 
----
+## 1. Phạm vi
 
-## 1. Giới thiệu
+Module khảo sát sau hỗ trợ: quản lý mẫu → tạo lời mời cho yêu cầu hoàn tất → khách hàng phản hồi → tổng hợp CSAT/NPS. Frontend React gọi API Node.js thật và lưu vào SQLite. Không xây dựng toàn bộ CRM.
 
-Dự án xây dựng module **khảo sát mức độ hài lòng khách hàng (CSAT / NPS)** cho trung tâm dịch vụ bảo hành. Sau khi một Ticket bảo hành được **ĐÃ ĐÓNG**, hệ thống tự động gửi khảo sát cho khách hàng, thu thập điểm đánh giá và nhận xét, lưu phản hồi gắn với Ticket, rồi tổng hợp kết quả để các bộ phận quản lý theo dõi chất lượng dịch vụ.
+## 2. Yêu cầu môi trường
 
-**Luồng nghiệp vụ tổng quát:**
+- Node.js **24.15 trở lên**, npm; `node:sqlite` đi kèm Node, không cần dịch vụ CSDL riêng.
+- Hai terminal PowerShell. Dùng `npm.cmd` nếu PowerShell chặn `npm.ps1`.
+- Sao chép `.env.example` thành `.env`; điền `DEMO_PASSWORD` của riêng bạn. Tài khoản demo là `demo`, vai trò Quản lý.
+- `APP_PORT=3000`, `DB_PATH=data/smartcrm.sqlite`, `VITE_API_BASE_URL=/api`. Vite chuyển `/api` tới backend cùng máy tại cổng 3000; nếu đổi cổng, cập nhật `vite.config.js`.
+- SQLite là phương án dự phòng được tài liệu buổi 8 cho phép. Quyết định và giới hạn: [TD-08–TD-11](docs/thay-doi-thiet-ke.md).
 
-```
-Ticket ĐÃ ĐÓNG → Hệ thống gửi khảo sát → Khách hàng chấm điểm / nhận xét
-              → Hệ thống lưu phản hồi → Tổng hợp kết quả
-```
+## 3. Các bước dựng và chạy hệ thống
 
-## 2. Actor
+Chạy từ thư mục gốc của bản sao dự án:
 
-| Actor | Vai trò |
-|---|---|
-| Khách hàng | Nhận khảo sát, chấm điểm 1–5 và nhập nhận xét |
-| Nhân viên Marketing | Theo dõi tình hình gửi/nhận khảo sát, xem kết quả tổng hợp |
-| Quản lý trung tâm dịch vụ | Xem điểm hài lòng theo trung tâm và kỹ thuật viên |
-| Ban giám đốc | Xem báo cáo tổng quan theo thời gian |
-
-## 3. Chức năng chính
-
-1. **Gửi khảo sát** cho khách hàng khi Ticket chuyển sang trạng thái `ĐÃ ĐÓNG`.
-2. **Chấm điểm và nhận xét**: khách hàng chọn mức hài lòng từ 1–5 và nhập nhận xét.
-3. **Kiểm tra điều kiện khảo sát**: chỉ Ticket `ĐÃ ĐÓNG` và mỗi Ticket chỉ được khảo sát 1 lần.
-4. **Lưu phản hồi** và liên kết với Ticket tương ứng.
-5. **Tổng hợp điểm hài lòng** theo trung tâm dịch vụ, kỹ thuật viên và khoảng thời gian.
-
-## 4. Quy tắc nghiệp vụ
-
-| Mã | Quy tắc |
-|---|---|
-| BR-01 | Chỉ gửi / cho phép khảo sát khi Ticket có trạng thái `ĐÃ ĐÓNG`. |
-| BR-02 | Mỗi Ticket chỉ được ghi nhận **tối đa 1 phản hồi**. |
-| BR-03 | Điểm khảo sát là **bắt buộc** và nằm trong khoảng **1–5**. |
-| BR-04 | Lưu **thời điểm** khách hàng gửi phản hồi (`submitted_at`). |
-
-## 5. Phạm vi
-
-**Trong phạm vi:** các chức năng ở mục 3 và các quy tắc ở mục 4.
-
-**Ngoài phạm vi (không thực hiện):**
-
-- Không xây dựng toàn bộ hệ thống CRM.
-- Không xây dựng quy trình tiếp nhận / sửa chữa / bảo hành Ticket.
-- Không phân tích cảm xúc (sentiment analysis) từ nội dung nhận xét.
-
-## 6. Công nghệ sử dụng
-
-| Thành phần | Công nghệ |
-|---|---|
-| Backend | Node.js |
-| Frontend | React |
-| Cơ sở dữ liệu | MySQL |
-
-## 7. Dữ liệu
-
-| Tệp | Quy mô | Mô tả |
-|---|---|---|
-| `survey_responses.csv` | ~2.600 dòng | Phản hồi khảo sát của khách hàng |
-| `tickets_history.csv` | ~7.800 dòng | Lịch sử Ticket bảo hành, dùng để liên kết và phân tích |
-| `ticket_status_log.csv` | ~31.000 dòng | Lịch sử thay đổi trạng thái Ticket |
-
-Dữ liệu được nạp vào MySQL bằng script import trong thư mục `database/seed/`.
-
-### Mô hình dữ liệu (dự kiến)
-
-```
-tickets (ticket_id PK, customer_id, service_center_id, technician_id, status, created_at, closed_at)
-ticket_status_log (log_id PK, ticket_id FK, old_status, new_status, changed_at)
-survey_responses (response_id PK, ticket_id FK UNIQUE, score TINYINT CHECK 1..5, comment TEXT, submitted_at)
+```powershell
+npm.cmd ci
+Copy-Item .env.example .env
 ```
 
-> Ràng buộc `UNIQUE(ticket_id)` trên `survey_responses` đảm bảo quy tắc BR-02 ở tầng cơ sở dữ liệu.
+Mở `.env` trong IDE và điền `DEMO_PASSWORD`, sau đó:
 
-## 8. Cấu trúc thư mục (dự kiến)
-
-```
-.
-├── backend/              # Node.js (REST API)
-│   ├── src/
-│   │   ├── routes/
-│   │   ├── controllers/
-│   │   ├── services/     # logic kiểm tra điều kiện khảo sát, tổng hợp
-│   │   └── models/
-│   └── package.json
-├── frontend/             # React
-│   ├── src/
-│   │   ├── pages/        # Form khảo sát, Dashboard
-│   │   └── components/
-│   └── package.json
-├── database/
-│   ├── schema.sql
-│   └── seed/             # CSV + script import
-└── README.md
+```powershell
+npm.cmd run migrate
+npm.cmd run seed
+npm.cmd run server
 ```
 
-## 9. API (dự kiến)
+Terminal thứ hai, cùng thư mục gốc:
 
-| Method | Endpoint | Mô tả |
-|---|---|---|
-| `POST` | `/api/surveys/send/:ticketId` | Gửi khảo sát cho Ticket đã đóng |
-| `GET` | `/api/surveys/:token` | Lấy thông tin form khảo sát (kiểm tra điều kiện hợp lệ) |
-| `POST` | `/api/surveys/:token/responses` | Khách hàng gửi điểm (1–5) và nhận xét |
-| `GET` | `/api/reports/summary` | Tổng hợp điểm theo trung tâm / kỹ thuật viên / thời gian |
-
-**Mã lỗi nghiệp vụ tiêu biểu:**
-
-- `400` – điểm ngoài khoảng 1–5 hoặc thiếu điểm.
-- `403` – Ticket chưa ở trạng thái `ĐÃ ĐÓNG`.
-- `409` – Ticket đã có phản hồi (khảo sát trùng).
-
-## 10. Hướng dẫn cài đặt và chạy
-
-### Yêu cầu
-
-- Node.js >= 18
-- MySQL >= 8.0
-
-### Các bước
-
-```bash
-# 1. Clone dự án
-git clone <repo-url>
-cd <project-folder>
-
-# 2. Tạo cơ sở dữ liệu
-mysql -u root -p -e "CREATE DATABASE csat_nps CHARACTER SET utf8mb4;"
-mysql -u root -p csat_nps < database/schema.sql
-
-# 3. Cấu hình và chạy backend
-cd backend
-cp .env.example .env        # chỉnh DB_HOST, DB_USER, DB_PASSWORD, DB_NAME
-npm install
-npm run seed                # nạp dữ liệu CSV vào MySQL
-npm run dev                 # chạy tại http://localhost:3000
-
-# 4. Chạy frontend (terminal khác)
-cd frontend
-npm install
-npm start                   # chạy tại http://localhost:5173
+```powershell
+npm.cmd run dev
 ```
 
-### Biến môi trường (`backend/.env`)
+Mở **http://127.0.0.1:5173**. Đăng nhập `demo` bằng mật khẩu bạn vừa cấu hình.
 
-```
-PORT=3000
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=csat_nps
+Kiểm thử và đóng gói frontend:
+
+```powershell
+npm.cmd test
+npm.cmd run build
 ```
 
-## 11. Chỉ số tổng hợp
+Luồng kiểm tra bằng giao diện:
 
-- **CSAT** = (số phản hồi điểm 4–5 / tổng số phản hồi) × 100%
-- **Điểm trung bình** theo trung tâm dịch vụ, kỹ thuật viên, tháng / quý / năm.
-- **Tỷ lệ phản hồi** = số phản hồi / số khảo sát đã gửi.
+1. Mở **Mẫu khảo sát**: tạo mẫu CSAT hoặc NPS, chỉnh sửa/xóa mẫu chưa dùng.
+2. Mở **Lời mời**: chọn `YC-DEMO-001`, mẫu khảo sát, kênh dự kiến; tạo liên kết.
+3. Mở liên kết trong tab mới: chọn điểm, nhập nhận xét, gửi, nhận lời cảm ơn.
+4. Quay về **Tổng quan**: xem số phản hồi và CSAT/NPS từ CSDL. Mở lại lời mời sẽ báo đã trả lời.
+5. Dừng backend, chuyển trang: phải có thông báo lỗi và nút **Thử lại**. Khởi động backend lại; phiên đăng nhập lưu trong RAM bị xóa nên đăng nhập lại.
 
-## 12. Kiểm thử
+Seed chạy lại không nhân đôi dữ liệu. Mỗi yêu cầu chỉ có một lời mời; dùng `YC-DEMO-002` để thử tiếp. `YC-DEMO-003` chưa hoàn tất và `YC-DEMO-004` đã từ chối nhận khảo sát để thử ngoại lệ.
 
-```bash
-cd backend && npm test
+**Dữ liệu seed chỉ là demo do dự án tạo**, không phải dữ liệu Mekong Mobile chính thức. Repo chưa có CSV được mô tả trước đây. Chưa thể đánh dấu hoàn thành yêu cầu chạy với bộ dữ liệu thật của môn học.
+
+## 4. Kiến trúc và hợp đồng
+
+```text
+src/backend/routes/         HTTP + xác thực demo
+src/backend/validators/     kiểm tra dữ liệu đầu vào
+src/backend/services/       quy tắc khảo sát, CSAT/NPS
+src/backend/repositories/   SQLite, transaction
+src/backend/contracts/      snake_case → camelCase
+src/frontend/src/api/       HTTP client duy nhất
+src/frontend/src/pages/     Login, Templates, Invitations, Survey, Dashboard
+src/frontend/src/components/ DataState và useData
+database/migrations/        DDL chạy được, 6 bảng
+scripts/                    migrate, seed
+tests/                      nghiệp vụ + hợp đồng HTTP
 ```
 
-Các ca kiểm thử trọng tâm:
+[API](docs/api-contract.md) · [SRS](docs/srs.md) · [Kiểm chứng buổi 8–10](docs/buoi-08-10.md) · [DDL](database/migrations/001.sql).
 
-- Gửi khảo sát cho Ticket chưa đóng → bị từ chối.
-- Gửi phản hồi lần 2 cho cùng Ticket → bị từ chối.
-- Điểm = 0, 6 hoặc rỗng → bị từ chối.
-- Phản hồi hợp lệ → lưu thành công kèm `submitted_at`.
+## 5. Quy tắc và giới hạn
 
-## 13. Tác giả
+- Chỉ mời yêu cầu `COMPLETED`, đúng khách hàng, đang hoạt động và chưa opt-out; có thông tin liên hệ tương ứng.
+- Một lời mời/yêu cầu; một phản hồi/lời mời. Token ngẫu nhiên 32 ký tự hex, hết hạn sau **14 ngày** theo API contract BT1. Đúng thời điểm hết hạn cũng bị chặn.
+- CSAT: số nguyên 1–5, tiêu cực ≤2, CSAT% = điểm 4–5 / tổng phản hồi CSAT ×100.
+- NPS: số nguyên 0–10, tiêu cực ≤6; NPS = %điểm 9–10 − %điểm 0–6. Không trộn mẫu số CSAT và NPS.
+- Nhận xét tối đa 500 ký tự; không có dữ liệu thì trả `null` cho tỷ lệ, giao diện hiển thị `—`.
+- Tạo lời mời hiện trả **liên kết cục bộ**, không gửi EMAIL/SMS và không tuyên bố người nhận đã nhận thư. `SENT` là trạng thái tương thích BT1; `deliveryMode=LOCAL_LINK` thể hiện giới hạn.
+- Đăng nhập demo một vai trò, phiên ngẫu nhiên trong RAM, hết hạn 1 giờ; sai 5 lần khóa 15 phút. Chưa tích hợp tài khoản/phân quyền trung tâm SmartCRM thật, scheduler, gửi lại, xử lý phản hồi tiêu cực hoặc xuất Excel.
+- Session token lưu `sessionStorage`, vẫn có rủi ro bị đọc nếu có XSS. React hiển thị nội dung dưới dạng text. Mật khẩu demo lấy từ `.env`; không phải hệ thống tài khoản production.
 
-**VONGTHIRATH SITHIPHAK** – Track SE
+## 6. Trạng thái hiện tại — buổi 8–9–10
 
-## Design change log (sau phản hồi BT1)
+- [x] Migration 6 bảng, seed demo chạy lại được.
+- [x] CRUD entity mẫu khảo sát qua routes → service → repository.
+- [x] Lời mời/phản hồi transaction, ràng buộc UNIQUE chống trùng.
+- [x] API client riêng, chuyển đổi hợp đồng; lỗi `error/message/fields`; 401 xóa phiên.
+- [x] ≥3 màn hình gọi API thật, DataState tải/rỗng/lỗi và thử lại.
+- [x] 13 test PASS: luồng đúng, giá trị biên, dữ liệu sai, hợp đồng HTTP end-to-end.
+- [ ] Chạy dữ liệu mẫu chính thức của môn học (cần cung cấp CSV).
+- [ ] Chụp ảnh trình duyệt kết quả, kiểm tra rộng/hẹp 375px và đối chiếu wireframe BT1.
+- [ ] Peer review bởi sinh viên khác; commit/push theo từng đơn vị công việc, đối chiếu số commit yêu cầu.
+- [ ] Cập nhật sơ đồ `.drawio` gốc, bìa và đổi tên repo GitHub theo TD-03/05/07.
 
-Cập nhật ngày 19/10/2026. Mỗi điểm góp ý của GV đều được quyết định SỬA hoặc GIỮ; phần "Điểm tốt" (NFR có điều kiện đo, đặc tả UC3, lập luận kiến trúc, thuật ngữ thống nhất) giữ nguyên. Chi tiết (phản hồi, quyết định, lý do, ảnh hưởng): [`docs/thay-doi-thiet-ke.md`](docs/thay-doi-thiet-ke.md).
-
-| Mã | Góp ý của GV | Quyết định | Thay đổi | Trạng thái |
-|---|---|---|---|---|
-| TD-01 | 8 User Story, đề yêu cầu 5–7 | SỬA | Gộp US7 (xuất CSV) vào US4 (xem điểm); US8 cũ thành US7. Cập nhật bảng truy vết, danh sách UC, API contract | Xong |
-| TD-02 | ERD 7 bảng, đề yêu cầu 4–6 | SỬA | Bỏ bảng `service_center` (thuộc luồng khác, L8 chỉ đọc); giữ cột `support_request.center_id`, không có khóa ngoại. Migration chỉ tạo 6 bảng | Xong |
-| TD-03 | Sơ đồ kiến trúc thiếu chú thích ký hiệu | SỬA | Thêm khung chú thích màu khối và chiều mũi tên (`docs/export/architecture.png`) | Hình xong; còn cập nhật `.drawio` gốc |
-| TD-04 | MSSV trên bìa sai | SỬA | Sửa thành 237480201IS04 ở trang bìa và dòng ký tên | Xong |
-| TD-05 | Link GitHub cần đặt ở bìa | SỬA | Thêm link repo vào trang bìa | Xong; cập nhật link sau khi đổi tên repo |
-| TD-06 | Phụ lục AI còn dòng mẫu | SỬA | Tự ghi cách đã kiểm chứng kết quả AI | Chưa xong |
-| TD-07 | Repo thiếu `.drawio`, commit mơ hồ, tên repo sai luồng | SỬA | Đổi tên repo thành `smartcrm-l8-csat-nps`; commit theo Conventional Commits; thêm `.drawio` gốc | Commit xong; còn đổi tên repo và thêm `.drawio` |
-
-**Ảnh hưởng tới mã nguồn:** migration `001` không tạo `service_center` và seed không có dữ liệu `service_centers` (TD-02). Các thay đổi còn lại chỉ nằm ở tài liệu.
+Trạng thái build và kiểm chứng bản sao sạch được ghi riêng trong [biên bản](docs/buoi-08-10.md); không coi checklist toàn bộ môn học đã hoàn tất khi còn các mục trên.
