@@ -11,14 +11,14 @@ function fixture(t){const db=openDatabase(':memory:');migrate(db);t.after(()=>db
  const invite=(code='YC-001')=>service.invite({supportRequestId:code,customerId:1,templateId:template.id,channel:'EMAIL'},1);
  return {db,service,template,invite,setNow:value=>{now=new Date(value);}};
 }
-test('CRUD và hợp đồng camelCase, boolean, ngày UTC',t=>{const {service,template}=fixture(t);assert.deepEqual(Object.keys(template),['id','name','type','scaleMin','scaleMax','question','allowComment','createdAt']);assert.equal(template.allowComment,true);assert.equal(template.createdAt,'2026-10-23T00:00:00.000Z');assert.equal(service.saveTemplate({...template,name:'Đã chỉnh sửa'},1,template.id).name,'Đã chỉnh sửa');service.deleteTemplate(template.id);assert.equal(service.templates().length,0);assert.throws(()=>service.template(template.id),{status:404});});
+test('CRUD và hợp đồng camelCase, boolean, ngày UTC',t=>{const {service,template}=fixture(t);assert.deepEqual(Object.keys(template),['id','name','type','scaleMin','scaleMax','question','allowComment','createdAt']);assert.equal(template.allowComment,true);assert.equal(template.createdAt,'2026-10-23T00:00:00.000Z');assert.equal(service.saveTemplate({...template,name:'Đã chỉnh sửa'},1,template.id).name,'Đã chỉnh sửa');service.deleteTemplate(template.id);assert.equal(service.templates().length,0);assert.throws(()=>service.template(template.id),{code:'NOT_FOUND'});});
 test('luồng đúng: lời mời, form, phản hồi tiêu cực, nhật ký',t=>{const {service,invite,db}=fixture(t);const i=invite(),token=i.link.split('/').pop();assert.equal(service.publicSurvey(token).scaleMax,5);assert.equal(service.respond(token,{score:2,comment:'Cần cải thiện'}).flaggedNegative,true);assert.equal(service.invitations()[0].status,'ANSWERED');assert.equal(db.prepare('SELECT count(*) n FROM survey_log').get().n,2);});
 test('chặn yêu cầu chưa hoàn tất',t=>{const {invite}=fixture(t);assert.throws(()=>invite('YC-002'),{code:'REQUEST_NOT_COMPLETED'});});
 test('mỗi yêu cầu chỉ một lời mời',t=>{const {invite}=fixture(t);invite();assert.throws(()=>invite(),{code:'INVITATION_EXISTS'});});
 test('chặn phản hồi thứ hai',t=>{const {service,invite}=fixture(t);const token=invite().link.split('/').pop();service.respond(token,{score:5});assert.throws(()=>service.respond(token,{score:4}),{code:'ALREADY_ANSWERED'});});
 test('biên CSAT: nhận 1,5; từ chối 0,6,null,thập phân,chuỗi',t=>{for(const score of [0,6,null,2.5,'5']){const {service,invite}=fixture(t);assert.throws(()=>service.respond(invite().link.split('/').pop(),{score}),{code:'VALIDATION_ERROR'});}for(const score of [1,5]){const {service,invite}=fixture(t);assert.equal(service.respond(invite().link.split('/').pop(),{score}).score,score);}});
 test('hết hạn đúng thời điểm expiresAt',t=>{const {service,invite,setNow}=fixture(t);const i=invite();setNow(i.expiresAt);assert.throws(()=>service.publicSurvey(i.link.split('/').pop()),{code:'EXPIRED'});});
-test('token sai trả 404; báo cáo rỗng trả null',t=>{const {service}=fixture(t);assert.throws(()=>service.publicSurvey('bad'),{status:404});assert.equal(service.summary().csat,null);assert.equal(service.summary().nps,null);});
+test('token sai trả 404; báo cáo rỗng trả null',t=>{const {service}=fixture(t);assert.throws(()=>service.publicSurvey('bad'),{code:'NOT_FOUND'});assert.equal(service.summary().csat,null);assert.equal(service.summary().nps,null);});
 test('khách từ chối khảo sát bị chặn',t=>{const {db,invite}=fixture(t);db.exec('UPDATE customer SET survey_opt_out=1');assert.throws(()=>invite(),{code:'CUSTOMER_OPTED_OUT'});});
 test('NPS nhận 0,10 và không trộn CSAT',t=>{for(const score of [0,10]){const {service,db,invite}=fixture(t);db.exec("UPDATE survey_template SET type='NPS'");service.respond(invite().link.split('/').pop(),{score});assert.equal(service.summary().nps,score===0?-100:100);assert.equal(service.summary().csat,null);}});
 test('mẫu đã dùng không sửa/xóa',t=>{const {service,template,invite}=fixture(t);invite();assert.throws(()=>service.saveTemplate({...template,type:'NPS'},1,template.id),{code:'TEMPLATE_IN_USE'});assert.throws(()=>service.deleteTemplate(template.id),{code:'TEMPLATE_IN_USE'});});
@@ -36,4 +36,37 @@ test('HTTP contract: auth, JSON lỗi, luồng end-to-end',async t=>{
  r=await call('/reports/summary','GET',undefined,token);assert.equal((await r.json()).csat,100);
  r=await call(`/public/surveys/${surveyToken}/responses`,'POST',{score:4});assert.equal(r.status,409);
  r=await fetch(base+'/survey-templates',{method:'POST',body:'{',headers:{Authorization:`Bearer ${token}`}});assert.equal(r.status,400);
+});
+
+
+test('invitation CRUD protects responses and invalidates deleted tokens',t=>{
+ const {service,invite,db}=fixture(t);
+ const item=invite(), oldToken=item.link.split('/').pop();
+ assert.equal(service.invitation(item.id).channel,'EMAIL');
+ assert.equal(service.updateInvitation(item.id,{channel:'SMS'},1).channel,'SMS');
+ assert.throws(()=>service.updateInvitation(item.id,{channel:'FAX'},1),{code:'VALIDATION_ERROR'});
+ assert.equal(service.invitation(item.id).channel,'SMS');
+ service.deleteInvitation(item.id);
+ assert.throws(()=>service.invitation(item.id),{code:'NOT_FOUND'});
+ assert.throws(()=>service.publicSurvey(oldToken),{code:'NOT_FOUND'});
+ const next=invite(); service.respond(next.link.split('/').pop(),{score:5});
+ assert.throws(()=>service.updateInvitation(next.id,{channel:'EMAIL'},1),{code:'INVITATION_LOCKED'});
+ assert.throws(()=>service.deleteInvitation(next.id),{code:'INVITATION_LOCKED'});
+ assert.equal(db.prepare('SELECT COUNT(*) n FROM response').get().n,1);
+});
+
+test('health, requestId and invitation CRUD over HTTP',async t=>{
+ const {service}=fixture(t), app=createApp(service,{password:'test-password'});
+ await new Promise(resolve=>app.listen(0,'127.0.0.1',resolve));
+ t.after(()=>new Promise(resolve=>app.close(resolve)));
+ const base=`http://127.0.0.1:${app.address().port}/api`;
+ let res=await fetch(base+'/health'); assert.equal(res.status,200); assert.ok(res.headers.get('x-request-id')); assert.deepEqual(await res.json(),{status:'ok'});
+ res=await fetch(base+'/auth/login',{method:'POST',body:JSON.stringify({username:'demo',password:'test-password'})});
+ const {token}=await res.json(), headers={Authorization:`Bearer ${token}`};
+ res=await fetch(base+'/survey-invitations',{method:'POST',headers,body:JSON.stringify({supportRequestId:'YC-001',customerId:1,templateId:1,channel:'EMAIL'})});
+ assert.equal(res.status,201); const item=await res.json();
+ res=await fetch(base+'/survey-invitations/'+item.id,{method:'PUT',headers,body:JSON.stringify({channel:'SMS'})}); assert.equal((await res.json()).channel,'SMS');
+ res=await fetch(base+'/survey-invitations/'+item.id,{headers}); assert.equal(res.status,200);
+ res=await fetch(base+'/survey-invitations/'+item.id,{method:'DELETE',headers}); assert.equal(res.status,200);
+ res=await fetch(base+'/survey-invitations/'+item.id,{headers}); assert.equal(res.status,404);
 });

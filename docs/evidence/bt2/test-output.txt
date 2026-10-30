@@ -1,0 +1,25 @@
+✔ migration and seed are repeatable without duplicate records (362.4462ms)
+✔ logger filters levels and excludes sensitive context (0.9139ms)
+✔ CRUD và hợp đồng camelCase, boolean, ngày UTC (4.4859ms)
+✔ luồng đúng: lời mời, form, phản hồi tiêu cực, nhật ký (2.9492ms)
+✔ chặn yêu cầu chưa hoàn tất (0.9223ms)
+✔ mỗi yêu cầu chỉ một lời mời (1.058ms)
+✔ chặn phản hồi thứ hai (1.1887ms)
+✔ biên CSAT: nhận 1,5; từ chối 0,6,null,thập phân,chuỗi (7.8617ms)
+✔ hết hạn đúng thời điểm expiresAt (1.2862ms)
+✔ token sai trả 404; báo cáo rỗng trả null (0.994ms)
+✔ khách từ chối khảo sát bị chặn (0.7493ms)
+✔ NPS nhận 0,10 và không trộn CSAT (2.1756ms)
+✔ mẫu đã dùng không sửa/xóa (1.2283ms)
+✔ nhận xét 500 ký tự hợp lệ, 501 bị từ chối (1.114ms)
+✔ HTTP contract: auth, JSON lỗi, luồng end-to-end (58.4245ms)
+✔ invitation CRUD protects responses and invalidates deleted tokens (3.5316ms)
+✔ health, requestId and invitation CRUD over HTTP (21.0148ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 454.0587

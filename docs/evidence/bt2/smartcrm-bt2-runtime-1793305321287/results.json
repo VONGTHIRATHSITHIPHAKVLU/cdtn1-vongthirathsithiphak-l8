@@ -1,0 +1,540 @@
+{
+  "project": "smartcrm-bt2-runtime-1793305321287",
+  "volume": "smartcrm-bt2-runtime-1793305321287_sqlite_data",
+  "base": "http://127.0.0.1:18082",
+  "results": [
+    {
+      "step": "isolation and stack health",
+      "status": "PASS",
+      "details": {
+        "volume": "smartcrm-bt2-runtime-1793305321287_sqlite_data",
+        "destination": "/app/data"
+      }
+    },
+    {
+      "step": "HTTP API, Nginx proxy and SPA fallback",
+      "status": "PASS",
+      "details": "direct API and web /api/health return 200"
+    },
+    {
+      "step": "two entities CRUD through Nginx",
+      "status": "PASS",
+      "details": "Template and invitation POST/GET/PUT/DELETE verified against isolated SQLite"
+    },
+    {
+      "step": "five-screen responsive",
+      "status": "PASS",
+      "details": [
+        {
+          "page": "Login",
+          "width": 375,
+          "height": 812,
+          "scrollWidth": 375,
+          "clientWidth": 375,
+          "status": "PASS"
+        },
+        {
+          "page": "Login",
+          "width": 1440,
+          "height": 900,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "status": "PASS"
+        },
+        {
+          "page": "Templates",
+          "width": 375,
+          "height": 812,
+          "scrollWidth": 375,
+          "clientWidth": 375,
+          "status": "PASS"
+        },
+        {
+          "page": "Templates",
+          "width": 1440,
+          "height": 900,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "status": "PASS"
+        },
+        {
+          "page": "Invitations",
+          "width": 375,
+          "height": 812,
+          "scrollWidth": 375,
+          "clientWidth": 375,
+          "status": "PASS"
+        },
+        {
+          "page": "Invitations",
+          "width": 1440,
+          "height": 900,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "status": "PASS"
+        },
+        {
+          "page": "Survey",
+          "width": 375,
+          "height": 812,
+          "scrollWidth": 375,
+          "clientWidth": 375,
+          "status": "PASS"
+        },
+        {
+          "page": "Survey",
+          "width": 1440,
+          "height": 900,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "status": "PASS"
+        },
+        {
+          "page": "Dashboard",
+          "width": 375,
+          "height": 812,
+          "scrollWidth": 375,
+          "clientWidth": 375,
+          "status": "PASS"
+        },
+        {
+          "page": "Dashboard",
+          "width": 1440,
+          "height": 900,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "step": "login, templates, invitation, public response, dashboard",
+      "status": "PASS",
+      "details": {
+        "templateId": 1,
+        "responseCount": 1,
+        "csat": 100
+      }
+    },
+    {
+      "step": "loading, empty, unavailable backend and retry",
+      "status": "PASS",
+      "details": "Loading delays a real request; actual stopped API returns Nginx 502; retry leads to re-login and recovery"
+    },
+    {
+      "step": "desktop and mobile",
+      "status": "PASS",
+      "details": {
+        "browser": "Chrome headless",
+        "desktop": "1440x900",
+        "mobile": "375x812",
+        "dashboardWidth": {
+          "viewport": 375,
+          "document": 375
+        },
+        "templatesWidth": {
+          "viewport": 375,
+          "document": 375
+        }
+      }
+    },
+    {
+      "step": "persistence after restart",
+      "status": "PASS",
+      "details": {
+        "templateId": 1,
+        "responseCount": 1
+      }
+    },
+    {
+      "step": "persistence after force recreate",
+      "status": "PASS",
+      "details": {
+        "templateId": 1,
+        "responseCount": 1,
+        "volume": "smartcrm-bt2-runtime-1793305321287_sqlite_data"
+      }
+    },
+    {
+      "step": "cleanup",
+      "status": "PASS",
+      "details": "Only test project containers/network removed; test volume retained."
+    }
+  ],
+  "http": [
+    {
+      "endpoint": "/health",
+      "method": "GET",
+      "status": 200,
+      "requestId": "b58825d8-dcc2-44e8-a4bb-cf436fd18966",
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "endpoint": "/auth/login",
+      "method": "POST",
+      "status": 200,
+      "requestId": "b70c057c-3a17-4087-a394-6b1f076fe0b7",
+      "body": {
+        "token": "[test token omitted]",
+        "role": "MANAGER",
+        "expiresAt": "2026-10-29T21:22:22.038Z"
+      }
+    },
+    {
+      "endpoint": "/survey-templates",
+      "method": "GET",
+      "status": 200,
+      "requestId": "fddbc3ad-1b53-4fda-af6f-c3cd48deb300",
+      "body": [
+        {
+          "id": 1,
+          "name": "CSAT sau hỗ trợ",
+          "type": "CSAT",
+          "scaleMin": 1,
+          "scaleMax": 5,
+          "question": "Bạn hài lòng thế nào về lần hỗ trợ vừa rồi?",
+          "allowComment": true,
+          "createdAt": "2026-10-29T20:22:15.699Z"
+        }
+      ]
+    },
+    {
+      "endpoint": "/survey-templates",
+      "method": "GET",
+      "status": 200,
+      "requestId": "aefa1032-a220-433b-ae1c-c313ee966d55",
+      "body": [
+        {
+          "id": 1,
+          "name": "Docker persistence BT2",
+          "type": "CSAT",
+          "scaleMin": 1,
+          "scaleMax": 5,
+          "question": "Bạn hài lòng thế nào với dịch vụ vừa rồi?",
+          "allowComment": true,
+          "createdAt": "2026-10-29T20:22:23.892Z"
+        }
+      ]
+    },
+    {
+      "endpoint": "/survey-templates",
+      "method": "POST",
+      "status": 201,
+      "requestId": "2396bb8b-5692-413b-88b3-499e1fdf34eb",
+      "body": {
+        "id": 2,
+        "name": "CRUD disposable template",
+        "type": "CSAT",
+        "scaleMin": 1,
+        "scaleMax": 5,
+        "question": "Bạn hài lòng với dịch vụ thế nào?",
+        "allowComment": true,
+        "createdAt": "2026-10-29T20:22:23.936Z"
+      }
+    },
+    {
+      "endpoint": "/survey-templates/2",
+      "method": "GET",
+      "status": 200,
+      "requestId": "e57dc017-69fa-4913-8c30-e329cf2a4414",
+      "body": {
+        "id": 2,
+        "name": "CRUD disposable template",
+        "type": "CSAT",
+        "scaleMin": 1,
+        "scaleMax": 5,
+        "question": "Bạn hài lòng với dịch vụ thế nào?",
+        "allowComment": true,
+        "createdAt": "2026-10-29T20:22:23.936Z"
+      }
+    },
+    {
+      "endpoint": "/survey-templates/2",
+      "method": "PUT",
+      "status": 200,
+      "requestId": "64cda41a-b840-4308-8bc6-b6657a0618f4",
+      "body": {
+        "id": 2,
+        "name": "CRUD updated template",
+        "type": "CSAT",
+        "scaleMin": 1,
+        "scaleMax": 5,
+        "question": "Bạn hài lòng với dịch vụ thế nào?",
+        "allowComment": true,
+        "createdAt": "2026-10-29T20:22:23.936Z"
+      }
+    },
+    {
+      "endpoint": "/survey-templates/2",
+      "method": "DELETE",
+      "status": 200,
+      "requestId": "447cbe43-2c3c-480c-9b93-bc26c4486af9",
+      "body": {
+        "id": 2
+      }
+    },
+    {
+      "endpoint": "/survey-templates",
+      "method": "GET",
+      "status": 200,
+      "requestId": "1ae57073-0f02-40de-9976-910ed1116afe",
+      "body": [
+        {
+          "id": 1,
+          "name": "Docker persistence BT2",
+          "type": "CSAT",
+          "scaleMin": 1,
+          "scaleMax": 5,
+          "question": "Bạn hài lòng thế nào với dịch vụ vừa rồi?",
+          "allowComment": true,
+          "createdAt": "2026-10-29T20:22:23.892Z"
+        }
+      ]
+    },
+    {
+      "endpoint": "/survey-invitations",
+      "method": "POST",
+      "status": 201,
+      "requestId": "4e9685bf-2dbd-44ae-8179-06147808d2c7",
+      "body": {
+        "id": 1,
+        "supportRequestId": "YC-DEMO-002",
+        "templateId": 1,
+        "templateName": "Docker persistence BT2",
+        "customerName": "Khách hàng demo 02",
+        "channel": "EMAIL",
+        "status": "SENT",
+        "sentAt": "2026-10-29T20:22:24.079Z",
+        "expiresAt": "2026-11-12T20:22:24.079Z",
+        "link": "[test token omitted]",
+        "deliveryMode": "LOCAL_LINK"
+      }
+    },
+    {
+      "endpoint": "/survey-invitations/1",
+      "method": "GET",
+      "status": 200,
+      "requestId": "1e569cff-51cd-42cb-b3b5-c5da04ae0e09",
+      "body": {
+        "id": 1,
+        "supportRequestId": "YC-DEMO-002",
+        "templateId": 1,
+        "templateName": "Docker persistence BT2",
+        "customerName": "Khách hàng demo 02",
+        "channel": "EMAIL",
+        "status": "SENT",
+        "sentAt": "2026-10-29T20:22:24.079Z",
+        "expiresAt": "2026-11-12T20:22:24.079Z",
+        "link": "[test token omitted]"
+      }
+    },
+    {
+      "endpoint": "/survey-invitations/1",
+      "method": "PUT",
+      "status": 200,
+      "requestId": "c681ef22-4abf-4d36-912b-da53fae2777d",
+      "body": {
+        "id": 1,
+        "supportRequestId": "YC-DEMO-002",
+        "templateId": 1,
+        "templateName": "Docker persistence BT2",
+        "customerName": "Khách hàng demo 02",
+        "channel": "SMS",
+        "status": "SENT",
+        "sentAt": "2026-10-29T20:22:24.079Z",
+        "expiresAt": "2026-11-12T20:22:24.079Z",
+        "link": "[test token omitted]"
+      }
+    },
+    {
+      "endpoint": "/survey-invitations/1",
+      "method": "DELETE",
+      "status": 200,
+      "requestId": "16c4ecbd-ccbb-494c-8a20-3bd2083593e5",
+      "body": {
+        "id": 1
+      }
+    },
+    {
+      "endpoint": "/survey-invitations",
+      "method": "GET",
+      "status": 200,
+      "requestId": "d1da9d24-0b88-4d4b-b4d7-f5f2d7504e97",
+      "body": []
+    },
+    {
+      "endpoint": "/survey-invitations",
+      "method": "GET",
+      "status": 200,
+      "requestId": "2f18a5d3-b334-44f7-89b8-33387fc5c00d",
+      "body": [
+        {
+          "id": 1,
+          "supportRequestId": "YC-DEMO-001",
+          "templateId": 1,
+          "templateName": "Docker persistence BT2",
+          "customerName": "Khách hàng demo 01",
+          "channel": "EMAIL",
+          "status": "SENT",
+          "sentAt": "2026-10-29T20:22:24.391Z",
+          "expiresAt": "2026-11-12T20:22:24.391Z",
+          "link": "[test token omitted]"
+        }
+      ]
+    },
+    {
+      "endpoint": "/public/surveys/:token",
+      "method": "GET",
+      "status": 200,
+      "requestId": "a8d63fcf-b648-4638-937c-629ec8ba3cd0",
+      "body": {
+        "templateName": "Docker persistence BT2",
+        "type": "CSAT",
+        "question": "Bạn hài lòng thế nào với dịch vụ vừa rồi?",
+        "scaleMin": 1,
+        "scaleMax": 5,
+        "allowComment": true,
+        "expiresAt": "2026-11-12T20:22:24.391Z",
+        "supportRequestId": "YC-DEMO-001",
+        "centerId": 1
+      }
+    },
+    {
+      "endpoint": "/reports/summary",
+      "method": "GET",
+      "status": 200,
+      "requestId": "70679646-8b28-44f7-b4ac-104ac3c95bd2",
+      "body": {
+        "responseCount": 1,
+        "invitationCount": 1,
+        "csat": 100,
+        "csatCount": 1,
+        "nps": null,
+        "npsCount": 0,
+        "negativeCount": 0,
+        "generatedAt": "2026-10-29T20:22:25.362Z",
+        "source": "CSDL cục bộ",
+        "csatTarget": 80
+      }
+    },
+    {
+      "endpoint": "/health (API stopped)",
+      "status": 502
+    },
+    {
+      "endpoint": "/auth/login",
+      "method": "POST",
+      "status": 200,
+      "requestId": "598f71fd-b4c3-472c-b970-ed57eb884593",
+      "body": {
+        "token": "[test token omitted]",
+        "role": "MANAGER",
+        "expiresAt": "2026-10-29T21:22:51.575Z"
+      }
+    },
+    {
+      "endpoint": "/survey-templates",
+      "method": "GET",
+      "status": 200,
+      "requestId": "5f922f70-7c76-473a-9303-ab0e39fee474",
+      "body": [
+        {
+          "id": 1,
+          "name": "Docker persistence BT2",
+          "type": "CSAT",
+          "scaleMin": 1,
+          "scaleMax": 5,
+          "question": "Bạn hài lòng thế nào với dịch vụ vừa rồi?",
+          "allowComment": true,
+          "createdAt": "2026-10-29T20:22:23.892Z"
+        }
+      ]
+    },
+    {
+      "endpoint": "/reports/summary",
+      "method": "GET",
+      "status": 200,
+      "requestId": "fee87681-94cc-45fc-9c3a-bf9a3189a997",
+      "body": {
+        "responseCount": 1,
+        "invitationCount": 1,
+        "csat": 100,
+        "csatCount": 1,
+        "nps": null,
+        "npsCount": 0,
+        "negativeCount": 0,
+        "generatedAt": "2026-10-29T20:22:51.586Z",
+        "source": "CSDL cục bộ",
+        "csatTarget": 80
+      }
+    },
+    {
+      "endpoint": "/auth/login",
+      "method": "POST",
+      "status": 200,
+      "requestId": "a214daf4-7008-4eab-8ec0-65af9465c99d",
+      "body": {
+        "token": "[test token omitted]",
+        "role": "MANAGER",
+        "expiresAt": "2026-10-29T21:22:59.788Z"
+      }
+    },
+    {
+      "endpoint": "/survey-templates",
+      "method": "GET",
+      "status": 200,
+      "requestId": "039cd637-f862-45aa-ad9b-1af351cee4a5",
+      "body": [
+        {
+          "id": 1,
+          "name": "Docker persistence BT2",
+          "type": "CSAT",
+          "scaleMin": 1,
+          "scaleMax": 5,
+          "question": "Bạn hài lòng thế nào với dịch vụ vừa rồi?",
+          "allowComment": true,
+          "createdAt": "2026-10-29T20:22:23.892Z"
+        }
+      ]
+    },
+    {
+      "endpoint": "/reports/summary",
+      "method": "GET",
+      "status": 200,
+      "requestId": "0d539f85-4457-4c3e-9dbd-1b88bbcc1ee3",
+      "body": {
+        "responseCount": 1,
+        "invitationCount": 1,
+        "csat": 100,
+        "csatCount": 1,
+        "nps": null,
+        "npsCount": 0,
+        "negativeCount": 0,
+        "generatedAt": "2026-10-29T20:22:59.800Z",
+        "source": "CSDL cục bộ",
+        "csatTarget": 80
+      }
+    }
+  ],
+  "commands": [
+    "docker ps -aq --filter label=com.docker.compose.project=smartcrm-bt2-runtime-1793305321287",
+    "docker volume ls -q --filter label=com.docker.compose.project=smartcrm-bt2-runtime-1793305321287",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 config --quiet",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 up --build -d --wait --wait-timeout 90",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 ps --format json",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 ps -q api",
+    "docker inspect a68a3b01e1d50ec0e849e12b26db4a0887b798f6e9e3cf8648620badbc051347",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 stop api",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 start --wait api",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 restart api web",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 up -d --wait",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 ps -q api",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 up -d --force-recreate --wait",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 ps -q api",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 ps --format json",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 logs --no-color",
+    "docker compose -p smartcrm-bt2-runtime-1793305321287 down"
+  ]
+}

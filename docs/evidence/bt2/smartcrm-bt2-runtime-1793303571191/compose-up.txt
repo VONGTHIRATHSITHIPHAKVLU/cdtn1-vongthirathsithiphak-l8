@@ -1,0 +1,108 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.23kB done
+#1 DONE 0.0s
+
+#2 [web internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.20kB 0.0s done
+#2 DONE 0.0s
+
+#3 [auth] library/nginx:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [auth] library/node:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [web internal] load metadata for docker.io/library/node:24.22.1-bookworm-slim
+#5 ...
+
+#6 [web internal] load metadata for docker.io/library/nginx:1.28.0-alpine
+#6 DONE 1.6s
+
+#5 [web internal] load metadata for docker.io/library/node:24.22.1-bookworm-slim
+#5 DONE 1.6s
+
+#7 [web internal] load .dockerignore
+#7 transferring context: 178B done
+#7 DONE 0.0s
+
+#8 [api internal] load build context
+#8 transferring context: 1.07kB done
+#8 DONE 0.0s
+
+#9 [web runtime 1/7] FROM docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c
+#9 resolve docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c 0.0s done
+#9 DONE 0.0s
+
+#10 [web web 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#10 resolve docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.0s done
+#10 DONE 0.0s
+
+#11 [api runtime 5/7] COPY src/backend ./src/backend
+#11 CACHED
+
+#12 [api runtime 3/7] COPY package.json package-lock.json ./
+#12 CACHED
+
+#13 [api runtime 6/7] COPY database ./database
+#13 CACHED
+
+#14 [api runtime 4/7] RUN npm ci --omit=dev && mkdir data && chown node:node data
+#14 CACHED
+
+#15 [api runtime 7/7] COPY scripts/migrate.js scripts/seed.js ./scripts/
+#15 CACHED
+
+#16 [web internal] load build context
+#16 transferring context: 1.02kB done
+#16 DONE 0.0s
+
+#17 [web build 7/7] RUN npm run build
+#17 CACHED
+
+#18 [web build 4/7] RUN npm ci
+#18 CACHED
+
+#19 [web build 6/7] COPY vite.config.js ./
+#19 CACHED
+
+#20 [web build 5/7] COPY src/frontend ./src/frontend
+#20 CACHED
+
+#21 [web runtime 2/7] WORKDIR /app
+#21 CACHED
+
+#22 [web build 3/7] COPY package.json package-lock.json ./
+#22 CACHED
+
+#23 [web web 2/3] COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+#23 CACHED
+
+#24 [web web 3/3] COPY --from=build /app/dist /usr/share/nginx/html
+#24 CACHED
+
+#25 [web] exporting to image
+#25 exporting layers done
+#25 exporting manifest sha256:0edced2e27cf015c87f50ddc12e0d80ce7d98eba5fc8a69fdcb92064e64d58e6
+#25 exporting manifest sha256:0edced2e27cf015c87f50ddc12e0d80ce7d98eba5fc8a69fdcb92064e64d58e6 0.0s done
+#25 exporting config sha256:381fe9178a497e9b92913e4ff548af03dda13787fbc17e2b26a70a671cf77467 0.0s done
+#25 exporting attestation manifest sha256:24020559d4734b915198487347ce819595e6941f655eb2bcbfefcbc32b017798 0.0s done
+#25 exporting manifest list sha256:b3444872b2ac2c8b0b2643cb5cec80705eba5c4189c5cc26f4af8db1fc90d48e 0.0s done
+#25 naming to docker.io/library/smartcrm-bt2-runtime-1793303571191-web:latest done
+#25 unpacking to docker.io/library/smartcrm-bt2-runtime-1793303571191-web:latest done
+#25 DONE 0.1s
+
+#26 [api] exporting to image
+#26 exporting layers done
+#26 exporting manifest sha256:9abdd2445f051fe69aa8d2491e23150c40df5c8071acafecfe834f85dabed750 0.0s done
+#26 exporting config sha256:8697a8f3c5dffdd1be5fd44df2494507a10858fd2dce2b56284496b77396c861 0.0s done
+#26 exporting attestation manifest sha256:32dc3b5262f24b1e854cba7071b1b27b34d29617d795f67f6c5914de8152ee8a 0.0s done
+#26 exporting manifest list sha256:07c719ebb767e28a687c9d18c33879adaeb0bb2f8b2b5d2ab51bc7fea220e23f 0.0s done
+#26 naming to docker.io/library/smartcrm-bt2-runtime-1793303571191-api:latest done
+#26 unpacking to docker.io/library/smartcrm-bt2-runtime-1793303571191-api:latest done
+#26 DONE 0.2s
+
+#27 [web] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#28 [api] resolving provenance for metadata file
+#28 DONE 0.0s

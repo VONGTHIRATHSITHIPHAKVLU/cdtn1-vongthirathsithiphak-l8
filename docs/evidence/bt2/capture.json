@@ -1,0 +1,13 @@
+{
+  "capturedAt": "2026-10-29T19:05:49.354Z",
+  "browser": "Chrome headless",
+  "database": "isolated temporary SQLite",
+  "tests": 17,
+  "states": [
+    "data",
+    "empty after delete",
+    "loading delayed actual request",
+    "error after API stopped"
+  ],
+  "note": "10-tests.png renders actual captured process output; it is not an OS terminal screenshot."
+}

@@ -1,5 +1,7 @@
 # Bí mật - KHÔNG BAO GIỜ commit
 .env
+.env.*
+!.env.example
  
 # Dependencies & build
 node_modules/
@@ -22,4 +24,24 @@ models/*.pt
 .DS_Store
 Thumbs.db
 .tmp/
+.tmp-pdf-reader/
 data/*.sqlite*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+*.db
+*.db-*
+.tmp*/
+.cache/
+coverage/
+*.tmp
+*.temp
+*.bak
+*~
+
+# Tài liệu môn học và báo cáo Buổi 10 không thuộc commit BT2
+/CDTN1_Buoi11_Tich hop he thong va Xu ly loi.pdf
+/CDTN1_Buoi12_Workshop tich hop va Nop Bai tap 2.pdf
+/CDTN1_Tai lieu tu hoc Buoi 11 - Dong goi va cau hinh theo stack.pdf
+/docs/BaoCao_Buoi10_237480201IS04_VONGTHIRATH_SITHIPHAK.docx

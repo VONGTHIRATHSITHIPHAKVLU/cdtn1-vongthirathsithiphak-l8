@@ -1,5 +1,18 @@
 # Nhật ký thay đổi thiết kế
 
+## Buổi 11–12 — ngày 30/10/2026
+
+### TD-12 Đóng gói hệ thống và quan sát lỗi
+- Tách HTTP status khỏi service: AppError chỉ chứa mã nghiệp vụ, thông điệp, fields; routes/error-status.js ánh xạ tại HTTP boundary để đáp ứng C2.
+- Quyết định: Docker nhiều giai đoạn; API Node chạy user node, React build phục vụ qua Nginx; SQLite giữ trong volume. Không thêm PostgreSQL chỉ để đủ số container.
+- Lý do: giữ phương án SQLite TD-08, đảm bảo môi trường tái lập và web đợi API healthy.
+- Ảnh hưởng: Dockerfile, compose.yaml, deploy/nginx.conf, APP_HOST/LOG_LEVEL/WEB_PORT, healthcheck và log JSON theo requestId; che token, không ghi dữ liệu nhạy cảm.
+
+### TD-13 Hoàn thiện CRUD thực thể lời mời cho S1 của BT2
+- Quyết định: thêm GET/PUT/DELETE `/api/survey-invitations/:id`; PUT chỉ đổi kênh dự kiến khi còn hiệu lực, giữ nguyên token/mẫu/yêu cầu/thời hạn; DELETE xóa lời mời chưa trả lời cùng log liên quan trong transaction.
+- Lý do: BT2 yêu cầu ≥2 thực thể đủ CRUD; không biến phản hồi và lịch sử đã trả lời thành dữ liệu có thể sửa/xóa.
+- Ảnh hưởng: route/service/repository và test HTTP, tài liệu API. Liên kết cũ của lời mời bị xóa không còn hợp lệ; chỉ token mới được dùng nếu tạo lại. CRUD sửa/xóa lời mời thao tác qua API; giao diện cũ vẫn tạo/xem.
+
 ## Sprint 1–2 — buổi 8–9–10, ngày 23/10/2026
 
 ### TD-08 Dùng SQLite làm CSDL dự phòng
@@ -73,3 +86,7 @@ Phản hồi của GV (ThS. Nguyễn Minh Tân) có phần "Điểm tốt" (NFR 
 - Quyết định : SỬA
 - Lý do : Repo là nơi GV đối chiếu thiết kế với mã nguồn, nên tên, sơ đồ gốc và lịch sử commit phải rõ ràng.
 - Ảnh hưởng : Đổi tên repo thành smartcrm-l8-csat-nps; thêm các file .drawio vào docs/export/ hoặc docs/diagrams/; commit mới theo Conventional Commits (không viết lại lịch sử cũ). Trạng thái: commit mới đã theo quy ước; còn đổi tên repo trên GitHub và thêm file .drawio gốc.
+
+## TD-14 — An toàn log Nginx và kiểm chứng tổng hợp
+
+Không ghi URL khảo sát/token vào access/error log Nginx; giữ status/timing/requestId, backend giữ chẩn đoán đã lọc. Không thay đổi quy tắc CSAT/NPS hoặc DB. Ba PDF không nêu cấm SQLite nhưng mẫu TH11 dùng PostgreSQL; cần giảng viên xác nhận nếu chấm đúng mẫu. Xem bt2-checklist.md và BUG-06.

@@ -2,7 +2,7 @@ import { randomBytes } from 'node:crypto';
 import { AppError } from './errors.js';
 import { templateInput, invitationInput, responseInput } from '../validators/survey.js';
 import { toTemplate, toInvitation } from '../contracts/survey.contract.js';
-const missing = () => { throw new AppError(404,'NOT_FOUND','Không tìm thấy dữ liệu'); };
+const missing = () => { throw new AppError('NOT_FOUND','Không tìm thấy dữ liệu'); };
 export class SurveyService {
   constructor(repository, now = () => new Date()) { this.repo = repository; this.now = now; }
   templates() { return this.repo.templates().map(toTemplate); }
@@ -11,28 +11,46 @@ export class SurveyService {
     const input = templateInput(body);
     if (id) {
       this.template(id);
-      if (this.repo.usedTemplate(id)) throw new AppError(409,'TEMPLATE_IN_USE','Không sửa mẫu đã dùng; hãy tạo mẫu mới');
+      if (this.repo.usedTemplate(id)) throw new AppError('TEMPLATE_IN_USE','Không sửa mẫu đã dùng; hãy tạo mẫu mới');
     }
-    if (this.repo.templates().some(t => t.template_id !== id && t.name.toLowerCase() === input.name.toLowerCase())) throw new AppError(409,'TEMPLATE_NAME_EXISTS','Tên mẫu đã tồn tại');
+    if (this.repo.templates().some(t => t.template_id !== id && t.name.toLowerCase() === input.name.toLowerCase())) throw new AppError('TEMPLATE_NAME_EXISTS','Tên mẫu đã tồn tại');
     return toTemplate(this.repo.saveTemplate(input,actor,this.now().toISOString(),id));
   }
   deleteTemplate(id) {
     this.template(id);
-    if (this.repo.usedTemplate(id)) throw new AppError(409,'TEMPLATE_IN_USE','Mẫu đã được sử dụng');
+    if (this.repo.usedTemplate(id)) throw new AppError('TEMPLATE_IN_USE','Mẫu đã được sử dụng');
     this.repo.deleteTemplate(id); return { id };
   }
   invitations() { return this.repo.invitations().map(row => toInvitation({ ...row, status: row.status === 'SENT' && row.expires_at <= this.now().toISOString() ? 'EXPIRED' : row.status })); }
+  invitation(id) { return this.invitations().find(item => item.id === id) || missing(); }
+  updateInvitation(id, body, actor) {
+    return this.repo.transaction(() => {
+      const item = this.invitation(id), request = this.repo.request(item.supportRequestId);
+      if (item.status !== 'SENT') throw new AppError('INVITATION_LOCKED','Chỉ sửa lời mời đang chờ phản hồi');
+      const input = invitationInput({ ...body, supportRequestId:item.supportRequestId, customerId:request.customer_id, templateId:item.templateId });
+      if (!request[input.channel === 'EMAIL' ? 'email' : 'phone']) throw new AppError('CONTACT_MISSING','Khách hàng thiếu thông tin liên hệ');
+      this.repo.updateInvitation(id,input.channel,actor,this.now().toISOString());
+      return this.invitation(id);
+    });
+  }
+  deleteInvitation(id) {
+    return this.repo.transaction(() => {
+      const item = this.invitation(id);
+      if (item.status === 'ANSWERED') throw new AppError('INVITATION_LOCKED','Không xóa lời mời đã có phản hồi');
+      this.repo.deleteInvitation(id); return { id };
+    });
+  }
   /** One invitation per completed request. Local delivery returns a link; no EMAIL/SMS receipt is claimed. */
   invite(body, actor) {
     const input = invitationInput(body);
     return this.repo.transaction(() => {
       const request = this.repo.request(input.supportRequestId) || missing();
       this.template(input.templateId);
-      if (request.customer_id !== input.customerId) throw new AppError(400,'CUSTOMER_MISMATCH','Khách hàng không thuộc yêu cầu hỗ trợ');
-      if (request.status !== 'COMPLETED') throw new AppError(400,'REQUEST_NOT_COMPLETED','Yêu cầu hỗ trợ chưa hoàn tất');
-      if (!request.is_active || request.survey_opt_out) throw new AppError(409,'CUSTOMER_OPTED_OUT','Khách hàng không nhận khảo sát');
-      if (!request[input.channel === 'EMAIL' ? 'email' : 'phone']) throw new AppError(400,'CONTACT_MISSING','Khách hàng thiếu thông tin liên hệ');
-      if (this.repo.byRequest(request.support_request_id)) throw new AppError(409,'INVITATION_EXISTS','Yêu cầu đã có lời mời');
+      if (request.customer_id !== input.customerId) throw new AppError('CUSTOMER_MISMATCH','Khách hàng không thuộc yêu cầu hỗ trợ');
+      if (request.status !== 'COMPLETED') throw new AppError('REQUEST_NOT_COMPLETED','Yêu cầu hỗ trợ chưa hoàn tất');
+      if (!request.is_active || request.survey_opt_out) throw new AppError('CUSTOMER_OPTED_OUT','Khách hàng không nhận khảo sát');
+      if (!request[input.channel === 'EMAIL' ? 'email' : 'phone']) throw new AppError('CONTACT_MISSING','Khách hàng thiếu thông tin liên hệ');
+      if (this.repo.byRequest(request.support_request_id)) throw new AppError('INVITATION_EXISTS','Yêu cầu đã có lời mời');
       const at = this.now();
       return { ...toInvitation(this.repo.insertInvitation(request.support_request_id,input,randomBytes(16).toString('hex'),actor,at.toISOString(),new Date(at.getTime()+14*86400000).toISOString())), deliveryMode: 'LOCAL_LINK' };
     });
@@ -40,8 +58,8 @@ export class SurveyService {
   active(token) {
     if (!/^[a-zA-Z0-9]{32}$/.test(token)) missing();
     const invitation = this.repo.byToken(token) || missing();
-    if (invitation.status === 'ANSWERED') throw new AppError(409,'ALREADY_ANSWERED','Bạn đã gửi phản hồi');
-    if (invitation.status !== 'SENT' || invitation.expires_at <= this.now().toISOString()) throw new AppError(409,'EXPIRED','Khảo sát đã hết hạn');
+    if (invitation.status === 'ANSWERED') throw new AppError('ALREADY_ANSWERED','Bạn đã gửi phản hồi');
+    if (invitation.status !== 'SENT' || invitation.expires_at <= this.now().toISOString()) throw new AppError('EXPIRED','Khảo sát đã hết hạn');
     return invitation;
   }
   publicSurvey(token) {

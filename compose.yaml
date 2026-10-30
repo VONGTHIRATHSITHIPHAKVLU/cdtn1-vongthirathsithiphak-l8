@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: .
+      target: runtime
+    environment:
+      # Container addresses stay stable regardless of local development settings.
+      APP_HOST: 0.0.0.0
+      APP_PORT: "3000"
+      DB_PATH: /app/data/smartcrm.sqlite
+      DEMO_PASSWORD: ${DEMO_PASSWORD:?Set DEMO_PASSWORD in .env}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    volumes:
+      - sqlite_data:/app/data
+    ports:
+      - "127.0.0.1:${API_HOST_PORT:-3000}:3000"
+  web:
+    build:
+      context: .
+      target: web
+      args:
+        # Same-origin URL used by the browser; Docker service names are internal.
+        VITE_API_BASE_URL: /api
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:80"
+volumes:
+  sqlite_data:

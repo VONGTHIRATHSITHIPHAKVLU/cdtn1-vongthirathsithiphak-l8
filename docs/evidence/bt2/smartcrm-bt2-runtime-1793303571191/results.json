@@ -1,0 +1,174 @@
+{
+  "project": "smartcrm-bt2-runtime-1793303571191",
+  "volume": "smartcrm-bt2-runtime-1793303571191_sqlite_data",
+  "base": "http://127.0.0.1:18082",
+  "results": [
+    {
+      "step": "isolation and stack health",
+      "status": "PASS",
+      "details": {
+        "volume": "smartcrm-bt2-runtime-1793303571191_sqlite_data",
+        "destination": "/app/data"
+      }
+    },
+    {
+      "step": "HTTP API, Nginx proxy and SPA fallback",
+      "status": "PASS",
+      "details": "direct API and web /api/health return 200"
+    },
+    {
+      "step": "login, templates, invitation, public response, dashboard",
+      "status": "PASS",
+      "details": {
+        "templateId": 1,
+        "responseCount": 1,
+        "csat": 100
+      }
+    },
+    {
+      "step": "loading, empty, unavailable backend and retry",
+      "status": "PASS",
+      "details": "Loading delays a real request; actual stopped API returns Nginx 502; retry leads to re-login and recovery"
+    },
+    {
+      "step": "runtime verification",
+      "status": "FAIL",
+      "details": "The expression evaluated to a falsy value:\n\n  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth))\n"
+    },
+    {
+      "step": "cleanup",
+      "status": "PASS",
+      "details": "Only test project containers/network removed; test volume retained."
+    }
+  ],
+  "http": [
+    {
+      "endpoint": "/health",
+      "method": "GET",
+      "status": 200,
+      "requestId": "93664fa2-ce48-4629-b286-779244b9a18b",
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "endpoint": "/auth/login",
+      "method": "POST",
+      "status": 200,
+      "requestId": "ebb0e5c3-7ba6-4167-89a0-422eb98fbc5c",
+      "body": {
+        "token": "[test token omitted]",
+        "role": "MANAGER",
+        "expiresAt": "2026-10-29T20:53:01.874Z"
+      }
+    },
+    {
+      "endpoint": "/survey-templates",
+      "method": "GET",
+      "status": 200,
+      "requestId": "a84d9295-2c21-4f6a-9611-412b21e2bc24",
+      "body": [
+        {
+          "id": 1,
+          "name": "CSAT sau hỗ trợ",
+          "type": "CSAT",
+          "scaleMin": 1,
+          "scaleMax": 5,
+          "question": "Bạn hài lòng thế nào về lần hỗ trợ vừa rồi?",
+          "allowComment": true,
+          "createdAt": "2026-10-29T19:52:55.536Z"
+        }
+      ]
+    },
+    {
+      "endpoint": "/survey-templates",
+      "method": "GET",
+      "status": 200,
+      "requestId": "96f52ee0-9ab8-4336-ade6-6510fdb06eec",
+      "body": [
+        {
+          "id": 1,
+          "name": "Docker persistence BT2",
+          "type": "CSAT",
+          "scaleMin": 1,
+          "scaleMax": 5,
+          "question": "Bạn hài lòng thế nào với dịch vụ vừa rồi?",
+          "allowComment": true,
+          "createdAt": "2026-10-29T19:53:03.493Z"
+        }
+      ]
+    },
+    {
+      "endpoint": "/survey-invitations",
+      "method": "GET",
+      "status": 200,
+      "requestId": "be1b1a03-4647-4bb5-8879-7da1c2831b6b",
+      "body": [
+        {
+          "id": 1,
+          "supportRequestId": "YC-DEMO-001",
+          "templateId": 1,
+          "templateName": "Docker persistence BT2",
+          "customerName": "Khách hàng demo 01",
+          "channel": "EMAIL",
+          "status": "SENT",
+          "sentAt": "2026-10-29T19:53:03.784Z",
+          "expiresAt": "2026-11-12T19:53:03.784Z",
+          "link": "[test token omitted]"
+        }
+      ]
+    },
+    {
+      "endpoint": "/public/surveys/:token",
+      "method": "GET",
+      "status": 200,
+      "requestId": "c970e65c-3490-4320-9e05-b36edf2af281",
+      "body": {
+        "templateName": "Docker persistence BT2",
+        "type": "CSAT",
+        "question": "Bạn hài lòng thế nào với dịch vụ vừa rồi?",
+        "scaleMin": 1,
+        "scaleMax": 5,
+        "allowComment": true,
+        "expiresAt": "2026-11-12T19:53:03.784Z",
+        "supportRequestId": "YC-DEMO-001",
+        "centerId": 1
+      }
+    },
+    {
+      "endpoint": "/reports/summary",
+      "method": "GET",
+      "status": 200,
+      "requestId": "8076dc26-401b-4148-a4cb-0b44311f332e",
+      "body": {
+        "responseCount": 1,
+        "invitationCount": 1,
+        "csat": 100,
+        "csatCount": 1,
+        "nps": null,
+        "npsCount": 0,
+        "negativeCount": 0,
+        "generatedAt": "2026-10-29T19:53:04.627Z",
+        "source": "CSDL cục bộ",
+        "csatTarget": 80
+      }
+    },
+    {
+      "endpoint": "/health (API stopped)",
+      "status": 502
+    }
+  ],
+  "commands": [
+    "docker ps -aq --filter label=com.docker.compose.project=smartcrm-bt2-runtime-1793303571191",
+    "docker volume ls -q --filter label=com.docker.compose.project=smartcrm-bt2-runtime-1793303571191",
+    "docker compose -p smartcrm-bt2-runtime-1793303571191 config --quiet",
+    "docker compose -p smartcrm-bt2-runtime-1793303571191 up --build -d --wait --wait-timeout 90",
+    "docker compose -p smartcrm-bt2-runtime-1793303571191 ps --format json",
+    "docker compose -p smartcrm-bt2-runtime-1793303571191 ps -q api",
+    "docker inspect 4746696fc06af75ae029c274fff1d91971c0246d178048f8ebe1949e43e61f26",
+    "docker compose -p smartcrm-bt2-runtime-1793303571191 stop api",
+    "docker compose -p smartcrm-bt2-runtime-1793303571191 start --wait api",
+    "docker compose -p smartcrm-bt2-runtime-1793303571191 logs --no-color",
+    "docker compose -p smartcrm-bt2-runtime-1793303571191 down"
+  ]
+}

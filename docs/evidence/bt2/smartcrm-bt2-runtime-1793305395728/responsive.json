@@ -1,0 +1,82 @@
+[
+  {
+    "page": "Login",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "status": "PASS"
+  },
+  {
+    "page": "Login",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "status": "PASS"
+  },
+  {
+    "page": "Templates",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "status": "PASS"
+  },
+  {
+    "page": "Templates",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "status": "PASS"
+  },
+  {
+    "page": "Invitations",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "status": "PASS"
+  },
+  {
+    "page": "Invitations",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "status": "PASS"
+  },
+  {
+    "page": "Survey",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "status": "PASS"
+  },
+  {
+    "page": "Survey",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "status": "PASS"
+  },
+  {
+    "page": "Dashboard",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "status": "PASS"
+  },
+  {
+    "page": "Dashboard",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "status": "PASS"
+  }
+]

@@ -1,0 +1,688 @@
+[
+  {
+    "file": "01-templates.png",
+    "type": "png",
+    "width": 1280,
+    "height": 850,
+    "result": "decode OK"
+  },
+  {
+    "file": "02-empty.png",
+    "type": "png",
+    "width": 1280,
+    "height": 850,
+    "result": "decode OK"
+  },
+  {
+    "file": "03-invitation.png",
+    "type": "png",
+    "width": 1280,
+    "height": 855,
+    "result": "decode OK"
+  },
+  {
+    "file": "04-survey.png",
+    "type": "png",
+    "width": 1280,
+    "height": 850,
+    "result": "decode OK"
+  },
+  {
+    "file": "05-response.png",
+    "type": "png",
+    "width": 1280,
+    "height": 850,
+    "result": "decode OK"
+  },
+  {
+    "file": "06-dashboard.png",
+    "type": "png",
+    "width": 1280,
+    "height": 850,
+    "result": "decode OK"
+  },
+  {
+    "file": "07-loading.png",
+    "type": "png",
+    "width": 1280,
+    "height": 850,
+    "result": "decode OK"
+  },
+  {
+    "file": "08-error.png",
+    "type": "png",
+    "width": 1280,
+    "height": 850,
+    "result": "decode OK"
+  },
+  {
+    "file": "09-mobile.png",
+    "type": "png",
+    "width": 375,
+    "height": 1151,
+    "result": "decode OK"
+  },
+  {
+    "file": "10-tests.png",
+    "type": "png",
+    "width": 1250,
+    "height": 1200,
+    "result": "decode OK"
+  },
+  {
+    "file": "artifact-inventory.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "capture.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "latest-tests.png",
+    "type": "png",
+    "width": 1250,
+    "height": 1350,
+    "result": "decode OK"
+  },
+  {
+    "file": "report-page7-preview.png",
+    "type": "png",
+    "width": 794,
+    "height": 995,
+    "result": "decode OK"
+  },
+  {
+    "file": "report-page8-preview.png",
+    "type": "png",
+    "width": 794,
+    "height": 995,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/01-desktop-templates.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/02-empty.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/03-invitation.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/04-public-survey.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/05-response.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/06-dashboard.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/07-loading.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/08-backend-unavailable.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/09-retry-recovered.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/10-mobile-dashboard.png",
+    "type": "png",
+    "width": 375,
+    "height": 1151,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/11-mobile-templates.png",
+    "type": "png",
+    "width": 453,
+    "height": 944,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/compose.log",
+    "type": "log",
+    "bytes": 17706
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/containers.json",
+    "type": "ndjson",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303571191/results.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/01-desktop-templates.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/02-empty.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/03-invitation.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/04-public-survey.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/05-response.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/06-dashboard.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/07-loading.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/08-backend-unavailable.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/09-retry-recovered.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/10-mobile-dashboard.png",
+    "type": "png",
+    "width": 375,
+    "height": 1151,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/11-mobile-templates.png",
+    "type": "png",
+    "width": 453,
+    "height": 944,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/compose.log",
+    "type": "log",
+    "bytes": 3521
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/containers.json",
+    "type": "ndjson",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/final-containers.json",
+    "type": "ndjson",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793303619791/results.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/01-desktop-templates.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/02-empty.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/03-invitation.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/04-public-survey.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/05-response.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/06-dashboard.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/07-loading.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/08-backend-unavailable.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/09-retry-recovered.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/10-mobile-dashboard.png",
+    "type": "png",
+    "width": 375,
+    "height": 1151,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/11-mobile-templates.png",
+    "type": "png",
+    "width": 375,
+    "height": 944,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/compose.log",
+    "type": "log",
+    "bytes": 3521
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/containers.json",
+    "type": "ndjson",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/final-containers.json",
+    "type": "ndjson",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Dashboard-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Dashboard-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 1151,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Invitations-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Invitations-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 1290,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Login-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Login-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 812,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Survey-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Survey-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 812,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Templates-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive-Templates-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 944,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/responsive.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305321287/results.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/01-desktop-templates.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/02-empty.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/03-invitation.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/04-public-survey.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/05-response.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/06-dashboard.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/07-loading.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/08-backend-unavailable.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/09-retry-recovered.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/10-mobile-dashboard.png",
+    "type": "png",
+    "width": 375,
+    "height": 1151,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/11-mobile-templates.png",
+    "type": "png",
+    "width": 375,
+    "height": 944,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/compose.log",
+    "type": "log",
+    "bytes": 4035
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/containers.json",
+    "type": "ndjson",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/final-containers.json",
+    "type": "ndjson",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Dashboard-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Dashboard-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 1151,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Invitations-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Invitations-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 1290,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Login-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Login-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 812,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Survey-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Survey-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 812,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Templates-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive-Templates-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 944,
+    "result": "decode OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/responsive.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "smartcrm-bt2-runtime-1793305395728/results.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "templates-responsive/after-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "templates-responsive/after-375.png",
+    "type": "png",
+    "width": 375,
+    "height": 944,
+    "result": "decode OK"
+  },
+  {
+    "file": "templates-responsive/after.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "templates-responsive/before-1440.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "templates-responsive/before-375.png",
+    "type": "png",
+    "width": 448,
+    "height": 944,
+    "result": "decode OK"
+  },
+  {
+    "file": "templates-responsive/before.json",
+    "type": "json",
+    "result": "parse OK"
+  },
+  {
+    "file": "templates-responsive/desktop-controlled-after.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  },
+  {
+    "file": "templates-responsive/desktop-controlled-before.png",
+    "type": "png",
+    "width": 1440,
+    "height": 900,
+    "result": "decode OK"
+  }
+]

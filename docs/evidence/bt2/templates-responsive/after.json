@@ -1,0 +1,115 @@
+[
+  {
+    "viewport": 375,
+    "document": 375,
+    "overflow": [
+      {
+        "tag": "TABLE",
+        "cls": "",
+        "left": 22,
+        "right": 492,
+        "width": 470,
+        "position": "static",
+        "minWidth": "470px"
+      },
+      {
+        "tag": "THEAD",
+        "cls": "",
+        "left": 22,
+        "right": 492,
+        "width": 470,
+        "position": "static",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "TR",
+        "cls": "",
+        "left": 22,
+        "right": 492,
+        "width": 470,
+        "position": "static",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "TH",
+        "cls": "",
+        "left": 335.171875,
+        "right": 440.671875,
+        "width": 105.5,
+        "position": "relative",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "TH",
+        "cls": "",
+        "left": 440.671875,
+        "right": 492,
+        "width": 51.328125,
+        "position": "relative",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "sr-only",
+        "left": 446.671875,
+        "right": 447.671875,
+        "width": 1,
+        "position": "absolute",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "TBODY",
+        "cls": "",
+        "left": 22,
+        "right": 492,
+        "width": 470,
+        "position": "static",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "TR",
+        "cls": "",
+        "left": 22,
+        "right": 492,
+        "width": 470,
+        "position": "static",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "TD",
+        "cls": "",
+        "left": 335.171875,
+        "right": 440.671875,
+        "width": 105.5,
+        "position": "static",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "TD",
+        "cls": "",
+        "left": 440.671875,
+        "right": 492,
+        "width": 51.328125,
+        "position": "static",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "BUTTON",
+        "cls": "text-button delete-button",
+        "left": 447.671875,
+        "right": 467.25,
+        "width": 19.578125,
+        "position": "static",
+        "minWidth": "0px"
+      }
+    ],
+    "crud": "create/update/delete PASS"
+  },
+  {
+    "viewport": 1440,
+    "document": 1440,
+    "overflow": [],
+    "desktopVisual": "byte-identical screenshots with/without fix",
+    "crud": "create/update/delete PASS"
+  }
+]

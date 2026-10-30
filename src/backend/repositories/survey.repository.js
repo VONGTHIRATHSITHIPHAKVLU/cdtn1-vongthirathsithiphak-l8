@@ -18,6 +18,14 @@ export class SurveyRepository {
   requests() { return this.db.prepare(`SELECT s.*, c.full_name,c.email,c.phone,c.survey_opt_out,c.is_active FROM support_request s JOIN customer c USING(customer_id) ORDER BY support_request_id`).all(); }
   request(code) { return this.requests().find(r => r.request_code === code); }
   invitations() { return this.db.prepare(`SELECT i.*,s.request_code,c.full_name,t.name FROM survey_invitation i JOIN support_request s USING(support_request_id) JOIN customer c USING(customer_id) JOIN survey_template t USING(template_id) ORDER BY invitation_id DESC`).all(); }
+  updateInvitation(id,channel,actor,at) {
+    this.db.prepare('UPDATE survey_invitation SET channel=? WHERE invitation_id=?').run(channel,id);
+    this.log(id,'INVITATION_UPDATED',actor,at);
+  }
+  deleteInvitation(id) {
+    this.db.prepare('DELETE FROM survey_log WHERE invitation_id=?').run(id);
+    this.db.prepare('DELETE FROM survey_invitation WHERE invitation_id=?').run(id);
+  }
   byRequest(id) { return this.db.prepare('SELECT * FROM survey_invitation WHERE support_request_id=?').get(id); }
   byToken(token) { return this.db.prepare(`SELECT i.*,t.name,t.type,t.question,t.allow_comment,s.request_code,s.center_id FROM survey_invitation i JOIN survey_template t USING(template_id) JOIN support_request s USING(support_request_id) WHERE token=?`).get(token); }
   insertInvitation(requestId, input, token, actor, at, expires) {

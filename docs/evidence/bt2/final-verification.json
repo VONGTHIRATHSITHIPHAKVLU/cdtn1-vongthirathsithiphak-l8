@@ -1,0 +1,21 @@
+{
+  "build": {
+    "command": "npm.cmd run build",
+    "exitCode": 0
+  },
+  "diff-check": {
+    "command": "git diff --check",
+    "exitCode": 0
+  },
+  "safety": {
+    "forbiddenCandidates": [],
+    "secretPatternMatches": [],
+    "scope": "working tree text, not exhaustive history or binary audit"
+  },
+  "runtime": {
+    "project": "smartcrm-bt2-runtime-1793305395728",
+    "allRecordedChecks": "PASS",
+    "responsiveChecks": 10
+  },
+  "status": "READY FOR COMMIT (technical); C1 and submission pending"
+}

@@ -1,6 +1,10 @@
-import { defineConfig } from 'vite';
-export default defineConfig({
-  root: 'src/frontend', envDir: '../..',
-  server: { port: 5173, proxy: { '/api': 'http://127.0.0.1:3000' } },
-  build: { outDir: '../../dist', emptyOutDir: true }
+import { defineConfig, loadEnv } from 'vite';
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  return {
+    root: 'src/frontend', envDir: '../..',
+    // Development only; Docker serves the built assets through Nginx instead.
+    server: { port: 5173, proxy: { '/api': `http://127.0.0.1:${env.APP_PORT || 3000}` } },
+    build: { outDir: '../../dist', emptyOutDir: true }
+  };
 });

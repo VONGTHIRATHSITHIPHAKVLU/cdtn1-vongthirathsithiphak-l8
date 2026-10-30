@@ -1,0 +1,33 @@
+Command: npm.cmd test
+
+> smartcrm-l8-csat-nps@1.0.0 test
+> node --test tests/*.test.js
+
+✔ internal error diagnostics retain safe stack and cause without sensitive values (4.5824ms)
+✔ HTTP 500 logs once and returns safe body with matching requestId (76.958ms)
+✔ frontend exposes requestId in user-visible message for JSON and proxy 500 errors (7.6611ms)
+✔ migration and seed are repeatable without duplicate records (690.5449ms)
+✔ logger filters levels and excludes sensitive context (2.1063ms)
+✔ CRUD và hợp đồng camelCase, boolean, ngày UTC (18.673ms)
+✔ luồng đúng: lời mời, form, phản hồi tiêu cực, nhật ký (5.6225ms)
+✔ chặn yêu cầu chưa hoàn tất (5.4599ms)
+✔ mỗi yêu cầu chỉ một lời mời (3.8075ms)
+✔ chặn phản hồi thứ hai (3.5335ms)
+✔ biên CSAT: nhận 1,5; từ chối 0,6,null,thập phân,chuỗi (14.7354ms)
+✔ hết hạn đúng thời điểm expiresAt (3.0334ms)
+✔ token sai trả 404; báo cáo rỗng trả null (2.4342ms)
+✔ khách từ chối khảo sát bị chặn (2.8642ms)
+✔ NPS nhận 0,10 và không trộn CSAT (6.3857ms)
+✔ mẫu đã dùng không sửa/xóa (5.7129ms)
+✔ nhận xét 500 ký tự hợp lệ, 501 bị từ chối (5.303ms)
+✔ HTTP contract: auth, JSON lỗi, luồng end-to-end (237.0201ms)
+✔ invitation CRUD protects responses and invalidates deleted tokens (15.1524ms)
+✔ health, requestId and invitation CRUD over HTTP (76.3176ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 830.7721

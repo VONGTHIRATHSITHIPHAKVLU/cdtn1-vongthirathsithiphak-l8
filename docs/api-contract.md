@@ -48,3 +48,17 @@ Cập nhật giao diện theo Wireframe1–3: public form bổ sung `supportRequ
 | 500/503 | INTERNAL_ERROR, AUTH_NOT_CONFIGURED | Thông báo an toàn, không lộ SQL/stack |
 
 Thay đổi so với BT1: lỗi `code/errors` thống nhất thành `error/message/fields` theo buổi 9; thêm CRUD, đọc danh sách, auth, báo cáo. Hạn 14 ngày và thang CSAT/NPS giữ theo contract BT1. Hai phía frontend/backend đã chuyển cùng đợt vì repo chưa có client triển khai trước đó. Test HTTP kiểm chứng 401, trường lỗi, lời mời, form, phản hồi và báo cáo.
+# Bổ sung BT2 — 30/10/2026
+
+`GET /api/health` không yêu cầu đăng nhập, kiểm kết nối SQLite và trả `{ "status": "ok" }`. Mỗi phản hồi có `X-Request-Id` do server sinh.
+
+CRUD thực thể thứ hai (cần Bearer session của tài khoản demo):
+
+| Method | URL | Body / kết quả |
+|---|---|---|
+| POST | `/api/survey-invitations` | Body tạo lời mời như contract bên dưới; 201 |
+| GET | `/api/survey-invitations/:id` | Một lời mời; 200 hoặc 404 |
+| PUT | `/api/survey-invitations/:id` | `{ "channel": "SMS" }` hoặc EMAIL; 200. Chỉ khi SENT và chưa hết hạn, kiểm thông tin liên hệ |
+| DELETE | `/api/survey-invitations/:id` | 200 `{ "id": 1 }`; không xóa ANSWERED (409 INVITATION_LOCKED) |
+
+PUT không đổi token/mẫu/yêu cầu/expiresAt; DELETE xóa log liên quan trong cùng transaction. Token bị xóa trả 404. Không ghi log HTTP chứa token/body/header. Mẫu khảo sát và lời mời là hai thực thể CRUD; response giữ bất biến.
