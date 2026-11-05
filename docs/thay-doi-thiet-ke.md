@@ -61,7 +61,7 @@ Phản hồi của GV (ThS. Nguyễn Minh Tân) có phần "Điểm tốt" (NFR 
 - Phản hồi của GV : Sơ đồ kiến trúc chưa có chú thích ký hiệu (khối, mũi tên nghĩa là gì).
 - Quyết định : SỬA
 - Lý do : Người đọc không suy ra được màu khối và chiều mũi tên nếu thiếu chú thích.
-- Ảnh hưởng : Hình 3.1 (docs/export/architecture.png). Việc còn lại: cập nhật file .drawio gốc cho khớp.
+- Ảnh hưởng : Đã cập nhật sơ đồ thực tế tại `docs/export/architecture.svg`, có chú thích khối, mũi tên, local mode, Nginx, Node API và SQLite volume. Sơ đồ bám theo `Dockerfile`, `compose.yaml`, `deploy/nginx.conf` và entry point trong `src/`.
 
 ### TD-04 Sửa MSSV trên trang bìa
 - Phản hồi của GV : MSSV trên trang bìa ghi sai (237480210IS04).

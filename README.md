@@ -60,19 +60,25 @@ Seed chạy lại không nhân đôi dữ liệu. Mỗi yêu cầu chỉ có m�
 
 ## 4. Kiến trúc và hợp đồng
 
+Sơ đồ triển khai và luồng dữ liệu được vẽ lại từ các entry point hiện tại trong
+`src/`, `Dockerfile`, `compose.yaml` và `deploy/nginx.conf`:
+[architecture.svg](docs/export/architecture.svg).
+
 ```text
-src/backend/routes/         HTTP + xác thực demo
-src/backend/validators/     kiểm tra dữ liệu đầu vào
-src/backend/services/       quy tắc khảo sát, CSAT/NPS
-src/backend/repositories/   SQLite, transaction
-src/backend/contracts/      snake_case → camelCase
-src/frontend/src/api/       HTTP client duy nhất
-src/frontend/src/pages/     Login, Templates, Invitations, Survey, Dashboard
-src/frontend/src/components/ DataState và useData
-database/migrations/        DDL chạy được, 6 bảng
-scripts/                    migrate, seed
-tests/                      nghiệp vụ + hợp đồng HTTP
+Browser → Nginx (web:80) → Node API (api:3000)
+                                      ↓
+                           SQLite /app/data (named volume)
 ```
+
+Chú thích: khối là một tiến trình/container hoặc vùng dữ liệu; mũi tên liền
+là HTTP/proxy; mũi tên xuống là lời gọi nội bộ hoặc đọc/ghi dữ liệu. Khi chạy
+local, Vite thay Nginx và proxy `/api` tới backend `APP_PORT`.
+
+Các lớp trong API: `routes` (HTTP + xác thực demo) → `validators`/`services`
+(kiểm tra và quy tắc CSAT/NPS) → `repositories` (SQLite, transaction);
+`contracts` chuyển đổi `snake_case` ↔ `camelCase`. Frontend dùng HTTP client
+duy nhất trong `src/frontend/src/api/`; migration/seed nằm trong `scripts/`;
+test nghiệp vụ và HTTP nằm trong `tests/`.
 
 [API](docs/api-contract.md) · [SRS](docs/srs.md) · [Kiểm chứng BT2](docs/buoi-11-12.md) · [DDL](database/migrations/001.sql).
 
@@ -118,6 +124,19 @@ docker compose ps
 ```
 
 Mở **http://127.0.0.1:8080** (`WEB_PORT`). API tự chạy migration và seed, lưu SQLite trong volume `sqlite_data`; web Nginx đợi API healthy. Không cần container CSDL riêng vì SQLite là CSDL nhúng. Không dùng Vite dev server trong container.
+
+`WEB_PORT` là cổng trên máy host được ánh xạ vào Nginx ở cổng 80 trong
+container. Có thể đặt trong `.env` trước khi chạy Compose, ví dụ:
+
+```dotenv
+WEB_PORT=8090
+API_HOST_PORT=3001
+```
+
+Sau đó chạy lại `docker compose up --build -d` và mở
+`http://127.0.0.1:8090`. `API_HOST_PORT` chỉ dành cho việc truy cập API từ
+host; trình duyệt vẫn dùng web port và đường dẫn `/api`. Nếu cổng bận, đổi
+`WEB_PORT` (hoặc `API_HOST_PORT`) sang cổng chưa dùng.
 
 ```powershell
 docker compose logs api

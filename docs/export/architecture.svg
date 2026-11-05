@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Kiến trúc triển khai SmartCRM L8</title>
+  <desc id="desc">Trình duyệt gọi Nginx web, Nginx proxy API Node.js, API dùng SQLite trong named volume. Sơ đồ cũng thể hiện các lớp frontend và backend.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#334155"/>
+    </marker>
+    <style>
+      .box { stroke:#334155; stroke-width:2; rx:14; }
+      .title { font:700 20px Arial,sans-serif; fill:#0f172a; }
+      .text { font:15px Arial,sans-serif; fill:#334155; }
+      .small { font:13px Arial,sans-serif; fill:#475569; }
+      .arrow { stroke:#334155; stroke-width:2.5; fill:none; marker-end:url(#arrow); }
+      .dashed { stroke-dasharray:8 6; }
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#f8fafc"/>
+  <text x="600" y="42" text-anchor="middle" class="title">SmartCRM L8 — Kiến trúc thực tế từ mã nguồn</text>
+
+  <rect x="45" y="85" width="190" height="92" class="box" fill="#dbeafe"/>
+  <text x="140" y="120" text-anchor="middle" class="title">Browser</text>
+  <text x="140" y="148" text-anchor="middle" class="text">React + Vite</text>
+  <text x="140" y="168" text-anchor="middle" class="small">src/frontend/src</text>
+
+  <rect x="315" y="75" width="330" height="340" class="box" fill="#dcfce7"/>
+  <text x="480" y="110" text-anchor="middle" class="title">web container</text>
+  <text x="480" y="137" text-anchor="middle" class="text">Nginx :80</text>
+  <text x="480" y="172" text-anchor="middle" class="text">static React bundle</text>
+  <text x="480" y="205" text-anchor="middle" class="text">/api/* reverse proxy</text>
+  <text x="480" y="250" text-anchor="middle" class="small">deploy/nginx.conf</text>
+  <text x="480" y="285" text-anchor="middle" class="small">Dockerfile target: web</text>
+  <text x="480" y="340" text-anchor="middle" class="small">SPA fallback /index.html</text>
+
+  <rect x="725" y="75" width="430" height="510" class="box" fill="#fef3c7"/>
+  <text x="940" y="110" text-anchor="middle" class="title">api container</text>
+  <text x="940" y="137" text-anchor="middle" class="text">Node.js HTTP server :3000</text>
+  <rect x="755" y="165" width="370" height="78" class="box" fill="#fff"/>
+  <text x="940" y="195" text-anchor="middle" class="text">routes + auth + error boundary</text>
+  <text x="940" y="220" text-anchor="middle" class="small">src/backend/server.js, routes/</text>
+  <rect x="755" y="270" width="370" height="78" class="box" fill="#fff"/>
+  <text x="940" y="300" text-anchor="middle" class="text">validators + survey services</text>
+  <text x="940" y="325" text-anchor="middle" class="small">validators/, services/</text>
+  <rect x="755" y="375" width="370" height="78" class="box" fill="#fff"/>
+  <text x="940" y="405" text-anchor="middle" class="text">repositories + contracts</text>
+  <text x="940" y="430" text-anchor="middle" class="small">SQLite + snake/camel mapping</text>
+  <text x="940" y="500" text-anchor="middle" class="small">migrate → seed → server</text>
+  <text x="940" y="525" text-anchor="middle" class="small">Docker healthcheck /api/health</text>
+
+  <rect x="725" y="635" width="430" height="78" class="box" fill="#e0e7ff"/>
+  <text x="940" y="667" text-anchor="middle" class="title">sqlite_data volume</text>
+  <text x="940" y="693" text-anchor="middle" class="text">/app/data/smartcrm.sqlite</text>
+
+  <path d="M235 130 H315" class="arrow"/>
+  <text x="275" y="118" text-anchor="middle" class="small">HTTP</text>
+  <path d="M645 205 H725" class="arrow"/>
+  <text x="685" y="193" text-anchor="middle" class="small">/api proxy</text>
+  <path d="M940 585 V635" class="arrow"/>
+  <text x="965" y="615" class="small">read/write</text>
+
+  <rect x="45" y="250" width="190" height="175" class="box" fill="#f1f5f9"/>
+  <text x="140" y="280" text-anchor="middle" class="title">Local mode</text>
+  <text x="140" y="310" text-anchor="middle" class="small">Vite :5173</text>
+  <text x="140" y="335" text-anchor="middle" class="small">proxy /api</text>
+  <text x="140" y="360" text-anchor="middle" class="small">→ APP_PORT</text>
+  <text x="140" y="397" text-anchor="middle" class="small">npm run dev</text>
+  <path d="M235 335 H300" class="arrow dashed"/>
+
+  <rect x="45" y="500" width="545" height="190" class="box" fill="#ffffff"/>
+  <text x="70" y="535" class="title">Chú thích</text>
+  <text x="70" y="570" class="text">• Khối xanh lá/vàng: container hoặc lớp runtime.</text>
+  <text x="70" y="600" class="text">• Khối xanh dương: client hoặc vùng dữ liệu bền vững.</text>
+  <text x="70" y="630" class="text">• Mũi tên liền: HTTP/proxy; mũi tên nét đứt: local proxy.</text>
+  <text x="70" y="660" class="text">• SQLite embedded, không có database container riêng.</text>
+</svg>
