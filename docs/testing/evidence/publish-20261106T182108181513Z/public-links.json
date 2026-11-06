@@ -1,0 +1,513 @@
+{
+  "checkedUTC": "2026-11-06T18:31:51.839102+00:00",
+  "checks": [
+    {
+      "path": "database/migrations/001.sql",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/database/migrations/001.sql",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/ai-disclosure.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/ai-disclosure.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/api-contract.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/api-contract.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/bug-log.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/bug-log.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/clone-and-run-v0.2.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/clone-and-run-v0.2.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2",
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/tree/main/docs/evidence/bt2",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/evidence-audit.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/evidence-audit.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/latest-test-output.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/latest-test-output.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/smartcrm-bt2-runtime-1793303619791/compose.log",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/smartcrm-bt2-runtime-1793303619791/compose.log",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/smartcrm-bt2-runtime-1793303619791/final-containers.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/smartcrm-bt2-runtime-1793303619791/final-containers.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/smartcrm-bt2-runtime-1793303619791/results.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/smartcrm-bt2-runtime-1793303619791/results.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/smartcrm-bt2-runtime-1793305395728/responsive.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/smartcrm-bt2-runtime-1793305395728/responsive.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/smartcrm-bt2-runtime-1793305395728/results.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/smartcrm-bt2-runtime-1793305395728/results.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/templates-responsive/after.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/templates-responsive/after.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/evidence/bt2/templates-responsive/before.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/evidence/bt2/templates-responsive/before.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/export/architecture.svg",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/export/architecture.svg",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/screenshots",
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/tree/main/docs/screenshots",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/screenshots/BUG-14-03-fixed.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/BUG-14-03-fixed.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-01.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-01.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-02.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-02.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-03.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-03.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-04.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-04.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-05.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-05.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-06.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-06.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-07.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-07.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-08.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-08.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-09.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-09.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-10.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-10.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-11.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-11.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/screenshots/TC-12.png",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/screenshots/TC-12.png",
+      "status": 200,
+      "authenticated": false,
+      "sha256MatchesLocal": true
+    },
+    {
+      "path": "docs/srs.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/srs.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/buoi14-bug-log.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/buoi14-bug-log.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/buoi14-test-plan.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/buoi14-test-plan.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/buoi14-test-report.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/buoi14-test-report.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence",
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/tree/main/docs/testing/evidence",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/after-fixes.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/after-fixes.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/baseline-tests.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/baseline-tests.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/before-fixes.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/before-fixes.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-before-20261106T173834968701Z/reproduce-1.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-before-20261106T173834968701Z/reproduce-1.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-before-20261106T173834968701Z/reproduce-2.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-before-20261106T173834968701Z/reproduce-2.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z",
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/tree/main/docs/testing/evidence/bug14-03-fix-20261106T175309250796Z",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/after.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/after.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/all-bug-regressions.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/all-bug-regressions.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/before.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/before.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-elevated.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-elevated.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-sandbox.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-sandbox.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-status.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-status.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/deep-review-20261106T174341298331Z/deep-cases-public.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/deep-review-20261106T174341298331Z/deep-cases-public.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/npm-ci.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/npm-ci.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/publish-20261106T182108181513Z",
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/tree/main/docs/testing/evidence/publish-20261106T182108181513Z",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/publish-20261106T182108181513Z/bug14-01.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/publish-20261106T182108181513Z/bug14-01.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/publish-20261106T182108181513Z/bug14-02.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/publish-20261106T182108181513Z/bug14-02.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/publish-20261106T182108181513Z/bug14-03.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/publish-20261106T182108181513Z/bug14-03.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/publish-20261106T182108181513Z/build-elevated.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/publish-20261106T182108181513Z/build-elevated.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/publish-20261106T182108181513Z/full-suite.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/publish-20261106T182108181513Z/full-suite.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/screenshot-review-20261106T172858877593Z/04-all-tests.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/screenshot-review-20261106T172858877593Z/04-all-tests.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/screenshot-review-20261106T172858877593Z/commit-stages.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/screenshot-review-20261106T172858877593Z/commit-stages.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/screenshot-review-20261106T172858877593Z/screenshots.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/screenshot-review-20261106T172858877593Z/screenshots.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/supplemental",
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/tree/main/docs/testing/evidence/supplemental",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-01.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-01.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-02.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-02.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-03.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-03.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-04.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-04.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-05.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-05.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-06.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-06.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-07.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-07.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-08.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-08.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-09.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-09.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-10.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-10.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-11.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-11.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/TC-12.txt",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/TC-12.txt",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/testing/evidence/test-cases/cases.json",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/testing/evidence/test-cases/cases.json",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "path": "docs/thay-doi-thiet-ke.md",
+      "url": "https://raw.githubusercontent.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/main/docs/thay-doi-thiet-ke.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commits/main",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/blob/main/docs/thay-doi-thiet-ke.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/blob/main/docs/testing/buoi14-test-plan.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/blob/main/docs/testing/buoi14-test-report.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/blob/main/docs/testing/buoi14-bug-log.md",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/29b56582cf6facb06a706c1ab34cfdf6a4a512df",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/559437df380649e3f99ead6dc542b59aa335c45d",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/4e95e3f4ccbc2eb6f6ebf2acbd56c221d1d47d5d",
+      "status": 200,
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/8626c9310240d79d968916f4670ba3bcb8350cec",
+      "status": 200,
+      "authenticated": false
+    }
+  ],
+  "failed": []
+}

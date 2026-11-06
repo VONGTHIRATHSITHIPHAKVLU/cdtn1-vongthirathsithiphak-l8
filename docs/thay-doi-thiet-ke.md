@@ -11,8 +11,8 @@ Nguồn đã đọc: PDF Buổi 13 (35 trang) và Buổi 14 (12 trang) do sinh v
 | Test cần biên, dữ liệu sai, bảo mật, tái lập | BỔ SUNG 12 ca theo 7 unit/3 integration/2 API, giữ bộ cũ 20 ca | Báo cáo và raw tại docs/testing/ |
 | Ghi rõ quyết định từng phản hồi BT2 | Chưa nhận phản hồi cá nhân gốc; không coi các ví dụ chung trong slide là lỗi của repo | Cần sinh viên bổ sung phản hồi để đối chiếu từng mục còn thiếu |
 | AC Given–When–Then BT1 | SRS hiện tại có US và ngoại lệ, không có nguyên văn bảng AC gốc | Truy vết theo US/luồng/contract; chưa xác nhận toàn bộ AC BT1 |
-| Mỗi bug phải commit riêng | Đã tách ba commit bug local, service được stage riêng từng hunk ID=0 và kiểm tên trùng | Hash/link trong Bug Log; đang xác minh push/PUBLIC, không đổi tag v0.2 |
-| Số bug và ảnh thật | Cập nhật 07/11/2026: đã sửa ba bug thật; có 12 ảnh TC và BUG-14-03-fixed, đã mở đối chiếu PASS | Full suite 40/40; còn thiếu phản hồi cá nhân BT2/AC gốc và xác minh Actions |
+| Mỗi bug phải commit riêng | Đã tách ba commit bug local, service được stage riêng từng hunk ID=0 và kiểm tên trùng | Hash/link trong Bug Log; đã push, repo PUBLIC và link HTTP 200 không đăng nhập, không đổi tag v0.2 |
+| Số bug và ảnh thật | Cập nhật 07/11/2026: đã sửa ba bug thật; có 12 ảnh TC và BUG-14-03-fixed, đã mở đối chiếu PASS | Full suite 40/40; còn thiếu phản hồi cá nhân BT2/AC gốc; Actions đã success |
 
 ### TD-15 Sửa lỗi thực nghiệm Buổi 14
 
