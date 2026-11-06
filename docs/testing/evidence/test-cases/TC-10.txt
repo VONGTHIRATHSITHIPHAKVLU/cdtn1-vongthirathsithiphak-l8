@@ -1,0 +1,13 @@
+Command: node --test --test-name-pattern=^TC-10  tests/buoi14.test.js
+Started UTC: 2026-11-06T17:22:53.249Z
+Exit: 0
+✔ TC-10 integration: unique tokens, invalid token and one response transaction (8.0583ms)
+ℹ {"uniqueTokens":true,"invalidToken":"NOT_FOUND","duplicate":"ALREADY_ANSWERED","before":{"survey_template":1,"survey_invitation":2,"response":0,"survey_log":2},"after":{"survey_template":1,"survey_invitation":2,"response":1,"survey_log":3},"csat":100}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 119.4169

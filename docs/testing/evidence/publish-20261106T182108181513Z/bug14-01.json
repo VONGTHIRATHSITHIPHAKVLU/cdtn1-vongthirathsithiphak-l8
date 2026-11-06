@@ -1,0 +1,10 @@
+{
+  "commit": "29b56582cf6facb06a706c1ab34cfdf6a4a512df",
+  "files": [
+    "docs/screenshots/TC-11.png",
+    "docs/testing/evidence/test-cases/TC-11.txt",
+    "src/backend/services/survey.service.js",
+    "tests/buoi14-bug01.test.js"
+  ],
+  "testExit": 0
+}

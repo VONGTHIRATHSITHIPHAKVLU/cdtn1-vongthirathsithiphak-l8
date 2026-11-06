@@ -1,0 +1,13 @@
+Command: node --test --test-name-pattern=^TC-02  tests/buoi14.test.js
+Started UTC: 2026-11-06T17:09:39.598Z
+Exit: 0
+✔ TC-02 unit: CSAT lower boundary 1 accepted (3.2195ms)
+ℹ {"score":1,"comment":null}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 189.5408

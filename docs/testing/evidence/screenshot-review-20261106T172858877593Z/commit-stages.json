@@ -1,0 +1,18 @@
+[
+  {
+    "stage": "01-test-foundation",
+    "exit": 0
+  },
+  {
+    "stage": "02-bug14-01",
+    "exit": 0
+  },
+  {
+    "stage": "03-bug14-02",
+    "exit": 0
+  },
+  {
+    "stage": "04-all-tests",
+    "exit": 0
+  }
+]

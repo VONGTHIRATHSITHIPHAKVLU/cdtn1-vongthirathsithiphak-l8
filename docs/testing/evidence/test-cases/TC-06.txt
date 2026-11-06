@@ -1,0 +1,13 @@
+Command: node --test --test-name-pattern=^TC-06  tests/buoi14.test.js
+Started UTC: 2026-11-06T17:18:13.777Z
+Exit: 0
+✔ TC-06 unit: expiry instant blocked with fake clock and repo (2.0449ms)
+ℹ {"now":"2026-11-06T00:00:00.000Z","expiresAt":"2026-11-06T00:00:00.000Z","error":"EXPIRED"}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 112.9745

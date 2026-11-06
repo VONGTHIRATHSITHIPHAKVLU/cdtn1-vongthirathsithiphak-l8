@@ -1,0 +1,103 @@
+{
+  "citations": [
+    {
+      "file": "docs/srs.md",
+      "line": 7,
+      "quote": "Khách hàng mở token và trả lời; nhân viên CSKH tạo lời mời; Quản lý quản lý mẫu và theo dõi kết quả; Scheduler kích hoạt sau hoàn tất trong thiết kế đích. Prototype hiện dùng một tài khoản demo Quản lý; chưa có scheduler hay phân quyền theo trung tâm."
+    },
+    {
+      "file": "docs/api-contract.md",
+      "line": 9,
+      "quote": "| GET | `/api/survey-templates` | Bearer | 200 mảng template |"
+    },
+    {
+      "file": "docs/api-contract.md",
+      "line": 25,
+      "quote": "- Invitation: `{supportRequestId:string,customerId:positiveInteger,templateId:positiveInteger,channel:\"EMAIL\"|\"SMS\"}`. Request code tham chiếu đúng khách hàng, trạng thái COMPLETED. Kiểm tra liên hệ và opt-out."
+    },
+    {
+      "file": "docs/api-contract.md",
+      "line": 26,
+      "quote": "- Response: `{score:integer,comment?:string(0..500)}`. CSAT 1..5, NPS 0..10. Mẫu không cho nhận xét sẽ từ chối nhận xét khác rỗng."
+    },
+    {
+      "file": "docs/api-contract.md",
+      "line": 45,
+      "quote": "| 409 | TEMPLATE_NAME_EXISTS, TEMPLATE_IN_USE, INVITATION_EXISTS, CUSTOMER_OPTED_OUT, EXPIRED, ALREADY_ANSWERED | Hiển thị thông báo nghiệp vụ |"
+    },
+    {
+      "file": "docs/srs.md",
+      "line": 25,
+      "quote": "Điều kiện trước: yêu cầu COMPLETED, lời mời đã tạo, chưa phản hồi, thời điểm hiện tại < expiresAt."
+    },
+    {
+      "file": "docs/srs.md",
+      "line": 31,
+      "quote": "5. API kiểm tra số nguyên và giới hạn, lưu phản hồi, cập nhật ANSWERED, ghi log trong một transaction."
+    },
+    {
+      "file": "src/backend/routes/api.js",
+      "line": 27,
+      "quote": "const token = authorization?.replace(/^Bearer /,''), session=sessions.get(token);"
+    },
+    {
+      "file": "src/backend/services/survey.service.js",
+      "line": 44,
+      "quote": "invite(body, actor) {"
+    },
+    {
+      "file": "src/backend/services/survey.service.js",
+      "line": 62,
+      "quote": "if (invitation.status !== 'SENT' || invitation.expires_at <= this.now().toISOString()) throw new AppError('EXPIRED','Khảo sát đã hết hạn');"
+    },
+    {
+      "file": "src/backend/services/survey.service.js",
+      "line": 69,
+      "quote": "respond(token, body) {"
+    },
+    {
+      "file": "src/backend/services/survey.service.js",
+      "line": 16,
+      "quote": "if (this.repo.templates().some(t => t.template_id !== id && t.name.toLowerCase() === input.name.toLowerCase())) throw new AppError('TEMPLATE_NAME_EXISTS','Tên mẫu đã tồn tại');"
+    },
+    {
+      "file": "src/backend/services/survey.service.js",
+      "line": 14,
+      "quote": "if (this.repo.usedTemplate(id)) throw new AppError('TEMPLATE_IN_USE','Không sửa mẫu đã dùng; hãy tạo mẫu mới');"
+    },
+    {
+      "file": "src/backend/repositories/survey.repository.js",
+      "line": 3,
+      "quote": "transaction(work) {"
+    },
+    {
+      "file": "src/backend/repositories/survey.repository.js",
+      "line": 6,
+      "quote": "catch (error) { this.db.exec('ROLLBACK'); throw error; }"
+    },
+    {
+      "file": "src/backend/validators/survey.js",
+      "line": 18,
+      "quote": "if (!Number.isInteger(body.score) || body.score < min || body.score > max) invalid('score', `Điểm phải từ ${min} đến ${max}`);"
+    },
+    {
+      "file": "database/migrations/001.sql",
+      "line": 12,
+      "quote": "template_id INTEGER PRIMARY KEY, name TEXT NOT NULL COLLATE NOCASE UNIQUE,"
+    },
+    {
+      "file": "docs/srs.md",
+      "line": 34,
+      "quote": "Ngoại lệ: token sai 404; hết hạn 409 EXPIRED; trả lời lần hai 409 ALREADY_ANSWERED; điểm sai 400 và không lưu; mất kết nối hiển thị lỗi có Thử lại. Mẫu đã dùng không chỉnh sửa, tránh đổi thang điểm của phản hồi lịch sử."
+    },
+    {
+      "file": "docs/api-contract.md",
+      "line": 64,
+      "quote": "PUT không đổi token/mẫu/yêu cầu/expiresAt; DELETE xóa log liên quan trong cùng transaction. Token bị xóa trả 404. Không ghi log HTTP chứa token/body/header. Mẫu khảo sát và lời mời là hai thực thể CRUD; response giữ bất biến."
+    }
+  ],
+  "acceptanceCriteriaOriginal": "Not present; current SRS and API contract used; no AC identifiers invented",
+  "realNonManagerRole": "NOT RUN: not implemented",
+  "concurrencyScope": "20 pairs against one Node HTTP server per fresh fixture; not multi-process",
+  "injectedFailureScope": "TEMP SQLite triggers in isolated memory only; no application code modifications, not counted as product bugs"
+}

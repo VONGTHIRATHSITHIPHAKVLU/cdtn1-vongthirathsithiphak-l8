@@ -1,0 +1,19 @@
+Command: node --test docs\testing\evidence\run-2026-11-06T16-56-01-882Z-10048\nps-expiry-probes.mjs
+Exit: 0
+✔ PROBE-04: NPS invalid values and comment types preserve SQLite (98.3463ms)
+ℹ {"input":{"score":-1},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 0 đến 10","fields":{"score":"Điểm phải từ 0 đến 10"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"statusAfter":"SENT"}
+ℹ {"input":{"score":11},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 0 đến 10","fields":{"score":"Điểm phải từ 0 đến 10"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"statusAfter":"SENT"}
+ℹ {"input":{"score":"10"},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 0 đến 10","fields":{"score":"Điểm phải từ 0 đến 10"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"statusAfter":"SENT"}
+ℹ {"input":{"score":5,"comment":42},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Nhận xét tối đa 500 ký tự","fields":{"comment":"Nhận xét tối đa 500 ký tự"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"statusAfter":"SENT"}
+ℹ {"input":{"score":5,"comment":null},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Nhận xét tối đa 500 ký tự","fields":{"comment":"Nhận xét tối đa 500 ký tự"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"statusAfter":"SENT"}
+✔ PROBE-05: expired invitation cannot be updated or answered (23.0764ms)
+ℹ {"operation":"INVITATION_LOCKED","status":409,"response":{"error":"INVITATION_LOCKED","message":"Chỉ sửa lời mời đang chờ phản hồi","fields":{}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1}}
+ℹ {"operation":"EXPIRED","status":409,"response":{"error":"EXPIRED","message":"Khảo sát đã hết hạn","fields":{}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1}}
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 329.8979

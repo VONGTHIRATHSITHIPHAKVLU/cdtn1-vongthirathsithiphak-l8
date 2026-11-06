@@ -1,0 +1,15 @@
+Command: node --test --test-name-pattern=^(?:TC-05 |HTTP-05 ) tests/buoi14.test.js tests/buoi14-http-validation.test.js
+Started UTC: 2026-11-06T17:15:52.189Z
+Exit: 0
+✔ HTTP-05 supplements TC-05: empty name returns 400 without SQLite writes (44.2194ms)
+ℹ {"method":"POST","path":"/api/survey-templates","input":{"name":"","type":"CSAT","question":"Bạn hài lòng thế nào?","allowComment":true},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Tên mẫu phải từ 3–100 ký tự","fields":{"name":"Tên mẫu phải từ 3–100 ký tự"}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+✔ TC-05 unit: required template name rejected (1.1941ms)
+ℹ {"error":"VALIDATION_ERROR","fields":{"name":"Tên mẫu phải từ 3–100 ký tự"}}
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 192.0079

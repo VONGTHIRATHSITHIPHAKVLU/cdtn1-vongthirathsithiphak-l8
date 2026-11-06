@@ -1,0 +1,29 @@
+Command: node --test docs\testing\evidence\run-2026-11-06T16-52-13-676Z-8320\extra-exceptions.mjs
+Exit: 0
+✔ PROBE-01: template field partitions and case-insensitive duplicate do not write (60.8163ms)
+ℹ {"field":"name","status":400,"response":{"error":"VALIDATION_ERROR","message":"Tên mẫu phải từ 3–100 ký tự","fields":{"name":"Tên mẫu phải từ 3–100 ký tự"}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"field":"name","status":400,"response":{"error":"VALIDATION_ERROR","message":"Tên mẫu phải từ 3–100 ký tự","fields":{"name":"Tên mẫu phải từ 3–100 ký tự"}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"field":"type","status":400,"response":{"error":"VALIDATION_ERROR","message":"Chỉ nhận CSAT hoặc NPS","fields":{"type":"Chỉ nhận CSAT hoặc NPS"}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"field":"question","status":400,"response":{"error":"VALIDATION_ERROR","message":"Câu hỏi phải từ 10–300 ký tự","fields":{"question":"Câu hỏi phải từ 10–300 ký tự"}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"field":"allowComment","status":400,"response":{"error":"VALIDATION_ERROR","message":"Giá trị phải là boolean","fields":{"allowComment":"Giá trị phải là boolean"}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"duplicateName":true,"status":409,"response":{"error":"TEMPLATE_NAME_EXISTS","message":"Tên mẫu đã tồn tại","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+✔ PROBE-02: invalid score partitions and disabled comment roll back (22.3141ms)
+ℹ {"input":{"score":-1},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"invitationStatus":"SENT"}
+ℹ {"input":{"score":6},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"invitationStatus":"SENT"}
+ℹ {"input":{"score":null},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"invitationStatus":"SENT"}
+ℹ {"input":{"score":2.5},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"invitationStatus":"SENT"}
+ℹ {"input":{"score":{}},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"invitationStatus":"SENT"}
+ℹ {"input":{"score":[]},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"invitationStatus":"SENT"}
+ℹ {"input":{"score":4,"comment":"Not allowed"},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Mẫu này không nhận nhận xét","fields":{"comment":"Mẫu này không nhận nhận xét"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"invitationStatus":"SENT"}
+✔ PROBE-03: used template mutation and deleted survey token are blocked (11.288ms)
+ℹ {"method":"PUT","status":409,"response":{"error":"TEMPLATE_IN_USE","message":"Không sửa mẫu đã dùng; hãy tạo mẫu mới","fields":{}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1}}
+ℹ {"method":"DELETE","status":409,"response":{"error":"TEMPLATE_IN_USE","message":"Mẫu đã được sử dụng","fields":{}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1}}
+ℹ {"deletedToken":true,"status":404,"response":{"error":"NOT_FOUND","message":"Không tìm thấy dữ liệu","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 220.1

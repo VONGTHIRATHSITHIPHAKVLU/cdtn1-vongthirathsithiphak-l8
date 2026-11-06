@@ -1,5 +1,13 @@
 # SmartCRM L8 — Khảo sát hài lòng CSAT / NPS
 
+Kiểm thử Buổi 14: [Test Plan](docs/testing/buoi14-test-plan.md),
+[12 test case và kết quả thật](docs/testing/buoi14-test-report.md),
+[Bug Log](docs/testing/buoi14-bug-log.md), [12 ảnh TC đã kiểm tra](docs/screenshots/).
+Chạy từng ca độc lập: `node scripts/test-buoi14.js TC-01` (đến `TC-12`);
+chạy toàn bộ 12 ca và lưu raw evidence: `node scripts/test-buoi14.js`.
+`npm.cmd test` chạy cả bộ cũ lẫn mới. Chưa commit/push các thay đổi Buổi 14;
+không chạy script xuất PDF BT2 khi thực hiện workshop này.
+
 Track SE · VONGTHIRATH SITHIPHAK · MSSV 237480201IS04 · Lớp 261_71ITGR40203_03.
 
 ## 1. Phạm vi
@@ -80,7 +88,7 @@ Các lớp trong API: `routes` (HTTP + xác thực demo) → `validators`/`servi
 duy nhất trong `src/frontend/src/api/`; migration/seed nằm trong `scripts/`;
 test nghiệp vụ và HTTP nằm trong `tests/`.
 
-[API](docs/api-contract.md) · [SRS](docs/srs.md) · [Kiểm chứng BT2](docs/buoi-11-12.md) · [DDL](database/migrations/001.sql).
+[API](docs/api-contract.md) · [SRS](docs/srs.md) · [Minh chứng BT2](docs/evidence/bt2/evidence-audit.md) · [DDL](database/migrations/001.sql).
 
 ## 5. Quy tắc và giới hạn
 
@@ -110,7 +118,7 @@ test nghiệp vụ và HTTP nằm trong `tests/`.
 - [ ] Peer review bởi sinh viên khác; commit/push theo từng đơn vị công việc, đối chiếu số commit yêu cầu.
 - [ ] Cập nhật sơ đồ `.drawio` gốc, bìa và đổi tên repo GitHub theo TD-03/05/07.
 
-Trạng thái kiểm chứng và việc còn lại: [biên bản BT2](docs/buoi-11-12.md).
+Trạng thái kiểm chứng và việc còn lại: [kiểm kê minh chứng BT2](docs/evidence/bt2/evidence-audit.md).
 
 ## 7. Docker Compose (buổi 11)
 
@@ -168,9 +176,9 @@ Kết quả runtime Docker: [results.json](docs/evidence/bt2/smartcrm-bt2-runtim
 
 ## 8. Chuẩn bị nộp BT2
 
-[Checklist và demo 3 phút](docs/buoi-11-12.md) · [Bug Log](docs/bug-log.md) · [Khai báo AI](docs/ai-disclosure.md).
+[Kiểm kê minh chứng BT2](docs/evidence/bt2/evidence-audit.md) · [Bug Log](docs/bug-log.md) · [Khai báo AI](docs/ai-disclosure.md).
 
-Báo cáo chuẩn bị: [PDF 8 trang](docs/BT2_237480201IS04_VONGTHIRATH_SITHIPHAK.pdf), [nguồn HTML báo cáo](docs/BT2_237480201IS04_VONGTHIRATH_SITHIPHAK.html), [ảnh chạy thật](docs/evidence/bt2/). Muốn xuất lại sau khi sửa HTML, cần Chrome và công cụ tạm (không phải dependency của ứng dụng):
+Báo cáo chuẩn bị: PDF BT2 `docs/BT2_237480201IS04_VONGTHIRATH_SITHIPHAK.pdf` (không có trong checkout hiện tại, chưa cung cấp link công khai), nguồn HTML báo cáo `docs/BT2_237480201IS04_VONGTHIRATH_SITHIPHAK.html` (không có trong checkout), [ảnh chạy thật](docs/evidence/bt2/). Muốn xuất lại sau khi sửa HTML, cần Chrome và công cụ tạm (không phải dependency của ứng dụng):
 
 ```powershell
 npm.cmd install --prefix .tmp/tools --no-package-lock --no-save playwright
@@ -185,4 +193,152 @@ Kiểm tra báo cáo PDF, tên lớp trên bìa, ảnh minh chứng và mã ngu�
 
 Mã lớp đã xác nhận: **261_71ITGR40203_03**. Thông tin nộp còn thiếu: xác nhận URL remote hiện tại và chênh lệch MSSV trong tên repo (`237480210is04`) với MSSV đúng (`237480201IS04`); commit/link sửa lỗi; tag v0.2 local/remote; repo public; clone-and-run theo tag; sinh viên tự kiểm khai báo AI; xác nhận nộp E-learning. Xem [kiểm kê minh chứng](docs/evidence/bt2/evidence-audit.md).
 
-Checklist theo ba PDF và giới hạn: [bt2-checklist.md](docs/bt2-checklist.md). C1 sau push: [clone-and-run-v0.2.md](docs/clone-and-run-v0.2.md); chưa PASS trước khi clone thật. PostgreSQL trong PDF là mẫu triển khai; chấp thuận SQLite khi chấm sát mẫu cần giảng viên xác nhận.
+Checklist theo ba PDF và giới hạn: [kiểm kê BT2](docs/evidence/bt2/evidence-audit.md). C1 sau push: [clone-and-run-v0.2.md](docs/clone-and-run-v0.2.md); chưa PASS trước khi clone thật. PostgreSQL trong PDF là mẫu triển khai; chấp thuận SQLite khi chấm sát mẫu cần giảng viên xác nhận.
+
+## 9. Buổi 14 – Workshop kiểm thử hệ thống SmartCRM L8
+
+VONGTHIRATH SITHIPHAK · MSSV 237480201IS04 · Track SE · Luồng L8.
+Nội dung tổng hợp từ hồ sơ kiểm thử ngày **06/11/2026**, đối chiếu PDF Buổi 13 và Buổi 14. Đã bổ sung và chạy lại HTTP validation cùng full suite; bằng chứng mới lưu riêng, giữ nguyên các lần chạy cũ. Build/CI được phân biệt với kết quả lịch sử.
+
+**Trạng thái: đã sửa và kiểm thử lại cả 3 bug thật, nhưng CHƯA HOÀN THÀNH toàn bộ checklist Buổi 14.** BUG-14-01/02/03 đều FIXED local, đã commit local riêng, chờ xác minh công khai. Full suite mới **40 PASS / 0 FAIL / 0 NOT RUN** ([raw](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt)); đã có 12 screenshot TC. Còn thiếu commit/link mở được, đối chiếu phản hồi BT2/AC gốc và xác nhận Actions.
+
+### 9.1. Mục tiêu và phạm vi kiểm thử
+
+Kiểm chứng hệ thống khảo sát CSAT/NPS sau hỗ trợ: quản lý mẫu → mời khách sau khi yêu cầu hoàn tất → phản hồi qua token → tổng hợp báo cáo. Nguồn truy vết: SRS US1–5/7, ngoại lệ use case trả lời khảo sát, API contract, quy tắc trong README và bug log BT2.
+
+Các chức năng/quy tắc được kiểm trong bộ mới và bộ cũ:
+
+- Mẫu hợp lệ, chuẩn hóa tên, kiểm trường bắt buộc; mẫu đã dùng không sửa/xóa.
+- Chỉ mời yêu cầu `COMPLETED`, đúng khách hàng, có liên hệ, không opt-out; mỗi yêu cầu một lời mời.
+- Token riêng, dùng một lần, hạn 14 ngày; chặn token sai, đúng thời điểm hết hạn và trả lời lần hai.
+- CSAT là số nguyên 1–5, NPS 0–10; kiểm sai kiểu, ngoài miền, nhận xét 500/501 ký tự. CSAT tiêu cực ≤2, NPS tiêu cực ≤6.
+- Lưu phản hồi, trạng thái `ANSWERED` và log trong transaction; thao tác thất bại không thêm dữ liệu.
+- CSAT% dùng điểm 4–5 trên tổng phản hồi CSAT; NPS dùng tỷ lệ điểm 9–10 trừ tỷ lệ điểm 0–6, không trộn mẫu số; kiểm tổng số và số tiêu cực.
+- Migration/seed lặp không nhân đôi; CRUD lời mời, xác thực HTTP và lỗi trong bộ cũ; hồi quy ID=0 và UTF-8 bị chia chunk trong bộ mới.
+
+**Chủ ý không kiểm:** EMAIL/SMS thật, scheduler, nhắc lại, phân quyền trung tâm, xuất file, workflow xử lý tiêu cực vì chưa hiện thực; acceptance bởi người dùng, tải đồng thời, penetration test, đa trình duyệt, Docker runtime/máy trắng mới. Evidence Docker BT2 ở phần trước là lịch sử riêng.
+
+SRS hiện có US và ngoại lệ, chưa có bảng AC Given–When–Then BT1 gốc hoặc phản hồi cá nhân BT2 đầy đủ; chưa xác nhận bao phủ toàn bộ những tài liệu chưa được cung cấp.
+
+### 9.2. Test Plan — bốn mục
+
+1. **Phạm vi và phần không kiểm:** luồng CSAT/NPS, ngoại lệ, validation, token, SQLite, tổng hợp và tái lập như mục 9.1; giữ các giới hạn kiểm thử đã công bố.
+2. **Loại test và phân bố:** Nền ban đầu: **7 unit (TC-01–07), 3 integration (TC-08–10), 2 system/API (TC-11–12)**; giữ nguyên 12 test này và bổ sung 2 test HTTP cho TC-04/05. Vì vậy hai mã TC này có kiểm ở cả unit và HTTP. Tổng test tự động phục vụ 12 mã TC là **14 = 7 unit + 3 integration + 4 HTTP/API**. Unit tách CSDL/mạng, dùng repo giả và đồng hồ tiêm; integration dùng SQLite và thành phần thật; API chạy HTTP server thật. Phân vùng tương đương theo điểm hợp lệ/ngoài miền/sai kiểu, tên hợp lệ/rỗng, yêu cầu COMPLETED/OPEN, token hợp lệ/sai/đã dùng. Phân tích giá trị biên: CSAT=1 và CSAT=0 ở hai bên ngưỡng dưới 1; đúng thời điểm token hết hạn. Đủ năm loại: luồng đúng, biên, dữ liệu sai, bảo mật/chất lượng dữ liệu, tái lập.
+3. **Tiêu chí thành công đo được:** giá trị/error và tác dụng phụ phải khớp hoàn toàn. TC-11: 404 NOT_FOUND, mẫu 1→1; TC-12: 201, response và SQLite giữ đúng tiếng Việt, mẫu 1→2. TC-08 không thêm lời mời/log; TC-10 chỉ một phản hồi, ANSWERED, log 2→3, CSAT=100; TC-09 hai lần cùng [4,4,1,0,0,0]. TC-07 phải CSAT=50, NPS=0, tổng=5, tiêu cực=2. Yêu cầu 12 ca mới và 20 ca cũ PASS, build và diff check exit 0. Thời lượng thật có trong raw; không suy ra đạt NFR 95% API <500ms từ thời gian test.
+4. **Môi trường và dữ liệu:** Windows/PowerShell, Node v24.22.1, npm 11.19.1, React/Vite, Node HTTP thuần, `node:test`, `node:sqlite`. Mỗi ca dựng SQLite `:memory:` mới; TC-09 dùng thư mục tạm mới, migrate/seed hai lần rồi dọn. Dữ liệu synthetic: YC-001 COMPLETED, YC-002 OPEN, khách `test@example.invalid`; đồng hồ `2026-11-06T00:00:00.000Z`. HTTP dùng cổng 0, mật khẩu/phiên trong RAM; không đọc `.env` hoặc database ứng dụng. Từng ca chạy lại độc lập, không dựa vào dữ liệu còn sót.
+
+Chi tiết: [Test Plan Buổi 14](docs/testing/buoi14-test-plan.md).
+
+### 9.3. Test Report — 12 test case, đủ tám cột
+
+Kết quả đã ghi nhận:
+
+| Lần kiểm thử | PASS | FAIL | NOT RUN | Bằng chứng |
+|---|---|---|---|---|
+| Bộ cũ trước bổ sung | 20 | 0 | 0 | [Baseline](docs/testing/evidence/baseline-tests.txt) |
+| 12 ca mới trước sửa | 10 | 2 | 0 | [FAIL-before](docs/testing/evidence/before-fixes.txt) |
+| 12 ca mới sau sửa | 12 | 0 | 0 | [PASS-after](docs/testing/evidence/after-fixes.txt), [mã thoát từng ca](docs/testing/evidence/test-cases/cases.json) |
+| Full suite hiện tại sau cả ba bug | 40 | 0 | 0 | [Full suite](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt) |
+
+12 mã TC tương ứng 14 test tự động vì TC-04/05 có cả unit và HTTP; các test bổ sung và regression đưa toàn suite hiện tại lên 40 test. Evidence được gọn lại: [12 kết quả đúng lần chụp ảnh](docs/testing/evidence/test-cases/cases.json), [trước/sau BUG-14-03 và suite/build mới nhất](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/), [kiểm tra chuyên sâu](docs/testing/evidence/deep-review-20261106T174341298331Z/deep-cases-public.txt). Chỉ loại các lần chạy lặp và metadata thừa; nội dung raw được giữ không bị sửa.
+
+Bảng dưới lấy từ [Test Report chi tiết](docs/testing/buoi14-test-report.md), chuyển đường dẫn evidence để dùng từ README gốc. **F** = SQLite memory mới, 1 mẫu, 1 khách synthetic, YC-001 COMPLETED và YC-002 OPEN, đồng hồ cố định như mục 9.2. TC-04/05 giữ unit cũ và có HTTP bổ sung thật; các unit thuần không thực thi HTTP/SQLite, không gán status giả.
+
+**Screenshot TC-01.png đến TC-12.png: ĐÃ CÓ VÀ ĐÃ KIỂM TRA 12/12 vào 07/11/2026.** Đã mở từng PNG, đúng lệnh/mã TC và PASS; TC-04/05 thấy HTTP 400 và SQLite không đổi, TC-11 thấy 404, TC-12 thấy 201 và tên tiếng Việt đúng. Từng dòng dưới có link ảnh và raw của chính lần chụp; giữ nguyên ảnh gốc. [Kiểm kê ảnh, kích thước và SHA-256](docs/testing/evidence/screenshot-review-20261106T172858877593Z/screenshots.json).
+
+| Mã | Tiền điều kiện | Các bước | Dữ liệu thử | Kết quả mong đợi | Mức ưu tiên | Kết quả thực tế | PASS/FAIL |
+|---|---|---|---|---|---|---|---|
+| TC-01 · Unit · đúng · US1 | Validator độc lập | 1. Gọi templateInput; 2. So toàn bộ object | name=`  Mẫu CSAT  `; type=CSAT; question=`Bạn hài lòng thế nào?`; allowComment=true | Tên trim thành `Mẫu CSAT`, giữ đúng các trường | Cao | Object khớp; HTTP/DB không áp dụng. [Raw](docs/testing/evidence/test-cases/TC-01.txt) [Ảnh](docs/screenshots/TC-01.png) | PASS |
+| TC-02 · Unit · biên · US3 | Template CSAT, allow_comment=1 | 1. Gọi responseInput; 2. So score/comment | score=1 | Nhận `{score:1,comment:null}` | Cao | Nhận đúng 1/null; HTTP/DB không áp dụng. [Raw](docs/testing/evidence/test-cases/TC-02.txt) [Ảnh](docs/screenshots/TC-02.png) | PASS |
+| TC-03 · Unit · biên đối ứng · US3 | Như TC-02 | 1. Gọi responseInput; 2. Kiểm code và field | score=0 | VALIDATION_ERROR, fields.score có thông báo | Cao | VALIDATION_ERROR; score=`Điểm phải từ 1 đến 5`; HTTP/DB không áp dụng. [Raw](docs/testing/evidence/test-cases/TC-03.txt) [Ảnh](docs/screenshots/TC-03.png) | PASS |
+| TC-04 · Unit + HTTP bổ sung · sai kiểu · ngoại lệ UC | Validator cũ và F mới; một lời mời SENT; HTTP server thật | 1. Giữ kiểm validator; 2. POST /api/public/surveys/:token/responses; 3. So status/body, đếm DB và trạng thái | score=`"5"` | HTTP 400; VALIDATION_ERROR; message và fields.score=`Điểm phải từ 1 đến 5`; không ghi dữ liệu, vẫn SENT | Cao | Unit PASS; HTTP 400, body khớp chính xác; [mẫu,mời,response,log]=[1,1,0,1]→[1,1,0,1]; SENT→SENT. [Raw](docs/testing/evidence/test-cases/TC-04.txt) [Ảnh](docs/screenshots/TC-04.png) | PASS |
+| TC-05 · Unit + HTTP bổ sung · tên rỗng · US1 | Validator cũ và F mới; HTTP server thật; đăng nhập demo | 1. Giữ kiểm validator; 2. POST /api/survey-templates; 3. So status/body và SQLite | name=`""`; type=CSAT; question=`Bạn hài lòng thế nào?`; allowComment=true | HTTP 400; VALIDATION_ERROR; message và fields.name=`Tên mẫu phải từ 3–100 ký tự`; DB không đổi | Cao | Unit PASS; HTTP 400, body khớp chính xác; [1,0,0,0]→[1,0,0,0]; không có mẫu tên rỗng. [Raw](docs/testing/evidence/test-cases/TC-05.txt) [Ảnh](docs/screenshots/TC-05.png) | PASS |
+| TC-06 · Unit · biên hết hạn · ngoại lệ UC | Repo giả trả SENT; đồng hồ tiêm | 1. Đặt now=expires_at; 2. publicSurvey | now=expires_at=`2026-11-06T00:00:00.000Z`; token synthetic 32 chữ a | EXPIRED tại đúng hạn | Cao | EXPIRED; HTTP/DB không áp dụng. [Raw](docs/testing/evidence/test-cases/TC-06.txt) [Ảnh](docs/screenshots/TC-06.png) | PASS |
+| TC-07 · Unit · đúng tổng hợp · US4/5 | Repo giả 5 phản hồi, 5 lời mời | 1. summary; 2. So các chỉ số tính tay | CSAT=[4,2]; NPS=[9,6,8]; 2 tiêu cực | CSAT=50; NPS=0; count=5; negative=2 | Cao | Đúng 50/0/5/2; HTTP/DB không áp dụng. [Raw](docs/testing/evidence/test-cases/TC-07.txt) [Ảnh](docs/screenshots/TC-07.png) | PASS |
+| TC-08 · Integration · ngoại lệ · US2 | F mới; YC-002 OPEN | 1. Đếm bảng; 2. invite YC-002; 3. Đếm lại | customerId=1; templateId=1; channel=EMAIL | REQUEST_NOT_COMPLETED; mọi số đếm giữ nguyên | Cao | Code đúng; [mẫu,mời,response,log]=[1,0,0,0]→[1,0,0,0]; HTTP không áp dụng. [Raw](docs/testing/evidence/test-cases/TC-08.txt) [Ảnh](docs/screenshots/TC-08.png) | PASS |
+| TC-09 · Integration · tái lập · đóng gói | Thư mục SQLite tạm mới | 1. Chạy migrate+seed; 2. Đếm; 3. Lặp; 4. So đếm | DB_PATH riêng, seed demo của scripts/seed.js | Hai lần exit 0; [customer,request,template,invitation,response,log]=[4,4,1,0,0,0] | Cao | Hai lần cùng [4,4,1,0,0,0], không nhân đôi; HTTP không áp dụng. [Raw](docs/testing/evidence/test-cases/TC-09.txt) [Ảnh](docs/screenshots/TC-09.png) | PASS |
+| TC-10 · Integration · đúng + bảo mật · US2/3/4 | F mới; đổi YC-002 thành COMPLETED | 1. Mời 2 yêu cầu; 2. Gửi token sai; 3. Trả lời token đầu; 4. Gửi lần hai; 5. Đếm và summary | EMAIL, CSAT=5; token sai=`invalid`; lần hai score=4 | Hai token hex32 khác nhau; NOT_FOUND không ghi; một response; lần hai ALREADY_ANSWERED; ANSWERED; CSAT=100 | Cao | Token khác; lỗi đúng; trước [1,2,0,2], sau [1,2,1,3]; ANSWERED; CSAT=100; HTTP không áp dụng. [Raw](docs/testing/evidence/test-cases/TC-10.txt) [Ảnh](docs/screenshots/TC-10.png) | PASS |
+| TC-11 · System/API · sai ID + hồi quy BUG-14-01 · US1 | F + server thật + đăng nhập demo phiên RAM | 1. Login; 2. PUT /api/survey-templates/0; 3. So status/error/DB | name=`Unexpected create`, type=CSAT, question như TC-01 | Login 200; PUT 404 NOT_FOUND, không tạo mẫu | Cao | Trước sửa 200, mẫu 1→2 (FAIL). Sau sửa 404, message=`Không tìm thấy dữ liệu`, fields={}, mẫu 1→1; các bảng khác 0→0. [Raw](docs/testing/evidence/test-cases/TC-11.txt) [Ảnh](docs/screenshots/TC-11.png) | PASS |
+| TC-12 · System/API · chất lượng dữ liệu + hồi quy BUG-14-02 · US1 | F + HTTP thật, phiên RAM | 1. Login; 2. POST /api/survey-templates bằng 2 chunk chia giữa byte chữ ẫ, cách 40ms; 3. So response và SQLite | name=`Mẫu tiếng Việt`, type=CSAT, question như TC-01; raw Buffer UTF-8 | 201; response.name và DB name đúng nguyên văn; mẫu 1→2 | Cao | Trước sửa 201 nhưng tên `M���u tiếng Việt` (FAIL). Sau sửa 201, response và DB đều `Mẫu tiếng Việt`; mẫu 1→2, mời/response/log giữ 0. [Raw](docs/testing/evidence/test-cases/TC-12.txt) [Ảnh](docs/screenshots/TC-12.png) | PASS |
+
+Cột PASS/FAIL là trạng thái sau sửa. TC-11 và TC-12 trước sửa vẫn giữ FAIL trong evidence gốc. Thời lượng từng ca có trong raw output, không phải latency API.
+
+### 9.4. Bug Log — hai bug thật, mỗi bug bảy dòng
+
+Hai lỗi có bằng chứng tái lập trước sửa và chạy lại sau sửa. BUG-01–06 của BT2 là lịch sử, không đếm thành bug mới. Mức Critical dùng rubric Buổi 13 trang 21–22 về dữ liệu bị sai.
+
+#### BUG-14-01
+
+1. **Mã + severity:** BUG-14-01 · **Critical theo rubric Buổi 13 trang 21–22**: thao tác cập nhật một ID không tồn tại lại tạo dữ liệu ngoài ý muốn trong SQLite; rubric xếp dữ liệu bị sai vào Critical, không yêu cầu mất toàn bộ dữ liệu.
+2. **Phát hiện bởi:** rà soát nhánh `if(id)` trong SurveyService và chạy TC-11 ngày 06/11/2026.
+3. **Triệu chứng:** HTTP PUT `/api/survey-templates/0` trả 200 và tạo mẫu id=2, số mẫu 1→2; đúng ra phải 404 và không ghi.
+4. **Tái lập:** F mới, đăng nhập; PUT endpoint trên với `{name:"Unexpected create",type:"CSAT",question:"Bạn hài lòng thế nào?",allowComment:true}`. Chạy `node scripts/test-buoi14.js TC-11`; kết quả mã gốc nằm trong before-fixes.txt, không khôi phục bug để tạo ảnh.
+5. **Nguyên nhân:** `saveTemplate` kiểm truthiness của id; số 0 bị coi là không truyền ID nên bỏ kiểm tồn tại, repository đi nhánh INSERT.
+6. **Cách sửa:** kiểm `id !== undefined` trong service; ID 0 được kiểm tồn tại trước khi repository ghi. Regression riêng: `tests/buoi14-bug01.test.js` kiểm status 404, error NOT_FOUND và toàn bộ số đếm không đổi.
+7. **Commit + xác nhận:** [29b5658](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/29b56582cf6facb06a706c1ab34cfdf6a4a512df) — đã commit local riêng, chờ xác minh sau push. [Raw](docs/testing/evidence/test-cases/TC-11.txt), [ảnh TC-11](docs/screenshots/TC-11.png) chứng minh PASS; cây commit thực tế 31/31 PASS ([log](docs/testing/evidence/publish-20261106T182108181513Z/bug14-01.txt)). Commit chỉ chứa source của bug, regression và ảnh/raw tương ứng.
+
+#### BUG-14-02
+
+1. **Mã + severity:** BUG-14-02 · **Critical theo rubric Buổi 13 trang 21–22**: đầu vào tiếng Việt hợp lệ bị thay đổi và lưu sai vào database; rubric xếp dữ liệu bị sai vào Critical. Đã chứng minh lỗi toàn vẹn dữ liệu, không tuyên bố có lộ dữ liệu hoặc sập hệ thống.
+2. **Phát hiện bởi:** rà soát `text += chunk` trong HTTP body parser và chạy TC-12 ngày 06/11/2026.
+3. **Triệu chứng:** POST mẫu trả 201 nhưng `Mẫu tiếng Việt` thành `M���u tiếng Việt` trong response và SQLite khi chữ ẫ bị chia giữa các chunk.
+4. **Tái lập:** F mới và phiên demo; tạo Buffer JSON của payload TC-12; chia sau byte đầu của chữ ẫ, gửi chunk đầu rồi phần còn lại sau 40ms bằng node:http. Chạy `node scripts/test-buoi14.js TC-12`; raw trước sửa ghi cả inputName, response và stored.
+5. **Nguyên nhân:** nối Buffer vào string giải mã UTF-8 riêng từng chunk; chuỗi byte chưa đủ bị thay bằng U+FFFD trước khi JSON.parse. HTTP chunk không bảo đảm trùng biên ký tự Unicode.
+6. **Cách sửa:** giữ Buffer chunks, đếm byte thật với giới hạn 16384 byte như cũ, concat rồi giải mã UTF-8 một lần. Regression riêng: `tests/buoi14-bug02.test.js`, kiểm 201, response.name và SQLite name bằng chính chuỗi đầu vào.
+7. **Commit + xác nhận:** [559437d](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/559437df380649e3f99ead6dc542b59aa335c45d) — đã commit local riêng, chờ xác minh sau push. [Raw](docs/testing/evidence/test-cases/TC-12.txt), [ảnh TC-12](docs/screenshots/TC-12.png) chứng minh PASS; cây commit thực tế 32/32 PASS ([log](docs/testing/evidence/publish-20261106T182108181513Z/bug14-02.txt)). Commit chỉ chứa source của bug, regression và ảnh/raw tương ứng.
+
+**Lịch sử trước BUG-14-03:** khi đó chỉ có 2 bug được chứng minh. Lượt thăm dò mới đã kiểm body 16384/16385 byte, JSON lỗi/array/null, ghi khi chưa đăng nhập, request thiếu/sai khách/thiếu liên hệ và biên khóa tài khoản/phiên; cả 3 test thăm dò PASS, chưa phát hiện bug thứ ba. Không tạo bug thứ ba và không gọi cập nhật tài liệu là bug phần mềm. Hướng kiểm tra thêm: body đúng/vượt 16 KiB, cạnh tranh SQLite, biên lockout/session, Unicode tên mẫu; các phép kiểm vừa chạy có raw mới; cạnh tranh SQLite và Unicode tên mẫu vẫn là hướng kiểm tiếp, chưa phải lỗi đã xác nhận.
+
+Chi tiết: [Bug Log Buổi 14](docs/testing/buoi14-bug-log.md). Commit cả hai bug đều **PENDING**, chưa có link commit. Kế hoạch đề xuất: commit hạ tầng test trước, mỗi bug một commit gồm nguồn sửa và regression test riêng, cuối cùng tài liệu/evidence/CI. Chỉ thực hiện commit/push sau khi được duyệt; không đổi tag `v0.2`.
+
+#### BUG-14-03 — Major, FIXED local, commit PENDING
+
+Hai POST tạo mẫu có tên `Nul\u0000A` và `Nul\u0000B` được validator hiện chấp nhận. Lần đầu trả 201; lần sau **500 INTERNAL_ERROR**, dù SQLite coi hai tên trùng theo `COLLATE NOCASE` và contract quy định **409 TEMPLATE_NAME_EXISTS** cho tên trùng. Đã tái lập 2/2 lần; bảng mẫu 2→2, nội dung DB không đổi sau lỗi. Nguyên nhân: service so chuỗi bằng JavaScript `toLowerCase()`, khác phép so của ràng buộc UNIQUE SQLite khi có NUL. Đây là lỗi xử lý xung đột tên, độc lập với lỗi chunk UTF-8.
+
+**Đã sửa:** repository kiểm tên bằng `COLLATE NOCASE`, loại trừ chính ID khi cập nhật; service dùng phép kiểm này và giữ phép so Unicode cũ. Contract không cấm NUL nên expected **409 TEMPLATE_NAME_EXISTS** được giữ nguyên, không tự đổi thành 400. Không đổi CSAT/NPS, invitation, token hoặc schema. [Regression trước sửa](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/before.txt) FAIL `500 !== 409`; [sau sửa](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/after.txt) **3/3 PASS**, số mẫu vẫn 2→2 khi từ chối trùng. Kiểm thêm sửa chính ID (200), sửa ID khác thành tên trùng (409), Unicode trùng (409) và tên khác hợp lệ (201). [Cả ba regression](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/all-bug-regressions.txt) **5/5 PASS**; [full suite](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt) **40/40 PASS**; [build](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-elevated.txt) exit 0. Các FAIL trước sửa được giữ nguyên. [Bug Log bảy dòng](docs/testing/buoi14-bug-log.md); đã mở [ảnh BUG-14-03-fixed](docs/screenshots/BUG-14-03-fixed.png), thấy 3/3 PASS; hash local thật ở Bug Log, chờ kiểm link sau push.
+
+### 9.5. Hướng dẫn chạy kiểm thử
+
+Chạy từ thư mục gốc repository trên Windows/PowerShell:
+
+```powershell
+node scripts/test-buoi14.js
+npm.cmd test
+npm.cmd run build
+git diff --check
+```
+
+Nếu cần cài dependency đúng lockfile trước khi chạy: `npm.cmd ci`. Chạy riêng bằng `node scripts/test-buoi14.js TC-01` (đến `TC-12`); hai ca hồi quy là TC-11 và TC-12.
+
+Runner dựng fixture mới từng ca, không đọc `.env` hoặc thay database ứng dụng; ghi evidence UTF-8 vào thư mục **mới** `docs/testing/evidence/run-<UTC>-<pid>/` mỗi lần chạy. Không ghi đè bất kỳ evidence cũ nào. TC-04/05 chạy cả unit lẫn HTTP bổ sung; `npm.cmd test` hiện chạy 40 test (37 test trước BUG-14-03 + 3 regression cho BUG-14-03), tất cả đã PASS sau sửa. Ảnh thật cần thấy lệnh, mã TC, diagnostics và kết quả; không hiển thị token/mật khẩu.
+
+### 9.6. Kết quả và checklist Buổi 14
+
+**Kết quả hiện tại sau sửa BUG-14-03:** [regression trước sửa](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/before.txt) FAIL thật; [regression sau sửa](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/after.txt) 3/3 PASS; [cả ba bug](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/all-bug-regressions.txt) 5/5 PASS; [full suite](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt) 40/40 PASS. Build trong sandbox lỗi quyền đọc, [build ngoài sandbox](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-elevated.txt) thành công, exit 0. Không ghi đè evidence cũ. Các đoạn mang mốc 37/37 bên dưới là lịch sử.
+
+| Yêu cầu | Kết quả |
+|---|---|
+| Đọc phản hồi BT2 và ghi quyết định | Đã ghi quyết định với nội dung có sẵn; chưa có phản hồi cá nhân gốc |
+| Test Plan đủ bốn mục, có kỹ thuật chọn dữ liệu | Đạt |
+| 10–12 ca, đủ tám cột và ưu tiên | Đạt: 12 mã TC; nền 7 unit / 3 integration / 2 API và 2 test HTTP bổ sung |
+| Đủ năm loại test | Có kiểm chứng; hai tình huống sai đã kiểm HTTP 400, message, field và SQLite |
+| Chạy thật, kết quả cụ thể và tái lập độc lập | Đạt theo raw output và mã thoát từng ca |
+| Ảnh từng ca | Đã mở và đối chiếu 12/12 ảnh đúng TC, có lệnh và PASS; link ở bảng TC |
+| ≥3 bug, ≥1 Critical/Major, mỗi bug bảy dòng | Đã sửa 3 bug và đủ bảy dòng, có Critical/Major; đã có commit riêng; chờ xác minh link công khai |
+| Commit riêng, link mở được | Đã có ba commit bug local riêng; chờ push và xác minh công khai |
+| Toàn bộ suite PASS | Đạt local sau sửa: 40 PASS / 0 FAIL / 0 NOT RUN |
+| CI Actions xanh (khuyến khích) | Có cấu hình, chưa có run GitHub |
+
+**Chưa thể tuyên bố hoàn thành Buổi 14:** cả ba bug đã sửa local, còn phải xác minh link commit công khai và bổ sung phản hồi cá nhân BT2/AC gốc để đối chiếu đầy đủ. Ảnh TC-11/TC-12 đã chứng minh hồi quy hai bug; ảnh BUG-14-03-fixed cũng đã có; chưa có ảnh riêng toàn bộ suite hoặc Actions. Chưa có bằng chứng tải, acceptance hoặc Docker/máy trắng mới trong lượt kiểm thử này; không xác nhận hoàn tất toàn bộ BT3.
+
+Tài liệu và bằng chứng: [Test Plan](docs/testing/buoi14-test-plan.md) · [Test Report](docs/testing/buoi14-test-report.md) · [Bug Log](docs/testing/buoi14-bug-log.md) · [thư mục Evidence](docs/testing/evidence/) · [12 ảnh TC](docs/screenshots/). Nội dung tổng hợp và checklist Buổi 14 nằm ngay trong mục 9 của README này.
+
+### 9.7. Các bước còn lại: ảnh thật, commit riêng và Actions
+
+Đã có đủ 12 ảnh TC, không cần chụp lại chỉ để đổi tên hoặc thời gian chạy. Xem link từng ảnh ở bảng 9.3. TC-11/TC-12 cũng là ảnh kiểm chứng hai bug; hiện không có file hướng dẫn `docs/screenshots/README.md`, vì vậy tài liệu liên kết trực tiếp đến [thư mục ảnh](docs/screenshots/).
+
+Đã thực hiện commit hạ tầng [fc83221](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/fc8322178e532e8f9e6362ae9dad5181c98fcc0c), BUG-14-01 [29b5658](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/29b56582cf6facb06a706c1ab34cfdf6a4a512df), BUG-14-02 [559437d](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/559437df380649e3f99ead6dc542b59aa335c45d), BUG-14-03 [4e95e3f](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/4e95e3f4ccbc2eb6f6ebf2acbd56c221d1d47d5d). Cây commit tương ứng đã test 30/30, 31/31, 32/32, 35/35 PASS. Hunk ID=0 và hunk kiểm tên trùng được stage tách riêng, cached diff đã kiểm trước từng commit. [Log kiểm chứng](docs/testing/evidence/publish-20261106T182108181513Z/); tài liệu/CI/minh chứng commit sau. [Commit mới nhất trên main](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commits/main). Chưa coi link đã xác minh trước khi push/GET không đăng nhập thành công; không thay tag v0.2.
+
+Đã rà soát `.github/workflows/ci.yml`: trigger `push` và `pull_request`, Ubuntu, Node 24.22.1, quyền `contents: read`, các bước `npm ci → npm test → npm run build`. Đây là xác nhận cấu hình, **chưa phải Actions PASS**. Sau khi bạn cho phép push: mở GitHub → **Actions → Test and build** → chọn run của đúng branch/commit → job **check**; xem cả ba bước đều xanh, log npm test có 40 PASS/0 FAIL và build thành công. Nếu có commit bổ sung test sau này thì đối chiếu số test mới. Run đang chờ, bị hủy hoặc chưa xuất hiện không được ghi PASS; chỉ lưu link run thật và ảnh sau khi kiểm.
+
+Tài liệu còn cần bạn bổ sung: phản hồi cá nhân BT2 nguyên văn và bảng Acceptance Criteria Given–When–Then BT1 gốc (kèm đặc tả/quy tắc liên quan nếu nằm ngoài SRS hiện tại). Không lấy ví dụ chung trong slide làm phản hồi riêng của dự án.

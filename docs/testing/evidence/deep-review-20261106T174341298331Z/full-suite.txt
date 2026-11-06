@@ -1,0 +1,112 @@
+Command: npm.cmd test
+Exit: 1
+
+> smartcrm-l8-csat-nps@1.0.0 test
+> node --test tests/*.test.js
+
+✔ TC-11 API regression BUG-14-01: PUT id zero cannot create template (129.8773ms)
+ℹ {"method":"PUT","path":"/api/survey-templates/0","status":404,"response":{"error":"NOT_FOUND","message":"Không tìm thấy dữ liệu","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+✔ TC-12 API regression BUG-14-02: split UTF8 bytes preserve Vietnamese (169.1154ms)
+ℹ {"status":201,"response":{"id":2,"name":"Mẫu tiếng Việt","type":"CSAT","scaleMin":1,"scaleMax":5,"question":"Bạn hài lòng thế nào?","allowComment":true,"createdAt":"2026-11-06T00:00:00.000Z"},"inputName":"Mẫu tiếng Việt","stored":{"name":"Mẫu tiếng Việt"},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"splitInsideUTF8":true}
+✖ BUG-14-03: SQLite-equivalent template name returns 409 rather than 500 (190.7788ms)
+ℹ {"method":"POST","path":"/api/survey-templates","first":{"name":"Nul\u0000A","status":201},"second":{"name":"Nul\u0000B","status":500,"response":{"error":"INTERNAL_ERROR","message":"Hệ thống gặp sự cố. Vui lòng thử lại.","fields":{},"requestId":"bc27ce60-fc8c-4ed2-94d8-b1ea88a6cb09"}},"sqliteEqual":1,"javascriptEqual":false,"before":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"rowsBefore":[{"template_id":1,"nameHex":"4DE1BAAB752043534154"},{"template_id":2,"nameHex":"4E756C0041"}],"rowsAfter":[{"template_id":1,"nameHex":"4DE1BAAB752043534154"},{"template_id":2,"nameHex":"4E756C0041"}],"expected":{"status":409,"error":"TEMPLATE_NAME_EXISTS","databaseUnchanged":true}}
+✔ EXP-01: JSON/body size and unauthenticated writes preserve SQLite (254.2151ms)
+ℹ {"bytes":16384,"status":404,"response":{"error":"NOT_FOUND","message":"Không tìm thấy dữ liệu","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"bytes":16385,"status":413,"response":{"error":"BODY_TOO_LARGE","message":"Dữ liệu quá lớn","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"bytes":1,"status":400,"response":{"error":"INVALID_JSON","message":"JSON không hợp lệ","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"bytes":2,"status":400,"response":{"error":"INVALID_JSON","message":"Cần một đối tượng JSON","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"bytes":4,"status":400,"response":{"error":"INVALID_JSON","message":"Cần một đối tượng JSON","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"unauthenticated":true,"status":401,"response":{"error":"UNAUTHORIZED","message":"Vui lòng đăng nhập lại","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+✔ EXP-02: missing request, wrong customer and missing contact do not write (105.4674ms)
+ℹ {"input":{"supportRequestId":"MISSING","customerId":1,"templateId":1,"channel":"EMAIL"},"status":404,"response":{"error":"NOT_FOUND","message":"Không tìm thấy dữ liệu","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"input":{"supportRequestId":"YC-001","customerId":2,"templateId":1,"channel":"EMAIL"},"status":400,"response":{"error":"CUSTOMER_MISMATCH","message":"Khách hàng không thuộc yêu cầu hỗ trợ","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"input":{"supportRequestId":"YC-001","customerId":1,"templateId":1,"channel":"SMS"},"status":400,"response":{"error":"CONTACT_MISSING","message":"Khách hàng thiếu thông tin liên hệ","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+✔ EXP-03: login lockout and session expiry at exact fake-clock boundaries (2.7328ms)
+ℹ {"failedLogins":5,"lockedAtMs":[0,899999],"unlockedAtMs":900000,"sessionWorksAtMs":4499999,"sessionExpiresAtMs":4500000,"tokensLogged":false}
+✔ HTTP-04 supplements TC-04: string score returns 400 without SQLite writes (268.1353ms)
+ℹ {"method":"POST","path":"/api/public/surveys/:token/responses","input":{"score":"5"},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"statusBefore":"SENT","statusAfter":"SENT"}
+✔ HTTP-05 supplements TC-05: empty name returns 400 without SQLite writes (61.885ms)
+ℹ {"method":"POST","path":"/api/survey-templates","input":{"name":"","type":"CSAT","question":"Bạn hài lòng thế nào?","allowComment":true},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Tên mẫu phải từ 3–100 ký tự","fields":{"name":"Tên mẫu phải từ 3–100 ký tự"}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+✔ TC-01 unit: template trims valid data (3.4611ms)
+ℹ {"name":"Mẫu CSAT","type":"CSAT","question":"Bạn hài lòng thế nào?","allowComment":true}
+✔ TC-02 unit: CSAT lower boundary 1 accepted (0.8302ms)
+ℹ {"score":1,"comment":null}
+✔ TC-03 unit: CSAT below boundary 0 rejected (1.0938ms)
+ℹ {"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}}
+✔ TC-04 unit: wrong score type rejected (0.6303ms)
+ℹ {"error":"VALIDATION_ERROR","fields":{"score":"Điểm phải từ 1 đến 5"}}
+✔ TC-05 unit: required template name rejected (0.2833ms)
+ℹ {"error":"VALIDATION_ERROR","fields":{"name":"Tên mẫu phải từ 3–100 ký tự"}}
+✔ TC-06 unit: expiry instant blocked with fake clock and repo (2.3268ms)
+ℹ {"now":"2026-11-06T00:00:00.000Z","expiresAt":"2026-11-06T00:00:00.000Z","error":"EXPIRED"}
+✔ TC-07 unit: mixed CSAT NPS summary uses separate denominators (0.9509ms)
+ℹ {"responseCount":5,"invitationCount":5,"csat":50,"csatCount":2,"nps":0,"npsCount":3,"negativeCount":2,"generatedAt":"2026-11-06T00:00:00.000Z","source":"CSDL cục bộ","csatTarget":80}
+✔ TC-08 integration: incomplete request rolls back (6.6791ms)
+ℹ {"error":"REQUEST_NOT_COMPLETED","before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+✔ TC-09 integration: migration and seed repeat on isolated SQLite (773.0766ms)
+ℹ {"first":[4,4,1,0,0,0],"second":[4,4,1,0,0,0]}
+✔ TC-10 integration: unique tokens, invalid token and one response transaction (4.5023ms)
+ℹ {"uniqueTokens":true,"invalidToken":"NOT_FOUND","duplicate":"ALREADY_ANSWERED","before":{"survey_template":1,"survey_invitation":2,"response":0,"survey_log":2},"after":{"survey_template":1,"survey_invitation":2,"response":1,"survey_log":3},"csat":100}
+✔ internal error diagnostics retain safe stack and cause without sensitive values (6.8033ms)
+✔ HTTP 500 logs once and returns safe body with matching requestId (221.3353ms)
+✔ frontend exposes requestId in user-visible message for JSON and proxy 500 errors (10.5636ms)
+✔ migration and seed are repeatable without duplicate records (797.9222ms)
+✔ logger filters levels and excludes sensitive context (1.6293ms)
+✔ CRUD và hợp đồng camelCase, boolean, ngày UTC (31.6222ms)
+✔ luồng đúng: lời mời, form, phản hồi tiêu cực, nhật ký (26.2108ms)
+✔ chặn yêu cầu chưa hoàn tất (7.6926ms)
+✔ mỗi yêu cầu chỉ một lời mời (12.9797ms)
+✔ chặn phản hồi thứ hai (8.9591ms)
+✔ biên CSAT: nhận 1,5; từ chối 0,6,null,thập phân,chuỗi (32.5332ms)
+✔ hết hạn đúng thời điểm expiresAt (5.0937ms)
+✔ token sai trả 404; báo cáo rỗng trả null (6.6068ms)
+✔ khách từ chối khảo sát bị chặn (10.3832ms)
+✔ NPS nhận 0,10 và không trộn CSAT (24.6846ms)
+✔ mẫu đã dùng không sửa/xóa (5.8124ms)
+✔ nhận xét 500 ký tự hợp lệ, 501 bị từ chối (4.0627ms)
+{"timestamp":"2026-11-06T17:45:02.375Z","level":"warn","message":"request completed","requestId":"5ee06af5-324b-40b2-b8af-90f93c005a2c","method":"GET","route":"/api/survey-templates","status":401,"durationMs":3,"code":"UNAUTHORIZED"}
+{"timestamp":"2026-11-06T17:45:02.392Z","level":"info","message":"request completed","requestId":"ca16dec4-bb13-43fb-adee-afa9881da217","method":"POST","route":"/api/auth/login","status":200,"durationMs":1}
+{"timestamp":"2026-11-06T17:45:02.398Z","level":"info","message":"request completed","requestId":"5da413db-c3ce-44c4-a16b-9ec61bbf615a","method":"POST","route":"/api/survey-invitations","status":201,"durationMs":1}
+{"timestamp":"2026-11-06T17:45:02.401Z","level":"info","message":"request completed","requestId":"2e1b83eb-f9dc-4157-8996-3d3f7011541c","method":"GET","route":"/api/public/surveys/:token","status":200,"durationMs":1}
+{"timestamp":"2026-11-06T17:45:02.407Z","level":"info","message":"request completed","requestId":"74f3a88a-7b88-4658-af28-ac825cd207a8","method":"POST","route":"/api/public/surveys/:token","status":201,"durationMs":2}
+{"timestamp":"2026-11-06T17:45:02.412Z","level":"info","message":"request completed","requestId":"7e43ceb7-629b-4e69-890c-c4ed8dc517f8","method":"GET","route":"/api/reports/summary","status":200,"durationMs":1}
+{"timestamp":"2026-11-06T17:45:02.419Z","level":"warn","message":"request completed","requestId":"fbae7639-231d-4cab-8011-65296a3d18a8","method":"POST","route":"/api/public/surveys/:token","status":409,"durationMs":1,"code":"ALREADY_ANSWERED"}
+{"timestamp":"2026-11-06T17:45:02.424Z","level":"warn","message":"request completed","requestId":"06d606a5-6316-442b-a6d7-e043feffeaa9","method":"POST","route":"/api/survey-templates","status":400,"durationMs":1,"code":"INVALID_JSON"}
+✔ HTTP contract: auth, JSON lỗi, luồng end-to-end (124.3821ms)
+✔ invitation CRUD protects responses and invalidates deleted tokens (5.6422ms)
+{"timestamp":"2026-11-06T17:45:02.453Z","level":"info","message":"request completed","requestId":"7578e27a-de67-4098-a089-aa3401140adc","method":"GET","route":"/api/health","status":200,"durationMs":0}
+{"timestamp":"2026-11-06T17:45:02.460Z","level":"info","message":"request completed","requestId":"572d12b6-9cc6-420d-9b3f-ee1d179dbb91","method":"POST","route":"/api/auth/login","status":200,"durationMs":1}
+{"timestamp":"2026-11-06T17:45:02.466Z","level":"info","message":"request completed","requestId":"b74f6898-383d-40a7-a7d5-eddb54a15d75","method":"POST","route":"/api/survey-invitations","status":201,"durationMs":3}
+{"timestamp":"2026-11-06T17:45:02.469Z","level":"info","message":"request completed","requestId":"5976b4a9-d816-4464-bdad-64825a6c8edf","method":"PUT","route":"/api/survey-invitations/1","status":200,"durationMs":1}
+{"timestamp":"2026-11-06T17:45:02.471Z","level":"info","message":"request completed","requestId":"3fbdba64-fa61-4cfd-86bd-ea260ebd19e3","method":"GET","route":"/api/survey-invitations/1","status":200,"durationMs":1}
+{"timestamp":"2026-11-06T17:45:02.473Z","level":"info","message":"request completed","requestId":"fb4eda5b-b5f2-4df9-b87e-e17b0729c790","method":"DELETE","route":"/api/survey-invitations/1","status":200,"durationMs":1}
+{"timestamp":"2026-11-06T17:45:02.475Z","level":"warn","message":"request completed","requestId":"24e2adaf-507a-42ad-be66-84487b6aa107","method":"GET","route":"/api/survey-invitations/1","status":404,"durationMs":0,"code":"NOT_FOUND"}
+✔ health, requestId and invitation CRUD over HTTP (44.2962ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 37
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1101.06
+
+✖ failing tests:
+
+test at tests\buoi14-bug03.test.js:7:1
+✖ BUG-14-03: SQLite-equivalent template name returns 409 rather than 500 (190.7788ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 409
+  
+      at TestContext.<anonymous> (file:///C:/Users/ASUS/Downloads/smartcrm-bt2-fix/tests/buoi14-bug03.test.js:25:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 409,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

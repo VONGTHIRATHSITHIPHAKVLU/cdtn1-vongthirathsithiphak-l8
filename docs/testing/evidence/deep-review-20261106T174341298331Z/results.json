@@ -1,0 +1,14 @@
+[
+  {
+    "name": "deep-cases",
+    "exit": 0
+  },
+  {
+    "name": "bug14-03-confirmation",
+    "exit": 1
+  },
+  {
+    "name": "full-suite",
+    "exit": 1
+  }
+]

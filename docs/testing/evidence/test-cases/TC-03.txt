@@ -1,0 +1,13 @@
+Command: node --test --test-name-pattern=^TC-03  tests/buoi14.test.js
+Started UTC: 2026-11-06T17:12:41.541Z
+Exit: 0
+✔ TC-03 unit: CSAT below boundary 0 rejected (3.0774ms)
+ℹ {"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 147.7285

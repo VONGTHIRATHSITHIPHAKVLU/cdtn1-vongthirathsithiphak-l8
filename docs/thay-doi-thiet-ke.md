@@ -1,5 +1,23 @@
 # Nhật ký thay đổi thiết kế
 
+## Buổi 14 — đối chiếu ngày 06/11/2026
+
+Nguồn đã đọc: PDF Buổi 13 (35 trang) và Buổi 14 (12 trang) do sinh viên cung cấp. Yêu cầu trong PDF là tiêu chí môn học; không phải ủy quyền commit/push hoặc sửa PDF BT2. Không có bản phản hồi cá nhân BT2 riêng trong các file hiện có; bảng dưới chỉ xử lý nội dung được nêu trong yêu cầu và kiểm tra mã nguồn, không giả lời giảng viên.
+
+| Nội dung cần đối chiếu | Quyết định và bằng chứng | Tình trạng |
+|---|---|---|
+| README có lệnh test | GIỮ: mục 3 đã có `npm.cmd test` và build; thêm đường dẫn bộ Buổi 14 | Xác nhận từ file thực tế; không gọi là bug mới |
+| architecture.svg phải là sơ đồ thực tế | GIỮ: sơ đồ Browser/React, Nginx, Node HTTP API, lớp service/repository và SQLite volume khớp Dockerfile/compose/nginx; không có Express trong package.json | Đã đối chiếu; không sửa sơ đồ/PDF |
+| Test cần biên, dữ liệu sai, bảo mật, tái lập | BỔ SUNG 12 ca theo 7 unit/3 integration/2 API, giữ bộ cũ 20 ca | Báo cáo và raw tại docs/testing/ |
+| Ghi rõ quyết định từng phản hồi BT2 | Chưa nhận phản hồi cá nhân gốc; không coi các ví dụ chung trong slide là lỗi của repo | Cần sinh viên bổ sung phản hồi để đối chiếu từng mục còn thiếu |
+| AC Given–When–Then BT1 | SRS hiện tại có US và ngoại lệ, không có nguyên văn bảng AC gốc | Truy vết theo US/luồng/contract; chưa xác nhận toàn bộ AC BT1 |
+| Mỗi bug phải commit riêng | Đã tách ba commit bug local, service được stage riêng từng hunk ID=0 và kiểm tên trùng | Hash/link trong Bug Log; đang xác minh push/PUBLIC, không đổi tag v0.2 |
+| Số bug và ảnh thật | Cập nhật 07/11/2026: đã sửa ba bug thật; có 12 ảnh TC và BUG-14-03-fixed, đã mở đối chiếu PASS | Full suite 40/40; còn thiếu phản hồi cá nhân BT2/AC gốc và xác minh Actions |
+
+### TD-15 Sửa lỗi thực nghiệm Buổi 14
+
+BUG-14-01 kiểm ID cập nhật bằng `id !== undefined`, không nhầm ID 0 thành thao tác tạo. BUG-14-02 gom Buffer và giải mã UTF-8 sau khi đủ body, vẫn giữ giới hạn 16 KiB. Không đổi công thức CSAT/NPS, thời hạn token, schema hay chức năng ngoài phạm vi. BUG-14-03 dùng cùng collation SQLite để kiểm trùng tên, giữ so Unicode cũ và loại trừ chính ID khi sửa. Chi tiết 7 dòng và mức độ theo đúng rubric tại `docs/testing/buoi14-bug-log.md`.
+
 ## Buổi 11–12 — ngày 30/10/2026
 
 ### TD-12 Đóng gói hệ thống và quan sát lỗi

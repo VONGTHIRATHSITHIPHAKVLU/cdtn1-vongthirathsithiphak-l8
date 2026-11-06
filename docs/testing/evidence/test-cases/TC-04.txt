@@ -1,0 +1,15 @@
+Command: node --test --test-name-pattern=^(?:TC-04 |HTTP-04 ) tests/buoi14.test.js tests/buoi14-http-validation.test.js
+Started UTC: 2026-11-06T17:14:31.252Z
+Exit: 0
+✔ HTTP-04 supplements TC-04: string score returns 400 without SQLite writes (87.9107ms)
+ℹ {"method":"POST","path":"/api/public/surveys/:token/responses","input":{"score":"5"},"status":400,"response":{"error":"VALIDATION_ERROR","message":"Điểm phải từ 1 đến 5","fields":{"score":"Điểm phải từ 1 đến 5"}},"before":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"after":{"survey_template":1,"survey_invitation":1,"response":0,"survey_log":1},"statusBefore":"SENT","statusAfter":"SENT"}
+✔ TC-04 unit: wrong score type rejected (1.3584ms)
+ℹ {"error":"VALIDATION_ERROR","fields":{"score":"Điểm phải từ 1 đến 5"}}
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 274.5758

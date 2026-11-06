@@ -45,3 +45,6 @@ coverage/
 /CDTN1_Buoi12_Workshop tich hop va Nop Bai tap 2.pdf
 /CDTN1_Tai lieu tu hoc Buoi 11 - Dong goi va cau hinh theo stack.pdf
 /docs/BaoCao_Buoi10_237480201IS04_VONGTHIRATH_SITHIPHAK.docx
+
+# Keep original deep-review raw output local; publish the labeled redacted copy.
+docs/testing/evidence/deep-review-20261106T174341298331Z/deep-cases.txt

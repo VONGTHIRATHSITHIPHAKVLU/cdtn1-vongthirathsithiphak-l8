@@ -1,0 +1,13 @@
+Command: node --test --test-name-pattern=^TC-01  tests/buoi14.test.js
+Started UTC: 2026-11-06T17:03:48.573Z
+Exit: 0
+✔ TC-01 unit: template trims valid data (1.267ms)
+ℹ {"name":"Mẫu CSAT","type":"CSAT","question":"Bạn hài lòng thế nào?","allowComment":true}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 157.7373

@@ -1,0 +1,13 @@
+Command: node --test --test-name-pattern=^TC-08  tests/buoi14.test.js
+Started UTC: 2026-11-06T17:21:12.047Z
+Exit: 0
+✔ TC-08 integration: incomplete request rolls back (7.3481ms)
+ℹ {"error":"REQUEST_NOT_COMPLETED","before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 137.4779

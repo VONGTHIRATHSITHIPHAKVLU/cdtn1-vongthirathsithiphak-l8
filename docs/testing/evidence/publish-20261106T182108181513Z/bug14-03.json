@@ -1,0 +1,26 @@
+{
+  "commit": "4e95e3f4ccbc2eb6f6ebf2acbd56c221d1d47d5d",
+  "files": [
+    ".gitattributes",
+    "docs/screenshots/BUG-14-03-fixed.png",
+    "docs/testing/evidence/bug14-03-before-20261106T173834968701Z/full-suite-before.txt",
+    "docs/testing/evidence/bug14-03-before-20261106T173834968701Z/reproduce-1.txt",
+    "docs/testing/evidence/bug14-03-before-20261106T173834968701Z/reproduce-2.txt",
+    "docs/testing/evidence/bug14-03-before-20261106T173834968701Z/status.json",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/after.txt",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/all-bug-regressions.txt",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/before-status.json",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/before.txt",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-elevated.txt",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-sandbox.txt",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-status.json",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/checks.json",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/diff-check.txt",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt",
+    "docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/git-status.txt",
+    "src/backend/repositories/survey.repository.js",
+    "src/backend/services/survey.service.js",
+    "tests/buoi14-bug03.test.js"
+  ],
+  "testExit": 0
+}

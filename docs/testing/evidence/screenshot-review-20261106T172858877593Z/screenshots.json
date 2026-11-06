@@ -1,0 +1,122 @@
+[
+  {
+    "id": "TC-01",
+    "image": "docs/screenshots/TC-01.png",
+    "width": 1175,
+    "height": 717,
+    "sha256": "7ebd3d3c88e91888fb4e150f4fa1a545714249ebf78e6a330596cc8e408c3da3",
+    "raw": "docs/testing/evidence/test-cases/TC-01.txt",
+    "started": "Started UTC: 2026-11-06T17:03:48.573Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-02",
+    "image": "docs/screenshots/TC-02.png",
+    "width": 1167,
+    "height": 442,
+    "sha256": "136a144a6d79431b5770ed09dc9db67f349c9914e54bc0fb17851f69be7175c5",
+    "raw": "docs/testing/evidence/test-cases/TC-02.txt",
+    "started": "Started UTC: 2026-11-06T17:09:39.598Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-03",
+    "image": "docs/screenshots/TC-03.png",
+    "width": 1177,
+    "height": 512,
+    "sha256": "0d0dd4f5aff6b54f8340fe634b2844c57872e8fdf8cd9bf5a731b41be35dd7fb",
+    "raw": "docs/testing/evidence/test-cases/TC-03.txt",
+    "started": "Started UTC: 2026-11-06T17:12:41.541Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-04",
+    "image": "docs/screenshots/TC-04.png",
+    "width": 1176,
+    "height": 492,
+    "sha256": "79dbe99085568490cb7661976b9ab535b3ff6e5266387b053667649c73d228ed",
+    "raw": "docs/testing/evidence/test-cases/TC-04.txt",
+    "started": "Started UTC: 2026-11-06T17:14:31.252Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-05",
+    "image": "docs/screenshots/TC-05.png",
+    "width": 1165,
+    "height": 442,
+    "sha256": "cc0d696fb2550d58b372716578976c3b5f8997bc0e35d28e4f7cf59c4bfafcb6",
+    "raw": "docs/testing/evidence/test-cases/TC-05.txt",
+    "started": "Started UTC: 2026-11-06T17:15:52.189Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-06",
+    "image": "docs/screenshots/TC-06.png",
+    "width": 1175,
+    "height": 447,
+    "sha256": "ebe521a2b4ed7e914562cf0daafd2fd21b247c51cf077f3275a438a4964bcacd",
+    "raw": "docs/testing/evidence/test-cases/TC-06.txt",
+    "started": "Started UTC: 2026-11-06T17:18:13.777Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-07",
+    "image": "docs/screenshots/TC-07.png",
+    "width": 1167,
+    "height": 441,
+    "sha256": "ad5f3e1489df4f6ae68f05c371602409d77b5032b813495ab89f0fe0c2125bce",
+    "raw": "docs/testing/evidence/test-cases/TC-07.txt",
+    "started": "Started UTC: 2026-11-06T17:19:37.000Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-08",
+    "image": "docs/screenshots/TC-08.png",
+    "width": 1167,
+    "height": 431,
+    "sha256": "e696c4f9cf7f93e5bdcb6924b17bf55af73ab879131e4110c948868b19814613",
+    "raw": "docs/testing/evidence/test-cases/TC-08.txt",
+    "started": "Started UTC: 2026-11-06T17:21:12.047Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-09",
+    "image": "docs/screenshots/TC-09.png",
+    "width": 1165,
+    "height": 507,
+    "sha256": "e6ff69dcd66b2cf338048b0558ffc055b4bc631c8d6d48a6b2c7cdd5a732edc2",
+    "raw": "docs/testing/evidence/test-cases/TC-09.txt",
+    "started": "Started UTC: 2026-11-06T17:22:03.045Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-10",
+    "image": "docs/screenshots/TC-10.png",
+    "width": 1177,
+    "height": 507,
+    "sha256": "f754e28216376f336621ce3ca3b45e8948dddcb111726f358a64384bec78d721",
+    "raw": "docs/testing/evidence/test-cases/TC-10.txt",
+    "started": "Started UTC: 2026-11-06T17:22:53.249Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-11",
+    "image": "docs/screenshots/TC-11.png",
+    "width": 1180,
+    "height": 507,
+    "sha256": "d8212525b6b463833c6d585381dcd48fba6913ddcf7a0f9db922c781c1f73140",
+    "raw": "docs/testing/evidence/test-cases/TC-11.txt",
+    "started": "Started UTC: 2026-11-06T17:23:48.008Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  },
+  {
+    "id": "TC-12",
+    "image": "docs/screenshots/TC-12.png",
+    "width": 1167,
+    "height": 447,
+    "sha256": "ca8c2887ebfde6b11af13f14db1912b05ec0332ccd88ba80a44c562b2785cb48",
+    "raw": "docs/testing/evidence/test-cases/TC-12.txt",
+    "started": "Started UTC: 2026-11-06T17:24:39.065Z",
+    "visualReview": "Opened; correct TC, command, diagnostics, PASS; image not modified"
+  }
+]
