@@ -28,11 +28,14 @@ export function createApp(service, { log = logger, ...options } = {}) {
       }
       let body = {};
       if (['POST','PUT'].includes(req.method)) {
-        let text='';
+        const chunks=[];
+        let bytes=0;
         for await (const chunk of req) {
-          text+=chunk;
-          if (Buffer.byteLength(text)>16384) throw new AppError('BODY_TOO_LARGE','Dữ liệu quá lớn');
+          bytes+=chunk.length;
+          if (bytes>16384) throw new AppError('BODY_TOO_LARGE','Dữ liệu quá lớn');
+          chunks.push(chunk);
         }
+        const text=Buffer.concat(chunks).toString('utf8');
         try { body=JSON.parse(text || '{}'); } catch { throw new AppError('INVALID_JSON','JSON không hợp lệ'); }
         if (!body || Array.isArray(body) || typeof body !== 'object') throw new AppError('INVALID_JSON','Cần một đối tượng JSON');
       }
