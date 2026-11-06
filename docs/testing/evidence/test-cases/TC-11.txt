@@ -1,0 +1,13 @@
+Command: node --test --test-name-pattern=^TC-11  tests/buoi14-bug01.test.js
+Started UTC: 2026-11-06T17:23:48.008Z
+Exit: 0
+✔ TC-11 API regression BUG-14-01: PUT id zero cannot create template (42.7504ms)
+ℹ {"method":"PUT","path":"/api/survey-templates/0","status":404,"response":{"error":"NOT_FOUND","message":"Không tìm thấy dữ liệu","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 192.4001

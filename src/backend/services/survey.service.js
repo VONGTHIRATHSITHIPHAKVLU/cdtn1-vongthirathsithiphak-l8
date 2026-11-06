@@ -9,7 +9,7 @@ export class SurveyService {
   template(id) { return toTemplate(this.repo.template(id) || missing()); }
   saveTemplate(body, actor, id) {
     const input = templateInput(body);
-    if (id) {
+    if (id !== undefined) {
       this.template(id);
       if (this.repo.usedTemplate(id)) throw new AppError('TEMPLATE_IN_USE','Không sửa mẫu đã dùng; hãy tạo mẫu mới');
     }
