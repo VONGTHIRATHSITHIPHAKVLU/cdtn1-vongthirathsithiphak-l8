@@ -1,0 +1,21 @@
+Command: node --test tests/buoi14-bug01.test.js tests/buoi14-bug02.test.js tests/buoi14-bug03.test.js
+Exit: 0
+✔ TC-11 API regression BUG-14-01: PUT id zero cannot create template (75.7955ms)
+ℹ {"method":"PUT","path":"/api/survey-templates/0","status":404,"response":{"error":"NOT_FOUND","message":"Không tìm thấy dữ liệu","fields":{}},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0}}
+✔ TC-12 API regression BUG-14-02: split UTF8 bytes preserve Vietnamese (111.6365ms)
+ℹ {"status":201,"response":{"id":2,"name":"Mẫu tiếng Việt","type":"CSAT","scaleMin":1,"scaleMax":5,"question":"Bạn hài lòng thế nào?","allowComment":true,"createdAt":"2026-11-06T00:00:00.000Z"},"inputName":"Mẫu tiếng Việt","stored":{"name":"Mẫu tiếng Việt"},"before":{"survey_template":1,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"splitInsideUTF8":true}
+✔ BUG-14-03: SQLite-equivalent template name returns 409 rather than 500 (92.2642ms)
+ℹ {"method":"POST","path":"/api/survey-templates","first":{"name":"Nul\u0000A","status":201},"second":{"name":"Nul\u0000B","status":409,"response":{"error":"TEMPLATE_NAME_EXISTS","message":"Tên mẫu đã tồn tại","fields":{}}},"sqliteEqual":1,"javascriptEqual":false,"before":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"rowsBefore":[{"template_id":1,"nameHex":"4DE1BAAB752043534154"},{"template_id":2,"nameHex":"4E756C0041"}],"rowsAfter":[{"template_id":1,"nameHex":"4DE1BAAB752043534154"},{"template_id":2,"nameHex":"4E756C0041"}],"expected":{"status":409,"error":"TEMPLATE_NAME_EXISTS","databaseUnchanged":true}}
+✔ BUG-14-03: update excludes its own ID but blocks another SQLite-equivalent name (39.408ms)
+ℹ {"selfUpdate":{"status":200,"id":2,"name":"nUL\u0000A"},"conflictingUpdate":{"status":409,"response":{"error":"TEMPLATE_NAME_EXISTS","message":"Tên mẫu đã tồn tại","fields":{}}},"before":[{"template_id":1,"nameHex":"4DE1BAAB752043534154"},{"template_id":2,"nameHex":"6E554C0041"},{"template_id":3,"nameHex":"4F746865722074656D706C617465"}],"after":[{"template_id":1,"nameHex":"4DE1BAAB752043534154"},{"template_id":2,"nameHex":"6E554C0041"},{"template_id":3,"nameHex":"4F746865722074656D706C617465"}]}
+✔ BUG-14-03: preserve Unicode case-insensitive duplicates and valid distinct names (18.5916ms)
+ℹ {"unicodeDuplicate":{"status":409,"response":{"error":"TEMPLATE_NAME_EXISTS","message":"Tên mẫu đã tồn tại","fields":{}}},"before":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ {"distinctName":{"status":201,"name":"Another valid name"},"after":{"survey_template":3,"survey_invitation":0,"response":0,"survey_log":0}}
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 309.5003

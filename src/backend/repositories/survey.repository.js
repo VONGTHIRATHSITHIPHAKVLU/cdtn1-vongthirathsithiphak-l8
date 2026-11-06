@@ -7,6 +7,10 @@ export class SurveyRepository {
   }
   templates() { return this.db.prepare('SELECT * FROM survey_template ORDER BY template_id DESC').all(); }
   template(id) { return this.db.prepare('SELECT * FROM survey_template WHERE template_id=?').get(id); }
+  templateNameExists(name, excludeId) {
+    const excluded = excludeId ?? null;
+    return Boolean(this.db.prepare('SELECT 1 FROM survey_template WHERE name = ? COLLATE NOCASE AND (? IS NULL OR template_id <> ?) LIMIT 1').get(name, excluded, excluded));
+  }
   saveTemplate(input, actor, at, id) {
     const values = [input.name, input.type, input.question, Number(input.allowComment)];
     if (id) this.db.prepare('UPDATE survey_template SET name=?,type=?,question=?,allow_comment=? WHERE template_id=?').run(...values, id);

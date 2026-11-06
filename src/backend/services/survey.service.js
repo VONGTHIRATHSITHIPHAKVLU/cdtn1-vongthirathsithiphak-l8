@@ -13,7 +13,9 @@ export class SurveyService {
       this.template(id);
       if (this.repo.usedTemplate(id)) throw new AppError('TEMPLATE_IN_USE','Không sửa mẫu đã dùng; hãy tạo mẫu mới');
     }
-    if (this.repo.templates().some(t => t.template_id !== id && t.name.toLowerCase() === input.name.toLowerCase())) throw new AppError('TEMPLATE_NAME_EXISTS','Tên mẫu đã tồn tại');
+    // Match the database UNIQUE collation, including embedded NUL. Keep the
+    // existing Unicode case-insensitive rule (SQLite NOCASE covers ASCII only).
+    if (this.repo.templateNameExists(input.name,id) || this.repo.templates().some(t => t.template_id !== id && t.name.toLowerCase() === input.name.toLowerCase())) throw new AppError('TEMPLATE_NAME_EXISTS','Tên mẫu đã tồn tại');
     return toTemplate(this.repo.saveTemplate(input,actor,this.now().toISOString(),id));
   }
   deleteTemplate(id) {

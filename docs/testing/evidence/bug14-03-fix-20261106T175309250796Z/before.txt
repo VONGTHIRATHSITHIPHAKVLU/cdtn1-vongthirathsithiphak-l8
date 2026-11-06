@@ -1,0 +1,32 @@
+Command: node --test tests/buoi14-bug03.test.js
+Exit: 1
+✖ BUG-14-03: SQLite-equivalent template name returns 409 rather than 500 (86.5391ms)
+ℹ {"method":"POST","path":"/api/survey-templates","first":{"name":"Nul\u0000A","status":201},"second":{"name":"Nul\u0000B","status":500,"response":{"error":"INTERNAL_ERROR","message":"Hệ thống gặp sự cố. Vui lòng thử lại.","fields":{},"requestId":"8e4147d2-89b0-43ad-ac79-52c726b5be94"}},"sqliteEqual":1,"javascriptEqual":false,"before":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"after":{"survey_template":2,"survey_invitation":0,"response":0,"survey_log":0},"rowsBefore":[{"template_id":1,"nameHex":"4DE1BAAB752043534154"},{"template_id":2,"nameHex":"4E756C0041"}],"rowsAfter":[{"template_id":1,"nameHex":"4DE1BAAB752043534154"},{"template_id":2,"nameHex":"4E756C0041"}],"expected":{"status":409,"error":"TEMPLATE_NAME_EXISTS","databaseUnchanged":true}}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 308.468
+
+✖ failing tests:
+
+test at tests\buoi14-bug03.test.js:7:1
+✖ BUG-14-03: SQLite-equivalent template name returns 409 rather than 500 (86.5391ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 409
+  
+      at TestContext.<anonymous> (file:///C:/Users/ASUS/Downloads/smartcrm-bt2-fix/tests/buoi14-bug03.test.js:25:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 409,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
