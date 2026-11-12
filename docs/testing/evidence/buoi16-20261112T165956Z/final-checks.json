@@ -1,0 +1,14 @@
+﻿{
+    "applicationSourceMatchesFinalSnapshot":  true,
+    "sourceMismatchPaths":  [
+
+                            ],
+    "docsUpdatedAfterRuntime":  "Deployment guide, security checklist and Buoi16 report only",
+    "buoi14ImageHashesUnchanged":  12,
+    "diffCheckExit":  0,
+    "v02":  "d1f76c759ad53fb73d24501d3b4d9c575fc7997f",
+    "publicClone":  "BLOCKED - suitable revision not published",
+    "localSnapshot":  "PASS",
+    "C3":  "PASS - host Node within independent snapshot",
+    "C8":  "PASS - isolated Docker volume"
+}

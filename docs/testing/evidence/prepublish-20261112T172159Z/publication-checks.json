@@ -1,0 +1,12 @@
+{
+  "candidateFiles": 107,
+  "totalBytes": 958597,
+  "unexpectedFiles": [],
+  "forbiddenPaths": [],
+  "localProvisioningCredentialsChecked": 3,
+  "credentialMatchPaths": [],
+  "newSecretCandidates": [],
+  "finalScreenshotHashesMatch": true,
+  "missingDocumentationLinks": [],
+  "decision": "PASS"
+}

@@ -1,11 +1,26 @@
 # SmartCRM L8 — Khảo sát hài lòng CSAT / NPS
 
+Buổi 15 / BT3: [Deployment Guide (English)](docs/deployment-guide.md).
+[Security Checklist: bảy mục, kết quả và giới hạn](docs/security-checklist.md).
+Trong checkout hiện tại chạy `node scripts/demo.js` để tự tạo mật khẩu demo local
+và dựng Docker; không cần tự điền secret. Quy trình clone mới gồm hai lệnh trong
+guide, nhưng **C1 chưa xác minh** cho đến khi chạy thật từ revision được công bố.
+Giữ SQLite, named volume và cách chạy npm/manual bên dưới; không đổi tag v0.2.
+
+Trạng thái Buổi 15–16, 13/11/2026: snapshot local độc lập đã build/up Docker,
+API/web healthy, suite 44/44 PASS, TC-07 PASS, seed lặp và restart persistence PASS.
+Xem [báo cáo và ảnh thật](docs/testing/buoi16-deployment-report.md).
+Đây chưa phải clean clone GitHub; C1 chỉ hoàn tất sau khi kiểm revision công khai.
+Các mục Buổi 11–14 bên dưới giữ số liệu lịch sử 20/40 test của từng giai đoạn;
+không dùng chúng thay cho kết quả Buổi 15–16. Security Checklist còn ghi rõ giới hạn
+owner/center, mã hoá dữ liệu và TLS; chưa xác nhận hoàn tất toàn bộ BT3.
+
 Kiểm thử Buổi 14: [Test Plan](docs/testing/buoi14-test-plan.md),
 [12 test case và kết quả thật](docs/testing/buoi14-test-report.md),
 [Bug Log](docs/testing/buoi14-bug-log.md), [12 ảnh TC đã kiểm tra](docs/screenshots/).
 Chạy từng ca độc lập: `node scripts/test-buoi14.js TC-01` (đến `TC-12`);
 chạy toàn bộ 12 ca và lưu raw evidence: `node scripts/test-buoi14.js`.
-`npm.cmd test` chạy cả bộ cũ lẫn mới. Chưa commit/push các thay đổi Buổi 14;
+`npm.cmd test` chạy cả bộ cũ lẫn mới. Các commit sửa ba bug Buổi 14 đã có;
 không chạy script xuất PDF BT2 khi thực hiện workshop này.
 
 Track SE · VONGTHIRATH SITHIPHAK · MSSV 237480201IS04 · Lớp 261_71ITGR40203_03.
@@ -101,7 +116,7 @@ test nghiệp vụ và HTTP nằm trong `tests/`.
 - Đăng nhập demo một vai trò, phiên ngẫu nhiên trong RAM, hết hạn 1 giờ; sai 5 lần khóa 15 phút. Chưa tích hợp tài khoản/phân quyền trung tâm SmartCRM thật, scheduler, gửi lại, xử lý phản hồi tiêu cực hoặc xuất Excel.
 - Session token lưu `sessionStorage`, vẫn có rủi ro bị đọc nếu có XSS. React hiển thị nội dung dưới dạng text. Mật khẩu demo lấy từ `.env`; không phải hệ thống tài khoản production.
 
-## 6. Trạng thái hiện tại — buổi 11–12
+## 6. Trạng thái lịch sử — buổi 11–12
 
 - [x] Migration 6 bảng, seed demo chạy lại được.
 - [x] CRUD entity mẫu khảo sát qua routes → service → repository.
@@ -189,11 +204,11 @@ node scripts/export-bt2.cjs
 
 Script capture trên là công cụ lịch sử, chạy tập con 17 test và ghi ảnh/tệp cũ. Không dùng output đó để xác nhận 20 test. Báo cáo hiện dùng `latest-tests.png` và `latest-test-output.txt` từ lệnh đầy đủ `npm.cmd test`; ảnh luồng Docker lấy từ thư mục runtime riêng.
 
-Kiểm tra báo cáo PDF, tên lớp trên bìa, ảnh minh chứng và mã nguồn trước khi commit/tag. Tag `v0.2` phải trỏ tới commit chứa toàn bộ bài; đẩy nhánh và tag riêng. Xác nhận repo public và nộp PDF + link repo trên VLU E-learning trước khi kết thúc buổi 12. Không coi bản nháp báo cáo hay tag cục bộ là đã nộp.
+Ghi chú nộp BT2 lịch sử: kiểm tra PDF, bìa, minh chứng và nguồn trước khi nộp. Tag `v0.2` hiện là mốc lưu trữ BT2; không di chuyển hoặc tạo lại tag này trong Buổi 15–16. Không coi bản nháp hay tag cục bộ là bằng chứng đã nộp E-learning.
 
-Mã lớp đã xác nhận: **261_71ITGR40203_03**. Thông tin nộp còn thiếu: xác nhận URL remote hiện tại và chênh lệch MSSV trong tên repo (`237480210is04`) với MSSV đúng (`237480201IS04`); commit/link sửa lỗi; tag v0.2 local/remote; repo public; clone-and-run theo tag; sinh viên tự kiểm khai báo AI; xác nhận nộp E-learning. Xem [kiểm kê minh chứng](docs/evidence/bt2/evidence-audit.md).
+Mã lớp: **261_71ITGR40203_03**, MSSV: **237480201IS04**. Repository hiện tại: [cdtn1-vongthirathsithiphak-l8](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8). Ba commit bug Buổi 14 đã có; tag local `v0.2` được giữ nguyên. Những nhận định thiếu URL/tag/commit trong [kiểm kê BT2](docs/evidence/bt2/evidence-audit.md) là lịch sử. Xác nhận nộp E-learning và sinh viên tự kiểm khai báo AI vẫn cần bằng chứng riêng.
 
-Checklist theo ba PDF và giới hạn: [kiểm kê BT2](docs/evidence/bt2/evidence-audit.md). C1 sau push: [clone-and-run-v0.2.md](docs/clone-and-run-v0.2.md); chưa PASS trước khi clone thật. PostgreSQL trong PDF là mẫu triển khai; chấp thuận SQLite khi chấm sát mẫu cần giảng viên xác nhận.
+Checklist BT2 lịch sử: [kiểm kê BT2](docs/evidence/bt2/evidence-audit.md). [clone-and-run-v0.2.md](docs/clone-and-run-v0.2.md) là bản hướng dẫn BT2 cũ, còn URL lịch sử; không dùng cho C1 BT3. Dùng [Deployment Guide hiện tại](docs/deployment-guide.md) và [báo cáo Buổi 16](docs/testing/buoi16-deployment-report.md). SQLite tiếp tục là database của implementation này; không tự thay bằng PostgreSQL.
 
 ## 9. Buổi 14 – Workshop kiểm thử hệ thống SmartCRM L8
 

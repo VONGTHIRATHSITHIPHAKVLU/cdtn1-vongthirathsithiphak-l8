@@ -1,0 +1,3 @@
+NAME                                     IMAGE                                                                     COMMAND                  SERVICE   CREATED              STATUS                        PORTS
+buoi16-20261112t165956z-snapshot-api-1   sha256:4538723d09e851ee3d8328ffdc68bd9ede74329efbd3d3a09ecf3143950c5574   "docker-entrypoint.s…"   api       3 minutes ago        Up 3 minutes (healthy)        127.0.0.1:3000->3000/tcp
+buoi16-20261112t165956z-snapshot-web-1   buoi16-20261112t165956z-snapshot-web                                      "/docker-entrypoint.…"   web       About a minute ago   Up About a minute (healthy)   127.0.0.1:8080->80/tcp

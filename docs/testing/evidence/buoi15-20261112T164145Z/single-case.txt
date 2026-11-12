@@ -1,0 +1,14 @@
+﻿Evidence directory: docs\testing\evidence\run-2026-11-12T16-42-21-694Z-3948
+Command: node --test --test-name-pattern=^TC-07  tests/buoi14.test.js
+Started UTC: 2026-11-12T16:42:21.696Z
+Exit: 0
+✔ TC-07 unit: mixed CSAT NPS summary uses separate denominators (2.2509ms)
+ℹ {"responseCount":5,"invitationCount":5,"csat":50,"csatCount":2,"nps":0,"npsCount":3,"negativeCount":2,"generatedAt":"2026-11-06T00:00:00.000Z","source":"CSDL cục bộ","csatTarget":80}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 152.4416

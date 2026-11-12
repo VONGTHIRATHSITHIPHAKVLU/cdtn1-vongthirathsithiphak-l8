@@ -1,0 +1,4 @@
+Migration 001: OK (6 tables)
+Seed demo: OK; đây không phải bộ dữ liệu mẫu của môn học.
+Migration 001: OK (6 tables)
+Seed demo: OK; đây không phải bộ dữ liệu mẫu của môn học.

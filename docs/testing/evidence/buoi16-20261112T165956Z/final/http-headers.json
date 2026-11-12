@@ -1,0 +1,7 @@
+﻿{
+    "webHTTP":  200,
+    "webReferrerPolicy":  "no-referrer",
+    "apiHTTP":  200,
+    "apiReferrerPolicy":  "no-referrer,no-referrer",
+    "apiBody":  "{\"status\":\"ok\"}"
+}

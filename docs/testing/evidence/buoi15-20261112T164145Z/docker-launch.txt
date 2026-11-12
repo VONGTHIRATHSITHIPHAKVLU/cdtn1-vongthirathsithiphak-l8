@@ -1,0 +1,12 @@
+﻿Local demo configuration ready. Credentials are in .env (not printed).
+node : WARNING: Error loading config file: open C:\Users\ASUS\.docker\config.json: Access is denied.
+At line:2 char:490
++ ... STEXITCODE; node scripts/demo.js *> "$evidenceDir/docker-launch.txt"; ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: Error ...cess is denied.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+WARNING: Error loading config file: open C:\Users\ASUS\.docker\config.json: Access is denied.
+failed to connect to the docker API at npipe:////./pipe/docker_engine; check if the path is correct and if the daemon 
+is running: open //./pipe/docker_engine: The system cannot find the file specified.
+Deployment did not complete. Check Docker access/daemon, available ports and the Deployment Guide.

@@ -25,3 +25,4 @@ CMD ["sh", "-c", "node scripts/migrate.js && node scripts/seed.js && exec node s
 FROM nginx:1.28.0-alpine AS web
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
+HEALTHCHECK --interval=10s --timeout=3s --start-period=10s --retries=6 CMD wget -q -O /dev/null http://127.0.0.1/ || exit 1

@@ -1,6 +1,6 @@
 # API contract — L8 Sprint 1–2
 
-API dùng JSON UTF-8; body thành công là đối tượng hoặc mảng trực tiếp. Lỗi thống nhất: `{ "error": "CODE", "message": "Thông báo cho người dùng", "fields": {} }`. `fields` chứa lỗi theo trường khi validation. Tất cả thời gian ISO 8601 UTC; ID số nguyên, token chữ-số 32 ký tự. Dữ liệu không tồn tại trả 404, danh sách rỗng trả `[]`, tỷ lệ chưa có mẫu số trả `null`.
+API dùng JSON UTF-8; body thành công là đối tượng hoặc mảng trực tiếp. Lỗi thống nhất: `{ "error": "CODE", "message": "Thông báo cho người dùng", "fields": {} }`. `fields` chứa lỗi theo trường khi validation. Tất cả thời gian ISO 8601 UTC; ID số nguyên, token khảo sát sinh dạng hex 32 ký tự. Session token đăng nhập là hex 64 ký tự, gửi đúng header `Authorization: Bearer <token>`; token trần không được chấp nhận. Dữ liệu không tồn tại trả 404, danh sách rỗng trả `[]`, tỷ lệ chưa có mẫu số trả `null`.
 
 | Method | Endpoint | Auth | Kết quả |
 |---|---|---|---|
@@ -21,6 +21,9 @@ API dùng JSON UTF-8; body thành công là đối tượng hoặc mảng trực
 ## Đầu vào
 
 - Login: `{username:"demo", password:string}`. Đúng mật khẩu cấu hình trong `DEMO_PASSWORD`. Sai 401, sau 5 lần khóa 15 phút trả 429; thiếu cấu hình trả 503. Phiên 1 giờ, mất khi backend khởi động lại.
+
+Buổi 15: verifier mật khẩu scrypt có salt trong RAM; map phiên chỉ lưu hash token. Actor của các thao tác ghi lấy từ identity demo trong session, không từ payload. Vẫn chỉ có một manager demo; chưa có kiểm quyền owner/center. Mật khẩu provisioning trong `.env` và token khảo sát trong SQLite chưa được mã hoá. Xem [Security Checklist](security-checklist.md).
+
 - Template: `{name:string(3..100),type:"CSAT"|"NPS",question:string(10..300),allowComment?:boolean}`; boolean mặc định true. Mẫu đã được dùng không được sửa/xóa.
 - Invitation: `{supportRequestId:string,customerId:positiveInteger,templateId:positiveInteger,channel:"EMAIL"|"SMS"}`. Request code tham chiếu đúng khách hàng, trạng thái COMPLETED. Kiểm tra liên hệ và opt-out.
 - Response: `{score:integer,comment?:string(0..500)}`. CSAT 1..5, NPS 0..10. Mẫu không cho nhận xét sẽ từ chối nhận xét khác rỗng.

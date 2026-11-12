@@ -15,13 +15,17 @@ export function createApp(service, { log = logger, ...options } = {}) {
     res.setHeader('Content-Type','application/json; charset=utf-8');
     res.setHeader('Cache-Control','no-store');
     res.setHeader('X-Content-Type-Options','nosniff');
+    res.setHeader('Referrer-Policy','no-referrer');
     const requestId = randomUUID(), started = Date.now();
     let routeName = 'other', failureCode, failure;
     res.setHeader('X-Request-Id',requestId);
     res.on('finish',()=>log(res.statusCode >= 500 ? 'error' : res.statusCode >= 400 ? 'warn' : 'info','request completed',{ requestId, method:req.method, route:routeName, status:res.statusCode, durationMs:Date.now()-started, code:failureCode, error:failure }));
     try {
       const path = new URL(req.url,'http://localhost').pathname;
-      routeName = path.startsWith('/api/public/surveys/') ? '/api/public/surveys/:token' : (path.match(/^\/api\/[a-z/-]+(?:\/\d+)?$/)?.[0] || 'other');
+      // Only known route templates enter logs; arbitrary URL segments may be PII.
+      routeName = path.startsWith('/api/public/surveys/') ? '/api/public/surveys/:token'
+        : path.match(/^\/api\/(?:health|auth\/(?:login|logout)|support-requests|reports\/summary)$/)?.[0]
+          || path.match(/^\/api\/survey-(?:templates|invitations)(?:\/\d+)?$/)?.[0]?.replace(/\/\d+$/, '/:id') || 'other';
       if (req.method === 'GET' && path === '/api/health') {
         service.repo.db.prepare('SELECT 1').get();
         res.end(JSON.stringify({status:'ok'})); return;

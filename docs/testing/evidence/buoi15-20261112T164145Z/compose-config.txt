@@ -1,0 +1,8 @@
+﻿docker : WARNING: Error loading config file: open C:\Users\ASUS\.docker\config.json: Access is denied.
+At line:2 char:261
++ ... STEXITCODE; docker compose config --quiet *> "$evidenceDir/compose-co ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: Error ...cess is denied.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+WARNING: Error loading config file: open C:\Users\ASUS\.docker\config.json: Access is denied.

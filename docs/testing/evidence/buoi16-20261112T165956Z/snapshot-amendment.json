@@ -1,0 +1,7 @@
+﻿{
+    "file":  "deploy/nginx.conf",
+    "reason":  "Runtime detected inherited default access log exposing synthetic URL marker. Safe access_log moved into server context.",
+    "originalSnapshotHash":  "5b9b4b138360e718cb7a405ef2c1a1b855a86594317416cf622080125501e9bb",
+    "finalSourceHash":  "01e302c71f12320dbfe761c76058ba4c90980de404c1ece029922c9f1f67dcdf",
+    "finalSnapshotHash":  "01e302c71f12320dbfe761c76058ba4c90980de404c1ece029922c9f1f67dcdf"
+}

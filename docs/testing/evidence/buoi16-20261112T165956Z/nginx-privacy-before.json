@@ -1,0 +1,6 @@
+{
+  "check": "Raw Docker logs must not contain synthetic survey URL marker",
+  "status": "FAIL",
+  "syntheticMarkerLogged": true,
+  "markerValue": "[NOT RECORDED]"
+}

@@ -1,0 +1,124 @@
+{
+  "kind": "local snapshot, not GitHub clone",
+  "snapshot": "C:\\Users\\ASUS\\Downloads\\smartcrm-bt2-fix\\.tmp\\buoi16-20261112T165956Z-snapshot",
+  "base": "http://127.0.0.1:8080",
+  "steps": [
+    {
+      "check": "API and frontend Docker health",
+      "status": "PASS",
+      "details": {
+        "services": [
+          "api",
+          "web"
+        ],
+        "health": "healthy"
+      }
+    },
+    {
+      "check": "Web and proxied SQLite health",
+      "status": "PASS",
+      "details": {
+        "webHTTP": 200,
+        "health": {
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "check": "Fresh demo counts",
+      "status": "PASS",
+      "details": [
+        4,
+        4,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "check": "Real Chrome login and seeded template",
+      "status": "PASS",
+      "details": {
+        "seededTemplateVisible": true
+      }
+    },
+    {
+      "check": "Survey workflow",
+      "status": "PASS",
+      "details": {
+        "responseCount": 1,
+        "csat": 100
+      }
+    },
+    {
+      "check": "Docker migrate/seed twice preserves counts",
+      "status": "PASS",
+      "details": {
+        "before": [
+          4,
+          4,
+          1,
+          1,
+          1,
+          2
+        ],
+        "after": [
+          4,
+          4,
+          1,
+          1,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "check": "SQLite data survives API restart",
+      "status": "PASS",
+      "details": {
+        "before": [
+          4,
+          4,
+          1,
+          1,
+          1,
+          2
+        ],
+        "after": [
+          4,
+          4,
+          1,
+          1,
+          1,
+          2
+        ],
+        "responseCount": 1
+      }
+    },
+    {
+      "check": "Separate Compose project",
+      "status": "PASS",
+      "details": {
+        "project": "buoi16-20261112t165956z-snapshot"
+      }
+    },
+    {
+      "check": "Raw Docker log privacy",
+      "status": "PASS",
+      "details": {
+        "passwordAndAllObservedTokensAbsent": true,
+        "commentAbsent": true
+      }
+    },
+    {
+      "check": "Screenshots",
+      "status": "PASS",
+      "details": {
+        "web": "actual live application",
+        "health": "actual live API response",
+        "dockerAndTests": "Chrome showing unmodified raw command-output files; not OS terminal screenshots"
+      }
+    }
+  ]
+}

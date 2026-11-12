@@ -1,0 +1,9 @@
+﻿{
+    "evidence":  "docs/testing/evidence/buoi16-20261112T165956Z",
+    "snapshot":  "C:\\Users\\ASUS\\Downloads\\smartcrm-bt2-fix\\.tmp\\buoi16-20261112T165956Z-snapshot",
+    "fileCount":  299,
+    "kind":  "Independent local source snapshot including uncommitted changes, NOT GitHub clone",
+    "exclusions":  "Git metadata, ignored .env/databases/node_modules/dist/temp and current run evidence",
+    "head":  "a85cd54502d6a026ff01e547c5af03d8de4addaa",
+    "v02":  "d1f76c759ad53fb73d24501d3b4d9c575fc7997f"
+}

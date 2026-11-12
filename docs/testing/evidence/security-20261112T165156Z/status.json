@@ -1,0 +1,18 @@
+﻿{
+    "testExit":  0,
+    "tests":  44,
+    "passed":  44,
+    "failed":  0,
+    "auditSandboxExit":  1,
+    "auditOnlineExit":  0,
+    "auditKnownVulnerabilities":  0,
+    "buildSandboxExit":  1,
+    "buildElevatedExit":  0,
+    "secretScannerExit":  0,
+    "secretScanCandidates":  48,
+    "finalDiffExit":  0,
+    "head":  "a85cd54502d6a026ff01e547c5af03d8de4addaa",
+    "v02":  "d1f76c759ad53fb73d24501d3b4d9c575fc7997f",
+    "docker":  "NOT RETESTED - runtime blocked in C1 evidence",
+    "ownerAuthorization":  "NOT IMPLEMENTED - policy not defined in current single-manager design"
+}

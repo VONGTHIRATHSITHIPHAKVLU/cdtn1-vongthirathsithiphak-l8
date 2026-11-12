@@ -1,0 +1,3 @@
+NAME                                  IMAGE                               COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+buoi16-20261112t165956z-final-api-1   buoi16-20261112t165956z-final-api   "docker-entrypoint.s…"   api       39 seconds ago   Up 38 seconds (healthy)   127.0.0.1:3000->3000/tcp
+buoi16-20261112t165956z-final-web-1   buoi16-20261112t165956z-final-web   "/docker-entrypoint.…"   web       39 seconds ago   Up 32 seconds (healthy)   127.0.0.1:8080->80/tcp

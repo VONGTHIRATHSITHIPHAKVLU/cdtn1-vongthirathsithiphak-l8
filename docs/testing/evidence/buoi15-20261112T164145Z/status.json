@@ -1,0 +1,7 @@
+﻿{
+    "testExit":  0,
+    "buildExit":  1,
+    "diffExit":  0,
+    "dockerLaunchExit":  1,
+    "cleanClone":  "NOT RUN - changes are local and uncommitted"
+}

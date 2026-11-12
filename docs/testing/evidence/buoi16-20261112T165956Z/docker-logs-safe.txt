@@ -1,0 +1,97 @@
+web-1  | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+web-1  | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+api-1  | Migration 001: OK (6 tables)
+api-1  | Seed demo: OK; đây không phải bộ dữ liệu mẫu của môn học.
+api-1  | {"timestamp":"2026-11-12T17:00:47.943Z","level":"info","message":"API started","port":3000}
+api-1  | {"timestamp":"2026-11-12T17:00:52.630Z","level":"info","message":"request completed","requestId":"64c4a87e-49a8-4d80-b1d5-e03faa9fe5c4","method":"GET","route":"/api/health","status":200,"durationMs":2}
+api-1  | {"timestamp":"2026-11-12T17:01:02.741Z","level":"info","message":"request completed","requestId":"35a1f217-171d-4b63-8587-8f84879a1a91","method":"GET","route":"/api/health","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:01:12.835Z","level":"info","message":"request completed","requestId":"34019f4d-17d8-4e29-a53f-5306e6797b2a","method":"GET","route":"/api/health","status":200,"durationMs":0}
+web-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+api-1  | {"timestamp":"2026-11-12T17:01:22.949Z","level":"info","message":"request completed","requestId":"783e6765-856a-4264-95e6-fec77a2ac622","method":"GET","route":"/api/health","status":200,"durationMs":0}
+web-1  | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+api-1  | {"timestamp":"2026-11-12T17:01:33.073Z","level":"info","message":"request completed","requestId":"bb2fe543-a523-4c3d-a23d-ae0ab27d1686","method":"GET","route":"/api/health","status":200,"durationMs":0}
+web-1  | 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+web-1  | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+web-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+web-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+web-1  | /docker-entrypoint.sh: Configuration complete; ready for start up
+api-1  | {"timestamp":"2026-11-12T17:01:43.164Z","level":"info","message":"request completed","requestId":"a43226a0-32a9-4d33-8202-8bbdbc64a9fc","method":"GET","route":"/api/health","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:01:53.275Z","level":"info","message":"request completed","requestId":"72d8e64d-aff4-4a7f-9603-52cd74e45bef","method":"GET","route":"/api/health","status":200,"durationMs":1}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: using the "epoll" event method
+api-1  | {"timestamp":"2026-11-12T17:02:03.372Z","level":"info","message":"request completed","requestId":"a9c9eaf0-b61c-4fe3-849e-901ff9cf9ea2","method":"GET","route":"/api/health","status":200,"durationMs":0}
+api-1  | {"timestamp":"2026-11-12T17:02:13.481Z","level":"info","message":"request completed","requestId":"09600ddd-20ab-4699-a966-34a9377497c3","method":"GET","route":"/api/health","status":200,"durationMs":0}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: nginx/1.28.0
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: built by gcc 14.2.0 (Alpine 14.2.0) 
+api-1  | {"timestamp":"2026-11-12T17:02:23.614Z","level":"info","message":"request completed","requestId":"7fa0d5e9-7133-4b0e-9c81-c3208bf83231","method":"GET","route":"/api/health","status":200,"durationMs":0}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: OS: Linux 6.18.54.1-microsoft-standard-WSL2
+api-1  | {"timestamp":"2026-11-12T17:02:33.716Z","level":"info","message":"request completed","requestId":"56f0b881-0e64-4f27-9832-abeb1088653f","method":"GET","route":"/api/health","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:02:43.838Z","level":"info","message":"request completed","requestId":"b47332a3-d061-43e7-b4cf-fc5932240899","method":"GET","route":"/api/health","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:02:54.220Z","level":"info","message":"request completed","requestId":"c502eb4e-83d7-4b31-b7ed-908a9d8f5e3c","method":"GET","route":"/api/health","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:02:57.754Z","level":"warn","message":"request completed","requestId":"7663afa8-b5e0-4ca2-aad8-8dc999a73553","method":"GET","route":"/api/public/surveys/:token","status":404,"durationMs":3,"code":"NOT_FOUND"}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+api-1  | {"timestamp":"2026-11-12T17:03:04.341Z","level":"info","message":"request completed","requestId":"2fe13884-e610-4da9-a765-384f2562acba","method":"GET","route":"/api/health","status":200,"durationMs":1}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker processes
+api-1  | {"timestamp":"2026-11-12T17:03:14.474Z","level":"info","message":"request completed","requestId":"3ace683a-bfc5-4872-9c43-086771f4f9b8","method":"GET","route":"/api/health","status":200,"durationMs":0}
+api-1  | {"timestamp":"2026-11-12T17:03:24.622Z","level":"info","message":"request completed","requestId":"029399b4-a0da-4010-ad26-a8a9cfb94da0","method":"GET","route":"/api/health","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:03:34.740Z","level":"info","message":"request completed","requestId":"4f3e735d-19a2-44b5-807d-fce99803df69","method":"GET","route":"/api/health","status":200,"durationMs":0}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 29
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 30
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 31
+api-1  | {"timestamp":"2026-11-12T17:03:44.849Z","level":"info","message":"request completed","requestId":"8020cbd0-fdea-41e9-8c1b-4b4054afbb11","method":"GET","route":"/api/health","status":200,"durationMs":0}
+api-1  | {"timestamp":"2026-11-12T17:03:54.938Z","level":"info","message":"request completed","requestId":"cc40512f-1160-496c-8cf0-4ced20f040bc","method":"GET","route":"/api/health","status":200,"durationMs":0}
+api-1  | {"timestamp":"2026-11-12T17:04:05.034Z","level":"info","message":"request completed","requestId":"b2c56256-500f-43bc-8fc3-68e4d7b6aa30","method":"GET","route":"/api/health","status":200,"durationMs":0}
+api-1  | {"timestamp":"2026-11-12T17:04:15.130Z","level":"info","message":"request completed","requestId":"62df75b1-985b-4da2-92f2-007a27f0fe6b","method":"GET","route":"/api/health","status":200,"durationMs":1}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 32
+api-1  | {"timestamp":"2026-11-12T17:04:25.225Z","level":"info","message":"request completed","requestId":"57759d42-d6fb-414a-9329-d71b07ff5d2f","method":"GET","route":"/api/health","status":200,"durationMs":0}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 33
+api-1  | {"timestamp":"2026-11-12T17:04:35.310Z","level":"info","message":"request completed","requestId":"c87b44c4-dfdc-45ee-b0a5-f22114e74961","method":"GET","route":"/api/health","status":200,"durationMs":1}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 34
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 35
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 36
+api-1  | {"timestamp":"2026-11-12T17:04:42.476Z","level":"info","message":"request completed","requestId":"bd839419-9fc9-47ee-955d-b193afe5f630","method":"GET","route":"/api/health","status":200,"durationMs":1}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 37
+api-1  | {"timestamp":"2026-11-12T17:04:42.800Z","level":"info","message":"request completed","requestId":"3621ec4a-d103-4066-9972-6cb52a175c60","method":"POST","route":"/api/auth/login","status":200,"durationMs":85}
+api-1  | {"timestamp":"2026-11-12T17:04:42.805Z","level":"info","message":"request completed","requestId":"4d9c6c7e-a916-41b0-8a73-68c91f649d76","method":"GET","route":"/api/survey-templates","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:04:42.809Z","level":"info","message":"request completed","requestId":"7f101cd6-72ce-494f-a50c-7cd71ad8ca7c","method":"GET","route":"/api/support-requests","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:04:43.798Z","level":"info","message":"request completed","requestId":"bbc91f35-e67c-4b9b-94e5-befff228038b","method":"POST","route":"/api/auth/login","status":200,"durationMs":48}
+api-1  | {"timestamp":"2026-11-12T17:04:43.856Z","level":"info","message":"request completed","requestId":"82fc473a-29ff-4c25-92ee-8121d4aaeb34","method":"GET","route":"/api/survey-templates","status":200,"durationMs":1}
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 38
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 39
+web-1  | 2026/11/12 17:03:22 [notice] 1#1: start worker process 40
+api-1  | {"timestamp":"2026-11-12T17:04:43.964Z","level":"info","message":"request completed","requestId":"fef59007-657a-4556-83c4-8da888089da2","method":"POST","route":"/api/survey-invitations","status":201,"durationMs":9}
+web-1  | {"timestamp":"2026-11-12T17:03:27+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:03:37+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:03:47+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:03:57+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+api-1  | {"timestamp":"2026-11-12T17:04:43.969Z","level":"info","message":"request completed","requestId":"603a582d-810a-49f8-812e-6b304ce4901d","method":"GET","route":"/api/public/surveys/:token","status":200,"durationMs":1}
+api-1  | {"timestamp":"2026-11-12T17:04:43.979Z","level":"info","message":"request completed","requestId":"38f7e0f5-c7a0-46f5-9ede-0f12bef1bc84","method":"POST","route":"/api/public/surveys/:token","status":201,"durationMs":7}
+api-1  | {"timestamp":"2026-11-12T17:04:43.988Z","level":"info","message":"request completed","requestId":"647b0d02-8ae4-486f-b7b9-69baeeb6ea8b","method":"GET","route":"/api/reports/summary","status":200,"durationMs":2}
+api-1  | {"timestamp":"2026-11-12T17:04:45.428Z","level":"info","message":"request completed","requestId":"ab9b02f9-8616-4056-9d36-5918fdee332e","method":"GET","route":"/api/health","status":200,"durationMs":0}
+api-1  | Migration 001: OK (6 tables)
+api-1  | Seed demo: OK; đây không phải bộ dữ liệu mẫu của môn học.
+api-1  | {"timestamp":"2026-11-12T17:04:46.883Z","level":"info","message":"API started","port":3000}
+web-1  | {"timestamp":"2026-11-12T17:04:07+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:04:17+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:04:27+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:04:37+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:04:42+00:00","level":"info","method":"GET","status":200,"requestId":"bd839419-9fc9-47ee-955d-b193afe5f630","durationSeconds":"0.003"}
+web-1  | {"timestamp":"2026-11-12T17:04:42+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+api-1  | {"timestamp":"2026-11-12T17:04:51.743Z","level":"info","message":"request completed","requestId":"d63509b2-ce05-4cb5-9a4b-860f8d3e03e3","method":"GET","route":"/api/health","status":200,"durationMs":3}
+api-1  | {"timestamp":"2026-11-12T17:04:52.466Z","level":"info","message":"request completed","requestId":"afbb6ea9-ae2c-4fef-9db4-6aa7d38122a8","method":"POST","route":"/api/auth/login","status":200,"durationMs":40}
+web-1  | {"timestamp":"2026-11-12T17:04:42+00:00","level":"info","method":"POST","status":200,"requestId":"3621ec4a-d103-4066-9972-6cb52a175c60","durationSeconds":"0.086"}
+api-1  | {"timestamp":"2026-11-12T17:04:52.695Z","level":"info","message":"request completed","requestId":"9d5da5e3-c6f6-4923-af0a-cfae9d417bbe","method":"GET","route":"/api/reports/summary","status":200,"durationMs":1}
+web-1  | {"timestamp":"2026-11-12T17:04:42+00:00","level":"info","method":"GET","status":200,"requestId":"4d9c6c7e-a916-41b0-8a73-68c91f649d76","durationSeconds":"0.002"}
+web-1  | {"timestamp":"2026-11-12T17:04:42+00:00","level":"info","method":"GET","status":200,"requestId":"7f101cd6-72ce-494f-a50c-7cd71ad8ca7c","durationSeconds":"0.002"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.002"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"POST","status":200,"requestId":"bbc91f35-e67c-4b9b-94e5-befff228038b","durationSeconds":"0.051"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"GET","status":200,"requestId":"82fc473a-29ff-4c25-92ee-8121d4aaeb34","durationSeconds":"0.003"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"POST","status":201,"requestId":"fef59007-657a-4556-83c4-8da888089da2","durationSeconds":"0.010"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"GET","status":200,"requestId":"603a582d-810a-49f8-812e-6b304ce4901d","durationSeconds":"0.002"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"POST","status":201,"requestId":"38f7e0f5-c7a0-46f5-9ede-0f12bef1bc84","durationSeconds":"0.008"}
+web-1  | {"timestamp":"2026-11-12T17:04:43+00:00","level":"info","method":"GET","status":200,"requestId":"647b0d02-8ae4-486f-b7b9-69baeeb6ea8b","durationSeconds":"0.004"}
+web-1  | {"timestamp":"2026-11-12T17:04:47+00:00","level":"info","method":"GET","status":200,"requestId":"","durationSeconds":"0.000"}
+web-1  | {"timestamp":"2026-11-12T17:04:52+00:00","level":"info","method":"POST","status":200,"requestId":"afbb6ea9-ae2c-4fef-9db4-6aa7d38122a8","durationSeconds":"0.042"}
+web-1  | {"timestamp":"2026-11-12T17:04:52+00:00","level":"info","method":"GET","status":200,"requestId":"9d5da5e3-c6f6-4923-af0a-cfae9d417bbe","durationSeconds":"0.002"}

@@ -1,0 +1,14 @@
+﻿Evidence directory: docs\testing\evidence\run-2026-11-12T16-42-21-115Z-17908
+Command: node --test --test-name-pattern=^TC-09  tests/buoi14.test.js
+Started UTC: 2026-11-12T16:42:21.117Z
+Exit: 0
+✔ TC-09 integration: migration and seed repeat on isolated SQLite (301.5546ms)
+ℹ {"first":[4,4,1,0,0,0],"second":[4,4,1,0,0,0]}
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 417.7284
