@@ -1,5 +1,7 @@
 # Bug Log — Buổi 14
 
+Ghi chú hồ sơ BT3, 13/11/2026: ba mục bug và evidence dưới đây là lịch sử, giữ nguyên nguồn phát hiện và số test theo từng commit. [Clean clone GitHub b6a66b5](github-cleanclone-report.md) đã chạy suite 44/44 PASS; không thay kết quả regression gốc bằng số test mới. Trong lượt rà local này chỉ đối chiếu object/diff Git và link file; trạng thái HTTP công khai trong từng mục là kết quả xác minh trước đó, không phải HTTP mới.
+
 Trạng thái 07/11/2026: cả ba bug đã sửa và có **commit local riêng**, đã kiểm staged diff và nội dung commit; đã push; link công khai được kiểm HTTP 200 không đăng nhập. Regression ba bug 5/5 PASS; full suite 40/40 PASS, build thành công. 12 ảnh TC và ảnh BUG-14-03-fixed có thật, đã mở. Phản hồi BT2/AC gốc chưa được cung cấp. Actions run 42271266689 đã completed/success. Không dùng hash/link giả.
 
 ## BUG-14-01
@@ -22,7 +24,7 @@ Trạng thái 07/11/2026: cả ba bug đã sửa và có **commit local riêng**
 6. **Cách sửa:** giữ Buffer chunks, đếm byte thật với giới hạn 16384 byte như cũ, concat rồi giải mã UTF-8 một lần. Regression riêng: `tests/buoi14-bug02.test.js`, kiểm 201, response.name và SQLite name bằng chính chuỗi đầu vào.
 7. **Commit + xác nhận:** [559437d](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/559437df380649e3f99ead6dc542b59aa335c45d) — đã push và xác minh công khai: HTTP 200, không đăng nhập. [Raw](evidence/test-cases/TC-12.txt), [ảnh TC-12](../screenshots/TC-12.png) chứng minh PASS; cây commit thực tế 32/32 PASS ([log](evidence/publish-20261106T182108181513Z/bug14-02.txt)). Commit chỉ chứa source của bug, regression và ảnh/raw tương ứng.
 
-## BUG-14-03 · Major · FIXED local — trùng tên theo SQLite trả 500 thay vì lỗi nghiệp vụ
+## BUG-14-03 · Major · FIXED, đã có commit riêng công khai — trùng tên theo SQLite trả 500 thay vì lỗi nghiệp vụ
 
 1. **Mã + severity:** BUG-14-03 · **Major**: chức năng tạo mẫu thất bại với một lớp chuỗi đầu vào được validator hiện tại chấp nhận; API trả lỗi hệ thống thay vì xung đột nghiệp vụ. Có cách tránh là bỏ ký tự NUL hoặc dùng tiền tố khác. Không quan sát thấy mất/sai dữ liệu hoặc lộ thông tin để xếp Critical.
 2. **Phát hiện bởi:** rà soát nhánh kiểm trùng tên chưa có test cho embedded NUL, đối chiếu SRS US1, API contract mục Template/lỗi 409 và migration `name TEXT COLLATE NOCASE UNIQUE`; tái lập HTTP 2/2 lần trên SQLite memory mới, kiểm tra ngày 07/11/2026. Không có bảng AC Given–When–Then gốc để gán mã AC.

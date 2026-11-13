@@ -1,0 +1,86 @@
+[
+  {
+    "file": "docs/screenshots/TC-01.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-02.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-03.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-04.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-05.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-06.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-07.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-08.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-09.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-10.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-11.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/TC-12.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/testing/evidence/github-cleanclone-20261112T172747Z/verified/clean-api-health.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/testing/evidence/github-cleanclone-20261112T172747Z/verified/clean-web-demo.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/testing/evidence/github-cleanclone-20261112T172747Z/verified/docker-healthy-raw-log-browser.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/testing/evidence/github-cleanclone-20261112T172747Z/verified/tests-pass-raw-log-browser.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/testing/evidence/buoi16-20261112T165956Z/final/clean-api-health.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/testing/evidence/buoi16-20261112T165956Z/final/clean-web-demo.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/testing/evidence/buoi16-20261112T165956Z/final/docker-healthy-raw-log-browser.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/testing/evidence/buoi16-20261112T165956Z/final/tests-pass-raw-log-browser.png",
+    "shaMatches": true
+  },
+  {
+    "file": "docs/screenshots/BUG-14-03-fixed.png",
+    "shaMatches": true
+  }
+]

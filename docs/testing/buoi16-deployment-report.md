@@ -1,5 +1,8 @@
 # Buổi 16 — kiểm chứng đóng gói SmartCRM L8
 
+Cập nhật sau công bố: [clean clone GitHub commit b6a66b5 đã PASS C1/C3/C8](github-cleanclone-report.md).
+Các nhận định public clone BLOCKED bên dưới là trạng thái lịch sử của lượt snapshot trước công bố, không phải trạng thái hiện tại.
+
 Thời điểm: 12–13/11/2026 Asia/Bangkok; tên evidence dùng UTC, bắt đầu `20261112T165956Z`.
 Nguồn: HEAD local `a85cd54502d6a026ff01e547c5af03d8de4addaa` **cộng các thay đổi chưa commit**. Không commit/push/tag.
 

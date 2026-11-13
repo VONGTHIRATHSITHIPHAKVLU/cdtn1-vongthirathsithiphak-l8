@@ -1,0 +1,10 @@
+﻿{
+    "C1":  "PASS - actual GitHub clone of b6a66b5, exactly two setup commands",
+    "C3":  "PASS - 44 tests and TC-07 replay",
+    "C8":  "PASS - repeated migration/seed and restart persistence",
+    "firstUIAttempt":  "FAIL - verifier encoding; preserved",
+    "correctedUIAttempt":  "PASS",
+    "diffCheckExit":  0,
+    "v02":  "d1f76c759ad53fb73d24501d3b4d9c575fc7997f",
+    "newCommitOrPushPerformed":  false
+}

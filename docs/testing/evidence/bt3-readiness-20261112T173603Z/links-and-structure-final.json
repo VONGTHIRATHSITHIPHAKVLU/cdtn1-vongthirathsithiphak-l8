@@ -1,0 +1,16 @@
+{
+  "localLinksChecked": 223,
+  "missingLinks": [],
+  "testCases": 12,
+  "allCasesHaveEightColumns": true,
+  "bugs": 3,
+  "allBugsHaveSevenItems": true,
+  "securitySections": 7,
+  "securityStatusLines": 7,
+  "deploymentSections": 5,
+  "apiEndpointCount": 17,
+  "missingApiMethods": [],
+  "unexpectedApiMethods": [],
+  "newTestsRun": false,
+  "previousAuditParserNote": "Initial parser used non-ASCII split/status matching through PowerShell; final parser uses ASCII boundaries. Initial diagnostic retained, not a test result."
+}

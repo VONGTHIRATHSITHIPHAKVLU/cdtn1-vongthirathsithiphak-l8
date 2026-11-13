@@ -1,0 +1,9 @@
+﻿{
+    "kind":  "GitHub public clean clone",
+    "parent":  "C:\\Users\\ASUS\\Downloads\\smartcrm-bt2-fix\\.tmp\\github-cleanclone-20261112T172747Z",
+    "clonePath":  "C:\\Users\\ASUS\\Downloads\\smartcrm-bt2-fix\\.tmp\\github-cleanclone-20261112T172747Z\\smartcrm-l8-demo",
+    "snapshot":  "C:\\Users\\ASUS\\Downloads\\smartcrm-bt2-fix\\.tmp\\github-cleanclone-20261112T172747Z\\smartcrm-l8-demo",
+    "evidence":  "docs/testing/evidence/github-cleanclone-20261112T172747Z",
+    "parentInitiallyEmpty":  true,
+    "expectedCommit":  "b6a66b5e4c26a1a7ed0b48a8666d0bb1d6dd03a4"
+}

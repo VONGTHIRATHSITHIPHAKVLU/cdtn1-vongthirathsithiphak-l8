@@ -1,0 +1,7 @@
+{
+  "firstAttempt": "FAIL - copied verifier had mojibake selectors because PowerShell read UTF-8 as ANSI",
+  "applicationSourceChanged": false,
+  "correction": "Read original verifier explicitly as UTF-8 with Node fs; keep initial artifact unchanged",
+  "replayFolder": "verified",
+  "testLogProvenance": "verified/npm-test.txt is an exact copy of the same clone test run, used only for screenshot display"
+}

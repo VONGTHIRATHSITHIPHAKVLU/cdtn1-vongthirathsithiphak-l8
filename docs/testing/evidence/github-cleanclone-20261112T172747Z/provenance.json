@@ -1,0 +1,13 @@
+﻿{
+    "commit":  "b6a66b5e4c26a1a7ed0b48a8666d0bb1d6dd03a4",
+    "origin":  "https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8.git",
+    "trackedSourceUnmodified":  true,
+    "mainV02":  "d1f76c759ad53fb73d24501d3b4d9c575fc7997f",
+    "cloneV02":  "d1f76c759ad53fb73d24501d3b4d9c575fc7997f",
+    "setupCommands":  2,
+    "separateCdCommandUsed":  false,
+    "setupUsedHostNpmInstall":  false,
+    "hostNpmCiWasAfterDeployment":  true,
+    "sourceWasCopiedFromLocal":  false,
+    "dockerCache":  "Existing image/build cache allowed and reused; not a new physical machine"
+}

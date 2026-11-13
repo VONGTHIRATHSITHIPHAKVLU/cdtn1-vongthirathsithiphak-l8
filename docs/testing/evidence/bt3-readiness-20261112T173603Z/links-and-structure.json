@@ -1,0 +1,56 @@
+{
+  "docsReviewed": [
+    "README.md",
+    "docs/deployment-guide.md",
+    "docs/security-checklist.md",
+    "docs/api-contract.md",
+    "docs/testing/buoi14-test-plan.md",
+    "docs/testing/buoi14-test-report.md",
+    "docs/testing/buoi14-bug-log.md",
+    "docs/testing/buoi16-deployment-report.md",
+    "docs/testing/github-cleanclone-report.md",
+    "docs/testing/bt3-readiness.md",
+    "docs/bt3-file-manifest.md"
+  ],
+  "localLinksChecked": 223,
+  "missingLinks": [],
+  "structural": {
+    "testCaseRows": 12,
+    "testCaseColumns": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
+    "bugCount": 3,
+    "bugNumberedItems": [
+      {
+        "id": "BUG-14-01",
+        "count": 7
+      },
+      {
+        "id": "BUG-14-02",
+        "count": 7
+      },
+      {
+        "id": "BUG-14-03",
+        "count": 7
+      }
+    ],
+    "testPlanHeadings": 4,
+    "securitySections": 7,
+    "securityStatuses": 0,
+    "deploymentSections": 5,
+    "apiMainTableMethodRows": 21
+  },
+  "courseDocumentsFound": [],
+  "networkLinks": "Not re-fetched: this is local-only review. Historical public-link evidence retained."
+}

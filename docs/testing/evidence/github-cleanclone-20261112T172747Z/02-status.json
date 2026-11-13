@@ -1,0 +1,4 @@
+﻿{
+    "command":  "node smartcrm-l8-demo/scripts/demo.js",
+    "exitCode":  0
+}

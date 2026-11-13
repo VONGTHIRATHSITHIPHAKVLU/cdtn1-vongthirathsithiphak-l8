@@ -1,0 +1,26 @@
+﻿[
+    {
+        "file":  "clean-api-health.png",
+        "sha256":  "3c96614d602f9842e6522c0556860f0ea4cc45d6e2b5e332b217b47cf19dddb1",
+        "reviewed":  true,
+        "kind":  "Actual live web/API screenshot"
+    },
+    {
+        "file":  "clean-web-demo.png",
+        "sha256":  "005db214ddaa9b748ce1ac63d3f8161d2bcf9f352bd0486784c41a56f203c005",
+        "reviewed":  true,
+        "kind":  "Actual live web/API screenshot"
+    },
+    {
+        "file":  "docker-healthy-raw-log-browser.png",
+        "sha256":  "bb425a6ed29be7f91727dcdcb1199ec058c3d5edb1a03cd70eebcc70b4627453",
+        "reviewed":  true,
+        "kind":  "Chrome shows actual raw stdout, not OS terminal"
+    },
+    {
+        "file":  "tests-pass-raw-log-browser.png",
+        "sha256":  "096b84ee8def00938d12b7a6277ef4e9f99e5fa728f1f18fa0f3aac1b81f6bb1",
+        "reviewed":  true,
+        "kind":  "Chrome shows actual raw stdout, not OS terminal"
+    }
+]

@@ -1,0 +1,45 @@
+{
+  "kind": "GitHub public clean clone",
+  "snapshot": "C:\\Users\\ASUS\\Downloads\\smartcrm-bt2-fix\\.tmp\\github-cleanclone-20261112T172747Z\\smartcrm-l8-demo",
+  "base": "http://127.0.0.1:8080",
+  "steps": [
+    {
+      "check": "API and frontend Docker health",
+      "status": "PASS",
+      "details": {
+        "services": [
+          "api",
+          "web"
+        ],
+        "health": "healthy"
+      }
+    },
+    {
+      "check": "Web and proxied SQLite health",
+      "status": "PASS",
+      "details": {
+        "webHTTP": 200,
+        "health": {
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "check": "Fresh demo counts",
+      "status": "PASS",
+      "details": [
+        4,
+        4,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "check": "Runtime verification interrupted",
+      "status": "FAIL",
+      "details": "Inspect completed steps. Error body/URL suppressed to avoid exposing credentials."
+    }
+  ]
+}

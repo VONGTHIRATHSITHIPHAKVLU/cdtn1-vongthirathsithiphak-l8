@@ -4,13 +4,15 @@ Buổi 15 / BT3: [Deployment Guide (English)](docs/deployment-guide.md).
 [Security Checklist: bảy mục, kết quả và giới hạn](docs/security-checklist.md).
 Trong checkout hiện tại chạy `node scripts/demo.js` để tự tạo mật khẩu demo local
 và dựng Docker; không cần tự điền secret. Quy trình clone mới gồm hai lệnh trong
-guide, nhưng **C1 chưa xác minh** cho đến khi chạy thật từ revision được công bố.
+guide. **C1 đã kiểm chứng PASS trên clean clone GitHub commit b6a66b5**, ngày
+13/11/2026: [báo cáo và evidence](docs/testing/github-cleanclone-report.md).
 Giữ SQLite, named volume và cách chạy npm/manual bên dưới; không đổi tag v0.2.
 
 Trạng thái Buổi 15–16, 13/11/2026: snapshot local độc lập đã build/up Docker,
 API/web healthy, suite 44/44 PASS, TC-07 PASS, seed lặp và restart persistence PASS.
 Xem [báo cáo và ảnh thật](docs/testing/buoi16-deployment-report.md).
-Đây chưa phải clean clone GitHub; C1 chỉ hoàn tất sau khi kiểm revision công khai.
+Snapshot là bằng chứng trước công bố; lượt [clean clone GitHub](docs/testing/github-cleanclone-report.md)
+sau công bố đã kiểm riêng C1/C3/C8 trên commit b6a66b5.
 Các mục Buổi 11–14 bên dưới giữ số liệu lịch sử 20/40 test của từng giai đoạn;
 không dùng chúng thay cho kết quả Buổi 15–16. Security Checklist còn ghi rõ giới hạn
 owner/center, mã hoá dữ liệu và TLS; chưa xác nhận hoàn tất toàn bộ BT3.
@@ -215,7 +217,7 @@ Checklist BT2 lịch sử: [kiểm kê BT2](docs/evidence/bt2/evidence-audit.md)
 VONGTHIRATH SITHIPHAK · MSSV 237480201IS04 · Track SE · Luồng L8.
 Nội dung tổng hợp từ hồ sơ kiểm thử ngày **06/11/2026**, đối chiếu PDF Buổi 13 và Buổi 14. Đã bổ sung và chạy lại HTTP validation cùng full suite; bằng chứng mới lưu riêng, giữ nguyên các lần chạy cũ. Build/CI được phân biệt với kết quả lịch sử.
 
-**Trạng thái:** ba bug đã sửa, commit riêng và push lên repo PUBLIC; 12 ảnh TC cùng BUG-14-03-fixed có thật; suite 40/40 PASS, build thành công, Actions success. **Chưa hoàn tất đối chiếu phản hồi BT2/Acceptance Criteria gốc vì chưa được cung cấp**, không tự tạo phản hồi giảng viên.
+**Trạng thái lịch sử Buổi 14:** ba bug đã sửa, commit riêng và push lên repo PUBLIC; 12 ảnh TC cùng BUG-14-03-fixed có thật; suite tại mốc này 40/40 PASS, build thành công, Actions success. Suite Buổi 15–16 hiện tại là 44/44 PASS, có evidence riêng ở đầu README. **Chưa hoàn tất đối chiếu phản hồi BT2/Acceptance Criteria gốc vì chưa được cung cấp**, không tự tạo phản hồi giảng viên.
 
 ### 9.1. Mục tiêu và phạm vi kiểm thử
 
@@ -253,9 +255,9 @@ Kết quả đã ghi nhận:
 | Bộ cũ trước bổ sung | 20 | 0 | 0 | [Baseline](docs/testing/evidence/baseline-tests.txt) |
 | 12 ca mới trước sửa | 10 | 2 | 0 | [FAIL-before](docs/testing/evidence/before-fixes.txt) |
 | 12 ca mới sau sửa | 12 | 0 | 0 | [PASS-after](docs/testing/evidence/after-fixes.txt), [mã thoát từng ca](docs/testing/evidence/test-cases/cases.json) |
-| Full suite hiện tại sau cả ba bug | 40 | 0 | 0 | [Full suite](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt) |
+| Full suite Buổi 14 sau cả ba bug (lịch sử) | 40 | 0 | 0 | [Full suite](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt) |
 
-12 mã TC tương ứng 14 test tự động vì TC-04/05 có cả unit và HTTP; các test bổ sung và regression đưa toàn suite hiện tại lên 40 test. Evidence được gọn lại: [12 kết quả đúng lần chụp ảnh](docs/testing/evidence/test-cases/cases.json), [trước/sau BUG-14-03 và suite/build mới nhất](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/), [kiểm tra chuyên sâu](docs/testing/evidence/deep-review-20261106T174341298331Z/deep-cases-public.txt). Chỉ loại các lần chạy lặp và metadata thừa; nội dung raw được giữ không bị sửa.
+12 mã TC tương ứng 14 test tự động vì TC-04/05 có cả unit và HTTP; các test bổ sung và regression đưa suite Buổi 14 lên 40 test. Buổi 15 thêm một bootstrap test và ba security test, đưa suite hiện tại lên **44 test**. Evidence lịch sử: [12 kết quả đúng lần chụp ảnh](docs/testing/evidence/test-cases/cases.json), [trước/sau BUG-14-03 và suite/build Buổi 14](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/), [kiểm tra chuyên sâu](docs/testing/evidence/deep-review-20261106T174341298331Z/deep-cases-public.txt). Số liệu và raw cũ được giữ nguyên; xem [clean clone](docs/testing/github-cleanclone-report.md) cho lượt 44 test.
 
 Bảng dưới lấy từ [Test Report chi tiết](docs/testing/buoi14-test-report.md), chuyển đường dẫn evidence để dùng từ README gốc. **F** = SQLite memory mới, 1 mẫu, 1 khách synthetic, YC-001 COMPLETED và YC-002 OPEN, đồng hồ cố định như mục 9.2. TC-04/05 giữ unit cũ và có HTTP bổ sung thật; các unit thuần không thực thi HTTP/SQLite, không gán status giả.
 
@@ -325,11 +327,11 @@ git diff --check
 
 Nếu cần cài dependency đúng lockfile trước khi chạy: `npm.cmd ci`. Chạy riêng bằng `node scripts/test-buoi14.js TC-01` (đến `TC-12`); hai ca hồi quy là TC-11 và TC-12.
 
-Runner dựng fixture mới từng ca, không đọc `.env` hoặc thay database ứng dụng; ghi evidence UTF-8 vào thư mục **mới** `docs/testing/evidence/run-<UTC>-<pid>/` mỗi lần chạy. Không ghi đè bất kỳ evidence cũ nào. TC-04/05 chạy cả unit lẫn HTTP bổ sung; `npm.cmd test` hiện chạy 40 test (37 test trước BUG-14-03 + 3 regression cho BUG-14-03), tất cả đã PASS sau sửa. Ảnh thật cần thấy lệnh, mã TC, diagnostics và kết quả; không hiển thị token/mật khẩu.
+Runner dựng fixture mới từng ca, không đọc `.env` hoặc thay database ứng dụng; ghi evidence UTF-8 vào thư mục **mới** `docs/testing/evidence/run-<UTC>-<pid>/` mỗi lần chạy. Không ghi đè bất kỳ evidence cũ nào. TC-04/05 chạy cả unit lẫn HTTP bổ sung. Ở mốc Buổi 14, `npm.cmd test` chạy 40 test (37 test trước BUG-14-03 + 3 regression cho BUG-14-03), tất cả PASS sau sửa; ở revision Buổi 15–16 hiện tại lệnh này chạy **44 test**. Ảnh thật cần thấy lệnh, mã TC, diagnostics và kết quả; không hiển thị token/mật khẩu.
 
 ### 9.6. Kết quả và checklist Buổi 14
 
-**Kết quả hiện tại sau sửa BUG-14-03:** [regression trước sửa](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/before.txt) FAIL thật; [regression sau sửa](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/after.txt) 3/3 PASS; [cả ba bug](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/all-bug-regressions.txt) 5/5 PASS; [full suite](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt) 40/40 PASS. Build trong sandbox lỗi quyền đọc, [build ngoài sandbox](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-elevated.txt) thành công, exit 0. Không ghi đè evidence cũ. Các đoạn mang mốc 37/37 bên dưới là lịch sử.
+**Kết quả lịch sử Buổi 14 sau sửa BUG-14-03:** [regression trước sửa](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/before.txt) FAIL thật; [regression sau sửa](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/after.txt) 3/3 PASS; [cả ba bug](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/all-bug-regressions.txt) 5/5 PASS; [full suite](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/full-suite.txt) 40/40 PASS. Build trong sandbox lỗi quyền đọc, [build ngoài sandbox](docs/testing/evidence/bug14-03-fix-20261106T175309250796Z/build-elevated.txt) thành công, exit 0. Không ghi đè evidence cũ. Các đoạn mang mốc 37/37 bên dưới là lịch sử.
 
 | Yêu cầu | Kết quả |
 |---|---|
@@ -341,7 +343,7 @@ Runner dựng fixture mới từng ca, không đọc `.env` hoặc thay database
 | Ảnh từng ca | Đã mở và đối chiếu 12/12 ảnh đúng TC, có lệnh và PASS; link ở bảng TC |
 | ≥3 bug, ≥1 Critical/Major, mỗi bug bảy dòng | Đã sửa 3 bug và đủ bảy dòng, có Critical/Major; đã có commit riêng, link công khai HTTP 200 đã kiểm |
 | Commit riêng, link mở được | Đã push ba commit bug riêng; API và trang commit đều HTTP 200 không đăng nhập |
-| Toàn bộ suite PASS | Đạt local sau sửa: 40 PASS / 0 FAIL / 0 NOT RUN |
+| Toàn bộ suite Buổi 14 PASS (lịch sử) | Tại mốc sau sửa: 40 PASS / 0 FAIL / 0 NOT RUN; suite Buổi 15–16 là 44 test, dẫn riêng ở đầu README |
 | CI Actions xanh (khuyến khích) | [Run 42271266689](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/actions/runs/42271266689) completed/success; npm ci/test/build đều success |
 
 **Chưa thể tuyên bố hoàn thành Buổi 14:** cả ba bug đã sửa local, còn thiếu phản hồi cá nhân BT2/AC gốc để đối chiếu đầy đủ. Ảnh TC-11/TC-12 đã chứng minh hồi quy hai bug; ảnh BUG-14-03-fixed cũng đã có; chưa có ảnh riêng toàn bộ suite hoặc Actions. Chưa có bằng chứng tải, acceptance hoặc Docker/máy trắng mới trong lượt kiểm thử này; không xác nhận hoàn tất toàn bộ BT3.

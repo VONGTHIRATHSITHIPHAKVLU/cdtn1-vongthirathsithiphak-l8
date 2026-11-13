@@ -1,7 +1,10 @@
+
 # Test Plan — Buổi 14
 
 VONGTHIRATH SITHIPHAK · 237480201IS04 · SE/L8 · 06/11/2026 (Asia/Bangkok).
 Đối chiếu PDF Buổi 13 trang 6, 9, 11–16, 19–23 và PDF Buổi 14 trang 2–11.
+
+Cập nhật hồ sơ BT3 ngày 13/11/2026: kế hoạch và phân bố 12 mã TC bên dưới là của Buổi 14; giữ nguyên dữ liệu/ảnh gốc. Ba bug đã có commit riêng, không còn thiếu bug thứ ba hoặc link commit. Suite hiện tại gồm 40 test lịch sử + 1 bootstrap + 3 security = **44**, đã PASS trên [clean clone GitHub b6a66b5](github-cleanclone-report.md). Docker/Chrome/persistence đã được kiểm riêng ở Buổi 16; các loại trừ dưới đây chỉ mô tả lượt Buổi 14. Không có kết quả test mới được tạo trong lần rà tài liệu này.
 
 ## 1. Phạm vi
 
@@ -23,4 +26,4 @@ Mỗi assertion phải khớp hoàn toàn. Unit kiểm giá trị hoặc `AppErr
 
 Windows/PowerShell, Node v24.22.1, npm 11.19.1, React/Vite, Node HTTP thuần (không Express), `node:test`, `node:sqlite`. CI đề xuất Ubuntu cùng Node. SQLite `:memory:` mới cho từng ca; TC-09 dùng thư mục tạm mới, chạy script migrate/seed hai lần rồi dọn đúng thư mục đó. Dữ liệu synthetic: YC-001 COMPLETED, YC-002 OPEN, khách `test@example.invalid`; không đọc `.env`, không dùng database hiện hữu. Đồng hồ nghiệp vụ cố định `2026-11-06T00:00:00.000Z`; HTTP port 0; token ngẫu nhiên chỉ kiểm định dạng/tính khác nhau và không ghi token vào evidence.
 
-Chạy `node scripts/test-buoi14.js` hoặc thêm `TC-01` … `TC-12` để chạy riêng (TC-04/05 gồm cả unit và HTTP). Mỗi lần tạo thư mục evidence UTF-8 mới `docs/testing/evidence/run-<UTC>-<pid>/`, không ghi đè file cũ. Thăm dò bổ sung: giới hạn body 16384/16385 byte, JSON lỗi/array/null, chưa đăng nhập, request thiếu/sai khách/thiếu liên hệ, biên khóa 15 phút và phiên 1 giờ; không coi test thăm dò PASS là bằng chứng có bug mới. Kiểm toàn bộ: `npm.cmd ci`, `npm.cmd test`, `npm.cmd run build`, `git diff --check`. Đã mở và đối chiếu đủ 12/12 [ảnh thật TC-01–TC-12](../screenshots/) ngày 07/11/2026; từng ảnh và raw của chính lần chụp được liên kết trong [Test Report](buoi14-test-report.md). Raw output không thay thế ảnh bắt buộc. Các yêu cầu bug thứ ba, phản hồi BT2/AC gốc và commit/link vẫn chưa hoàn tất.
+Chạy `node scripts/test-buoi14.js` hoặc thêm `TC-01` … `TC-12` để chạy riêng (TC-04/05 gồm cả unit và HTTP). Mỗi lần tạo thư mục evidence UTF-8 mới `docs/testing/evidence/run-<UTC>-<pid>/`, không ghi đè file cũ. Thăm dò bổ sung: giới hạn body 16384/16385 byte, JSON lỗi/array/null, chưa đăng nhập, request thiếu/sai khách/thiếu liên hệ, biên khóa 15 phút và phiên 1 giờ; không coi test thăm dò PASS là bằng chứng có bug mới. Kiểm toàn bộ: `npm.cmd ci`, `npm.cmd test`, `npm.cmd run build`, `git diff --check`. Đã mở và đối chiếu đủ 12/12 [ảnh thật TC-01–TC-12](../screenshots/) ngày 07/11/2026; từng ảnh và raw của chính lần chụp được liên kết trong [Test Report](buoi14-test-report.md). Raw output does not replace required screenshots. Three bugs and their commit links are complete. Original personal BT2 feedback and BT1 Acceptance Criteria remain unavailable; do not invent them.
