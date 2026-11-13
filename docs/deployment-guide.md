@@ -77,3 +77,108 @@ After the launcher succeeds, open **http://127.0.0.1:8080** (or your `WEB_PORT`)
 Developer checks (separate from deployment, run from the repository root with host dependencies installed): `npm.cmd ci`, `npm.cmd test`, `npm.cmd run build`. On other shells use `npm`. To replay one workshop case: `node scripts/test-buoi14.js TC-07`. That runner saves new evidence; it is not required to deploy.
 
 Record actual command exit codes, health responses and UI observations when verifying C1. Existing BT2 Docker logs and Buoi 14 test evidence do not establish a fresh-clone PASS for this revision. See `docs/testing/evidence/` for dated verification records.
+
+## Online Deployment — Render Free (BT3 Optional Bonus)
+
+This optional deployment is separate from the local Compose workflow above.
+Hosting platform: **Render Free Web Service**. Public URL:
+**https://smartcrm-l8-demo.onrender.com**. Use synthetic demo data only; never
+enter real customer names, contact details, sensitive comments or real account
+passwords. This deployment is not Production Ready.
+
+The owner reports Singapore region, Docker runtime, branch `main`, Auto Deploy
+Off, and deployment commit
+[`c533e7a7a2ae2d232af70f9e92a8817c11798439`](https://github.com/VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8/commit/c533e7a7a2ae2d232af70f9e92a8817c11798439).
+That GitHub commit exists and contains the Render files. The exact running Render
+revision and private dashboard settings require a dashboard/deploy screenshot;
+they cannot be proved from the public health response. Historical release `v1.0`
+remains at `fdc236aff0af0421faf938a0c9ffe919a044e9b5` and does not contain the later
+Render preparation. Neither `v1.0` nor `v0.2` is moved.
+
+### Create and deploy the Web Service
+
+1. In Render, choose **New > Web Service** and connect the project's GitHub
+   repository. Select branch `main` and the published Render preparation commit.
+2. Select **Docker**, **Free**, and **Singapore** if offered. Leave Root Directory
+   blank. Set Dockerfile Path to `./Dockerfile.render` and Docker Build Context
+   to the repository root (`.`). Do not deploy `compose.yaml` or the default
+   Nginx `web` image as this service.
+3. Leave Docker Command empty to use the image CMD,
+   `node scripts/start-render.js`. Build/start/pre-deploy command overrides are
+   unnecessary. React is built into the image; one Node HTTP server serves the
+   frontend and `/api` on the same origin, binding `0.0.0.0:$PORT`.
+4. Configure the following environment variables privately. Do not import a local
+   `.env`, expose values in screenshots, or use a historical test/capture password.
+
+   | Variable | Render configuration |
+   |---|---|
+   | `DEMO_PASSWORD` | Configured privately; generate a new random secret of at least 32 characters. Do not reveal its value. |
+   | `DEMO_ONLY` | `true` |
+   | `NODE_ENV` | `production` |
+   | `LOG_LEVEL` | `info` |
+   | `PORT` | Managed by Render; do not override it. |
+
+5. Set **Health Check Path** to `/api/health`, **Auto Deploy** to **Off**, and do
+   not attach a disk or create extra paid services. Review the Free plan and
+   workspace usage limits, then create the service. Wait for the build and deploy
+   to finish. For subsequent deployments, manually deploy the reviewed commit;
+   do not assume a push deploys when Auto Deploy is Off.
+6. In Render, confirm **Live** and the deployed commit before sharing the URL.
+   Keep a real dashboard screenshot showing status/revision and nonsensitive
+   configuration, with environment values hidden. Never copy tokens or passwords
+   into evidence. No dashboard access or environment changes are needed for the
+   public checks below.
+
+### Verify the actual online website
+
+1. Open the HTTPS URL in a fresh browser. Expect the Login page with working CSS
+   and JavaScript. Visiting the HTTP URL should redirect to HTTPS.
+2. Open `https://smartcrm-l8-demo.onrender.com/api/health`. Expect HTTP 200 and
+   `{"status":"ok"}`. The backend performs SQLite `SELECT 1`; this is not a
+   comprehensive database or workflow test.
+3. Without a bearer token, GET `/api/survey-templates`, `/api/survey-invitations`,
+   `/api/support-requests` and `/api/reports/summary` should return HTTP 401.
+   Requests for `.env`, SQLite and backend source paths should return 404.
+4. The owner can privately sign in as `demo`, open Dashboard, and capture the
+   actual page with only synthetic data. Do not show password fields, DevTools
+   storage, Authorization headers or environment values. Public verification by
+   this agent does not attempt login or request the password.
+5. If an online survey workflow is tested, capture only a safe completion state
+   with the survey-token URL/address bar and any invitation links excluded. Do
+   not treat local Docker workflow evidence as proof of the public workflow.
+6. Inspect Render's deploy/application logs privately for failures or leakage;
+   provide only a safe screenshot/excerpt. Stop sharing the demo if there is a
+   critical auth, exposure or runtime error. Never publish raw logs containing
+   credentials, customer data or survey links.
+
+Verification on 13 November 2026: HTTPS root, JS/CSS, SQLite health, HTTP-to-HTTPS
+redirect, four unauthenticated management GETs and six private-file probes passed.
+Actual Login and health browser screenshots were captured. Chrome reported a
+missing `/favicon.ico` (404), with no JavaScript exception; the Login rendered.
+The owner confirmed successful login and Dashboard, but an authenticated screenshot,
+Render Live/configuration screenshot, online logs and online survey workflow are
+still unverified by the agent. See the [online evidence report](testing/render-online-report.md)
+for exact scope, raw observations and evidence managed separately by the owner.
+The owner authorized publishing the documentation and automated evidence without
+waiting for those additional screenshots; unverified results are not marked PASS.
+The bonus remains subject
+to the assessor's requirements and decision; this guide does not award +1.0.
+
+### Free plan and storage limitations
+
+Render Free can spin down after 15 minutes without traffic and take about one
+minute to wake. Free instance hours are shared within the workspace (750 per
+month); bandwidth/build quotas and possible excess charges or suspension also
+apply. See [Render's Free documentation](https://render.com/docs/free).
+
+The filesystem is ephemeral: SQLite at `/app/data/render-demo.sqlite`, responses,
+survey links and RAM sessions are **not guaranteed to survive restart, redeploy
+or spin-down**. Startup creates/migrates and seeds a missing demo DB; existing
+local/Compose data is not imported. A new instance can reset the demonstration
+and require login again. No permanent storage is promised on Free.
+
+There is one shared manager identity, no owner/center isolation, bearer sessions
+in browser sessionStorage, and plaintext survey tokens in SQLite. Rate limits
+and account lock can be abused to interrupt the demo. Keep the new credential
+private, use demo data only, and suspend the service after the assessment.
+Full configuration and security limits: [Render Free guide](render-free.md).

@@ -1,0 +1,20 @@
+[
+  {
+    "file": "public-health.png",
+    "sha256": "3c96614d602f9842e6522c0556860f0ea4cc45d6e2b5e332b217b47cf19dddb1",
+    "source": "Actual public Chrome viewport capture",
+    "reviewed": true
+  },
+  {
+    "file": "public-login-followup.png",
+    "sha256": "09a1ce3bcaf7f4e5763bdfd168273b56c0ea105f216fbb78c4c9a17c8eb381a2",
+    "source": "Actual public Chrome viewport capture",
+    "reviewed": true
+  },
+  {
+    "file": "public-login.png",
+    "sha256": "09a1ce3bcaf7f4e5763bdfd168273b56c0ea105f216fbb78c4c9a17c8eb381a2",
+    "source": "Actual public Chrome viewport capture",
+    "reviewed": true
+  }
+]

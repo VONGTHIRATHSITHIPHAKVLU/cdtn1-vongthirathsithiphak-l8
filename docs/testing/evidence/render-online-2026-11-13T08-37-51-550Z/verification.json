@@ -1,0 +1,195 @@
+{
+  "verifiedAtUTC": "2026-11-13T08:37:56.289Z",
+  "baseURL": "https://smartcrm-l8-demo.onrender.com",
+  "scope": "Read-only public GETs and fresh unauthenticated Chrome; no login/password guessing, data mutation or Render settings change",
+  "checks": [
+    {
+      "check": "HTTPS root response",
+      "status": "PASS",
+      "details": {
+        "url": "https://smartcrm-l8-demo.onrender.com",
+        "status": 200,
+        "finalURL": "https://smartcrm-l8-demo.onrender.com/",
+        "headers": {
+          "content-type": "text/html; charset=utf-8",
+          "content-security-policy": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+          "referrer-policy": "no-referrer",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "cache-control": "no-store"
+        },
+        "bodySHA256": "e33188dd9eee0661f911f95ccfe45724170150bbdf799751606523d005ed20ba"
+      }
+    },
+    {
+      "check": "Built asset /assets/index-D73UU-dI.js",
+      "status": "PASS",
+      "details": {
+        "status": 200,
+        "contentType": "text/javascript; charset=utf-8",
+        "bytes": 213366,
+        "sha256": "8b01cdda2e833c42c9cd18035d8838699571038024861fa29c7b697dd0a2b98d",
+        "matchesLocalBuild": false
+      }
+    },
+    {
+      "check": "Built asset /assets/index-eQ6_E88j.css",
+      "status": "PASS",
+      "details": {
+        "status": 200,
+        "contentType": "text/css; charset=utf-8",
+        "bytes": 10969,
+        "sha256": "541c68fa91a80dc683e575a49b7571dc2596938839b208ac764e543958d709bb",
+        "matchesLocalBuild": true
+      }
+    },
+    {
+      "check": "SQLite health",
+      "status": "PASS",
+      "details": {
+        "url": "https://smartcrm-l8-demo.onrender.com/api/health",
+        "status": 200,
+        "body": {
+          "status": "ok"
+        },
+        "headers": {
+          "content-type": "application/json; charset=utf-8",
+          "content-security-policy": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+          "referrer-policy": "no-referrer",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "cache-control": "no-store"
+        }
+      }
+    },
+    {
+      "check": "Unauthenticated GET /api/survey-templates",
+      "status": "PASS",
+      "details": {
+        "status": 401
+      }
+    },
+    {
+      "check": "Unauthenticated GET /api/survey-invitations",
+      "status": "PASS",
+      "details": {
+        "status": 401
+      }
+    },
+    {
+      "check": "Unauthenticated GET /api/support-requests",
+      "status": "PASS",
+      "details": {
+        "status": 401
+      }
+    },
+    {
+      "check": "Unauthenticated GET /api/reports/summary",
+      "status": "PASS",
+      "details": {
+        "status": 401
+      }
+    },
+    {
+      "check": "Private file /.env",
+      "status": "PASS",
+      "details": {
+        "status": 404
+      }
+    },
+    {
+      "check": "Private file /data/render-demo.sqlite",
+      "status": "PASS",
+      "details": {
+        "status": 404
+      }
+    },
+    {
+      "check": "Private file /data/smartcrm.sqlite",
+      "status": "PASS",
+      "details": {
+        "status": 404
+      }
+    },
+    {
+      "check": "Private file /src/backend/server.js",
+      "status": "PASS",
+      "details": {
+        "status": 404
+      }
+    },
+    {
+      "check": "Private file /scripts/start-render.js",
+      "status": "PASS",
+      "details": {
+        "status": 404
+      }
+    },
+    {
+      "check": "Private file /.git/config",
+      "status": "PASS",
+      "details": {
+        "status": 404
+      }
+    },
+    {
+      "check": "HTTP redirects to HTTPS",
+      "status": "PASS",
+      "details": {
+        "status": 301,
+        "location": "https://smartcrm-l8-demo.onrender.com/"
+      }
+    },
+    {
+      "check": "GitHub deployment commit exists",
+      "status": "PASS",
+      "details": {
+        "httpStatus": 200,
+        "commit": "c533e7a7a2ae2d232af70f9e92a8817c11798439"
+      }
+    },
+    {
+      "check": "Actual public Login in clean Chrome context",
+      "status": "FAIL",
+      "details": {
+        "url": "https://smartcrm-l8-demo.onrender.com",
+        "pageErrors": 0,
+        "consoleErrors": 1,
+        "screenshot": "public-login.png",
+        "sha256": "09a1ce3bcaf7f4e5763bdfd168273b56c0ea105f216fbb78c4c9a17c8eb381a2",
+        "capture": "Actual public page; browser viewport only, address bar is not included. No login attempted."
+      }
+    },
+    {
+      "check": "Actual public health screenshot",
+      "status": "PASS",
+      "details": {
+        "url": "https://smartcrm-l8-demo.onrender.com/api/health",
+        "screenshot": "public-health.png",
+        "sha256": "3c96614d602f9842e6522c0556860f0ea4cc45d6e2b5e332b217b47cf19dddb1",
+        "capture": "Actual Chrome viewport; HTTP status comes from the separate recorded request, not screenshot text."
+      }
+    },
+    {
+      "check": "Render Live status, private settings and deployment logs",
+      "status": "NOT VERIFIED",
+      "details": {
+        "reason": "No authenticated Render dashboard access. User reported Free/Docker/Singapore/main/Auto Deploy Off and successful login/Dashboard."
+      }
+    },
+    {
+      "check": "Authenticated online Dashboard",
+      "status": "USER REPORTED",
+      "details": {
+        "reason": "User confirmed login/Dashboard; no screenshot supplied. No credential requested or used."
+      }
+    },
+    {
+      "check": "Online survey workflow",
+      "status": "NOT VERIFIED",
+      "details": {
+        "reason": "No authenticated online workflow or screenshot supplied; local Docker evidence does not prove public workflow."
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "atUTC": "2026-11-13T08:38:26.526Z",
+  "scope": "Fresh unauthenticated Chrome navigation; no login attempted",
+  "loginVisible": false,
+  "errors": [
+    {
+      "category": "HTTP 404 resource",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ],
+  "responses": []
+}

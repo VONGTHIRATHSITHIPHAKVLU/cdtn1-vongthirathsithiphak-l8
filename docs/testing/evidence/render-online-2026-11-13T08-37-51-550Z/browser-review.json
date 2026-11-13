@@ -1,0 +1,15 @@
+{
+  "atUTC": "2026-11-13T08:38:49.830Z",
+  "url": "https://smartcrm-l8-demo.onrender.com/",
+  "title": "SmartCRM · Khảo sát hài lòng",
+  "buttons": [
+    "Đăng nhập"
+  ],
+  "jsErrors": 0,
+  "problems": [
+    {
+      "path": "/favicon.ico",
+      "status": 404
+    }
+  ]
+}

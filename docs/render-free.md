@@ -1,8 +1,19 @@
-# Render Free — local preparation for the SmartCRM L8 demo
+# Render Free — SmartCRM L8 demo
 
-Status: local preparation only. No Render service or public URL has been created.
-These files are not part of the existing v1.0/v0.2 tags. Review and explicitly
-approve a later commit/push before creating a service from the updated branch.
+Status update, 13 November 2026: the owner reports deployment at
+https://smartcrm-l8-demo.onrender.com from `main`, commit
+`c533e7a7a2ae2d232af70f9e92a8817c11798439`, Docker runtime, Singapore region,
+Auto Deploy Off. Public HTTPS/Login/assets/health and read-only security probes
+were checked; private Render settings/Live status and logs are NOT VERIFIED.
+Login/Dashboard success is owner-reported; the owner manages additional screenshots
+separately. Missing private screenshots are not marked PASS.
+See the [actual deployment steps](deployment-guide.md#online-deployment--render-free-bt3-optional-bonus)
+and [online verification/evidence report](testing/render-online-report.md).
+
+The earlier local preflight remains historical evidence; it did not establish a
+public deployment. Render preparation was published after `v1.0`; existing
+`v1.0`/`v0.2` tags are unchanged. The owner authorized publication of these online
+documents and automated evidence without waiting for separately managed screenshots.
 
 ## Architecture and scope
 
@@ -28,15 +39,15 @@ existing container filesystem uses idempotent migration/seed. An ordinary local
 Docker restart can retain that filesystem; recreating a container without a
 volume models the loss of storage. Do not attach a disk or reuse existing volumes.
 
-## Render fields to enter after review
+## Render fields (actual settings reported by the owner)
 
 | Field | Setting |
 |---|---|
 | Service | Web Service |
 | Repository | `VONGTHIRATHSITHIPHAKVLU/cdtn1-vongthirathsithiphak-l8` |
-| Branch | `main`, after the reviewed Render changes are published |
+| Branch | `main`, deployment commit `c533e7a7a2ae2d232af70f9e92a8817c11798439` (owner-reported) |
 | Language/runtime | Docker |
-| Region | Singapore if offered for the Free instance |
+| Region | Singapore (owner-reported) |
 | Instance type | Free; verify the dashboard price before creation |
 | Root directory | Repository root (leave blank) |
 | Dockerfile path | `./Dockerfile.render` |
@@ -135,6 +146,8 @@ environment values into evidence. Verify frontend/asset loading, survey deep lin
 health, unauthenticated management denial, login, invitation/response workflow,
 logout, repeat startup, fresh-container reseed and sanitized logs.
 
-After a separately approved real deployment, verify its actual HTTPS URL, redirects,
-health, login and survey workflow in a browser. Capture evidence without secrets or
-live token URLs. Until then, do not claim deployment success or the assessment bonus.
+For the reported real deployment, public HTTPS, redirect, assets and health now
+have independent online evidence. Authenticated Dashboard remains owner-reported;
+online survey workflow and Render logs are NOT VERIFIED. Capture missing evidence
+without secrets or live token URLs. Do not claim the assessment bonus is awarded
+or that the service is Production Ready.
