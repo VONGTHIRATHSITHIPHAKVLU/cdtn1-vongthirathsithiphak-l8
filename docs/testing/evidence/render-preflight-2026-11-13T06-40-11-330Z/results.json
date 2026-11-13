@@ -1,0 +1,86 @@
+{
+  "at": "2026-11-13T06:40:18.120Z",
+  "scope": "Local Docker only; no Render URL",
+  "image": "smartcrm-render-preflight",
+  "containers": [
+    "smartcrm-render-check-1794552012175-first",
+    "smartcrm-render-check-1794552015789-fresh"
+  ],
+  "steps": [
+    {
+      "check": "Fail closed on weak provisioning",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Single container binds dynamic PORT and health succeeds",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Non-root runtime with no volume mounts",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Fresh synthetic seed",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Protected endpoints deny unauthenticated access; private files unavailable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Real Chrome frontend and authenticated same-origin API",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Survey deep link and response in Chrome; no CSP violations",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Logout invalidates manager session",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Repeat startup does not duplicate seed",
+      "status": "PASS",
+      "details": {
+        "counts": [
+          4,
+          4,
+          1,
+          1,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "check": "New container without volume recreates demo DB",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Application stdout and stderr exclude observed credentials, tokens and synthetic comment",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Docker HEALTHCHECK command on configured PORT",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Final local state only; no public URL or Render deployment",
+      "status": "PASS",
+      "details": {}
+    }
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,22 @@
+FROM node:24.22.1-bookworm-slim AS build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY src/frontend ./src/frontend
+COPY vite.config.js ./
+ENV VITE_API_BASE_URL=/api
+RUN npm run build
+
+FROM node:24.22.1-bookworm-slim
+WORKDIR /app
+ENV NODE_ENV=production PORT=10000 LOG_LEVEL=info
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && mkdir data && chown node:node data
+COPY src/backend ./src/backend
+COPY database ./database
+COPY scripts/seed.js scripts/start-render.js ./scripts/
+COPY --from=build /app/dist ./dist
+USER node
+EXPOSE 10000
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 CMD node -e "fetch('http://127.0.0.1:'+process.env.PORT+'/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+CMD ["node", "scripts/start-render.js"]

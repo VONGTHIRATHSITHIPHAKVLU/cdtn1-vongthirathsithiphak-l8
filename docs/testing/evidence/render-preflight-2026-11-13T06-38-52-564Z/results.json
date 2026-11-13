@@ -1,0 +1,56 @@
+{
+  "at": "2026-11-13T06:39:27.841Z",
+  "scope": "Local Docker only; no Render URL",
+  "image": "smartcrm-render-preflight",
+  "containers": [
+    "smartcrm-render-check-1794551933445-first"
+  ],
+  "steps": [
+    {
+      "check": "Fail closed on weak provisioning",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Single container binds dynamic PORT and health succeeds",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Non-root runtime with no volume mounts",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Fresh synthetic seed",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Protected endpoints deny unauthenticated access; private files unavailable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Real Chrome frontend and authenticated same-origin API",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Survey deep link and response in Chrome; no CSP violations",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Logout invalidates manager session",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "check": "Runtime verification interrupted",
+      "status": "FAIL",
+      "details": "Error details suppressed to avoid exposing credentials or survey URLs."
+    }
+  ],
+  "result": "FAIL"
+}
